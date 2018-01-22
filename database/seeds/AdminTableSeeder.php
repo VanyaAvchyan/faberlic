@@ -1,0 +1,25 @@
+<?php
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+
+class AdminTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('users')->insert([
+            'id'         => 1,
+            'name'       => 'Admin',
+            'username'   => 'admin',
+            'avatar'     => 'avatar.jpg',
+            'role'       => 1,
+            'password'   =>  bcrypt('admin'),
+            'created_at' =>  date('Y-m-d H:i:s'),
+            'updated_at' =>  date('Y-m-d H:i:s'),
+        ]);
+    }
+}
