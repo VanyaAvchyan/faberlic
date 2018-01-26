@@ -33,7 +33,8 @@
                         <!-- Logo -->
                         <div class="logo">
                             <a class="logo-wrap" href="#body">
-                                <img class="logo-img" src="{{url()}}/uploads/site/img/logo.png" alt="Asentus Logo">
+                                <img class="logo-img" src="{{url()}}/uploads/site/logo.jpg" alt="Logo">
+                                <!--<img class="logo-img" src="http://resizepiconline.com/uploads/0u2iv2q1g8achuukn7jqam52f3/thumbnail/27479109_1995299260486921_323291503_o.jpg" alt="Asentus Logo">-->
                             </a>
                         </div>
                         <!-- End Logo -->
@@ -45,8 +46,8 @@
                             <ul class="nav navbar-nav navbar-nav-left">
                                 <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#body">{{trans('site.menus.offer')}}</a></li>
                                 <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#about">{{trans('site.menus.partner')}}</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#experience">{{trans('site.menus.experience')}}</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#work">Work</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#experience">Մեր մասին</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#work">Videoner</a></li>
                                 <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">{{trans('site.menus.contact')}}</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-nav-right">
@@ -137,8 +138,12 @@
                                     <i class="service-icon icon-mustache"></i>
                                 </div>
                                 <div class="service-info">
-                                    <h3>Illustrator</h3>
-                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                    <h3>Մեր մասին՝</h3>
+                                    <p class="margin-b-5">
+                                    Մեր թիմը ստեղծվել է ֆաբերլիկ ընկերության Հայաստանյան ներկայացուցչության բացման ժամանակաշրջանից, և  մեր առաջնորդներն ունեն ավելի քան 12 տարվա փորձ ու մեծ հաջողություններ  այս ոլորտում։  Մենք աշխատում ենք կազմակերպված և հստակ ծրագրով։  Մեր թիմի առանձնահատկություներն են՝  անկեղծ և մտերմիկ մթնոլորտ,  պրոֆեսիոնալ և համակարգված  թիմային աշխատանք ։  Այստեղ դուք ձեռք կբերեք ոչ միայն մեծ եկամտի ու ճանապարհորդելու    հնարավորություն, այլ նաև հաճույք կստանաք Ձեր աշխատանքից։ Մենք պատրաստում ենք բացառապես որակյալ մասնագետներ ինչպես Հայաստանում այնպես էլ այլ երկրներում,  և այդ ամենը  կարողանում ենք ապահովել հետաքրքիր  դասընթացների, անհատական մոտեցման և թիմային աշխատանքի շնորհիվ։ 
+Նկարներ,  եթե հնարավոր է։
+
+                                    </p>
                                 </div>
                                 <a href="#" class="content-wrapper-link"></a>    
                             </div>
@@ -149,8 +154,12 @@
                                     <i class="service-icon color-white icon-screen-tablet"></i>
                                 </div>
                                 <div class="service-info">
-                                    <h3 class="color-white">Graphic Design</h3>
-                                    <p class="color-white margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                    <h3 class="color-white">F.A.Q.</h3>
+                                    <p class="color-white margin-b-5"> – Ի°նչ կլինի եթե ես գրանցվեմ, իսկ հետո փոշմանեմ</p>
+                                    <p class="color-white margin-b-5">-  Ես արդեն գրանցված եմ, ցանկանում եմ տեղափոխվել</p>
+                                    <p class="color-white margin-b-5">-   Իսկ եթե չկարողանամ  վաճառե°լ</p>
+                                    <p class="color-white margin-b-5">-  Ես գրանցված եղել եմ և ինձ մոտ ոչինչ չի ստացվել</p>
+                                    <p class="color-white margin-b-5">-  Ո°ւմ է հարմար այս աշխատանքը</p>
                                 </div>
                                 <a href="#" class="content-wrapper-link"></a>    
                             </div>
@@ -161,8 +170,9 @@
                                     <i class="service-icon icon-chemistry"></i>
                                 </div>
                                 <div class="service-info">
-                                    <h3>Photoshop</h3>
+                                    <h3>Mer apranqatesakanin</h3>
                                     <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                    <p class="margin-b-5"><a href="#">Internet magazin</a></p>
                                 </div>
                                 <a href="#" class="content-wrapper-link"></a>    
                             </div>
@@ -173,8 +183,8 @@
                                     <i class="service-icon icon-badge"></i>
                                 </div>
                                 <div class="service-info">
-                                    <h3>Sketch</h3>
-                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                    <h3>Չեմ կողմնորոշվում</h3>
+                                    <p class="margin-b-5">Մեջը-   Ցանկանում եմ հանդիպել  կամ կապի միջոցով զրուցել նախքան գրանցումը ՝ անցեք հղումով և ուղարկեք ձեր տվյալները՝ հեռախոսը  և/կամ e-mail-ը՝  մենք կզանգահարենք(կգրենք)  Ձեզ</p>
                                 </div>
                                 <a href="#" class="content-wrapper-link"></a>    
                             </div>
@@ -191,8 +201,7 @@
             <div class="container content-lg">
                 <div class="row margin-b-40">
                     <div class="col-sm-6">
-                        <h2>Latest Products</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
+                        <h2>Videoner</h2>
                     </div>
                 </div>
                 <!--// end row -->
@@ -205,9 +214,7 @@
                                 <img class="img-responsive" src="{{url()}}/uploads/site/img/970x647/01.jpg" alt="Latest Products Image">
                             </div>
                         </div>
-                        <h4><a href="#">Triangle Roof</a> <span class="text-uppercase margin-l-20">Management</span></h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-                        <a class="link" href="#">Read More</a>
+                        <h4><a href="#">Վիզիտկա</a></h4>
                     </div>
                     <!-- End Latest Products -->
 
@@ -218,9 +225,7 @@
                                 <img class="img-responsive" src="{{url()}}/uploads/site/img/970x647/02.jpg" alt="Latest Products Image">
                             </div>
                         </div>
-                        <h4><a href="#">Curved Corners</a> <span class="text-uppercase margin-l-20">Developmeny</span></h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-                        <a class="link" href="#">Read More</a>
+                        <h4><a href="#">բիզնես քեզ համար</a></h4>
                     </div>
                     <!-- End Latest Products -->
 
@@ -231,9 +236,7 @@
                                 <img class="img-responsive" src="{{url()}}/uploads/site/img/970x647/03.jpg" alt="Latest Products Image">
                             </div>
                         </div>
-                        <h4><a href="#">Bird On Green</a> <span class="text-uppercase margin-l-20">Design</span></h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-                        <a class="link" href="#">Read More</a>
+                        <h4><a href="#">Խորհրդատուի համար</a></h4>
                     </div>
                     <!-- End Latest Products -->
                 </div>
