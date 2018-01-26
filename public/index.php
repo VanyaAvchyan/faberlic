@@ -1,5 +1,5 @@
 <?php
-
+echo 1111111;exit;
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
