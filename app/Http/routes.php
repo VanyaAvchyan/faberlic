@@ -9,6 +9,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('account/{code}', '\App\Http\Controllers\User\UserController@getUser');
+Route::get('lang/{lang?}', function($locale='am'){
+    $locale = func_get_arg(0);
+    return redirect($locale);
+});
 Route::controller('user', '\App\Http\Controllers\User\UserController');
-Route::get('/', '\App\Http\Controllers\SiteController@getIndex');
+Route::get('account/{code?}', '\App\Http\Controllers\SiteController@getSiteByCode');
+Route::get('/{lang?}', '\App\Http\Controllers\SiteController@getIndex');
+

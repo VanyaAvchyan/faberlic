@@ -6,6 +6,7 @@ use App\User;
 use App\Partner;
 use App\Video;
 use App\Offer;
+use App\Contact;
 
 class UserController extends Controller 
 {
@@ -16,12 +17,6 @@ class UserController extends Controller
     public function getIndex()
     {
         return view('user/index');
-    }
-
-    public function getUser($code)
-    {
-        $user = auth()->user();
-        return view('site/index', ['user' => auth()->user(), 'code' => $code]);
     }
 
     public function getLogin()
@@ -112,12 +107,49 @@ class UserController extends Controller
         Offer::create($offer);
         return redirect()->back()->with('success', 'Success !');
     }
-    
+
     public function putOffer()
     {
         $offer = request()->except('_method','_token');
         $offer['user_id'] = auth()->user()->id;
-        Offer::where('id', $id)->update($offer);
+        Offer::first()->update($offer);
+        return redirect()->back()->with('success', 'Success !');
+    }
+    
+    public function getContact($action=false, $id=false)
+    {
+        $model = false;
+        if($action && $id)
+        {
+            if($action == 'delete')
+            {
+                Contact::where('id', $id)->delete();
+                return redirect('user/contact');
+            }
+            elseif($action == 'update')
+            {
+//                $contact = request()->except('_method','_token');
+//                $contact['user_id'] = auth()->user()->id;
+                $model = Contact::find($id);
+            }
+        }
+        $contacts = Contact::all();
+        return view('user/contacts', ['model' => $model,'contacts' => $contacts]);
+    }
+    
+    public function postContact()
+    {
+        $offer = request()->except('_method', '_token');
+        $offer['user_id'] = auth()->user()->id;
+        Contact::create($offer);
+        return redirect()->back()->with('success', 'Success !');
+    }
+
+    public function putContact($id)
+    {
+        $offer = request()->except('_method','_token');
+        $offer['user_id'] = auth()->user()->id;
+        Contact::where($id)->update($offer);
         return redirect()->back()->with('success', 'Success !');
     }
 }

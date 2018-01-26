@@ -33,7 +33,7 @@
                         <!-- Logo -->
                         <div class="logo">
                             <a class="logo-wrap" href="#body">
-                                <img class="logo-img" src="/uploads/site/img/logo.png" alt="Asentus Logo">
+                                <img class="logo-img" src="{{url()}}/uploads/site/img/logo.png" alt="Asentus Logo">
                             </a>
                         </div>
                         <!-- End Logo -->
@@ -42,12 +42,17 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse nav-collapse">
                         <div class="menu-container">
-                            <ul class="nav navbar-nav navbar-nav-right">
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#body">Home</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#about">Arajark</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#experience">Experience</a></li>
+                            <ul class="nav navbar-nav navbar-nav-left">
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#body">{{trans('site.menus.offer')}}</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#about">{{trans('site.menus.partner')}}</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#experience">{{trans('site.menus.experience')}}</a></li>
                                 <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#work">Work</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">Contact</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">{{trans('site.menus.contact')}}</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-nav-right">
+                                <li class='active'><a class='active' href="{{url('lang/am')}}">AM</a></li>
+                                <li><a href="{{url('lang/ru')}}">RU</a></li>
+                                <li><a href="{{url('lang/en')}}">EN</a></li>
                             </ul>
                         </div>
                     </div>
@@ -64,8 +69,8 @@
                 <div class="row">
                     <div class="col-sm-6 sm-margin-b-60">
                         <div class="margin-b-30">
-                            <h1 class="promo-block-title">Alisa <br/> Portman</h1>
-                            <p class="promo-block-text">Web &amp; UI/UX Designer</p>
+                            <h1 class="promo-block-title">{{$offer->title}}</h1>
+                            <p class="promo-block-text">{{$offer->description}}</p>
                         </div>
                         <ul class="list-inline">
                             <li><a href="#" class="social-icons"><i class="icon-social-facebook"></i></a></li>
@@ -81,7 +86,7 @@
                                 <span class="video1-title">{{$video[0]->title}}</span>
                                 <img class="promo-block-img img-responsive" src="{{$video[0]->thumb}}" align="{{$video[0]->thumb}}">
                             @else
-                                <img class="promo-block-img img-responsive" src="/uploads/site/img/mockup/avatar-01.png" align="Avatar">
+                                <img class="promo-block-img img-responsive" src="{{url()}}/uploads/site/img/mockup/avatar-01.png" align="Avatar">
                             @endif
                         </div>
                     </div>
@@ -101,7 +106,7 @@
                             <span class="video2-title">{{$video[1]->title}}</span>
                             <img class="promo-block-img img-responsive" src="{{$video[1]->thumb}}" align="{{$video[1]->thumb}}">
                         @else
-                            <img class="full-width img-responsive" src="/uploads/site/img/500x700/01.jpg" alt="Image">
+                            <img class="full-width img-responsive" src="{{url()}}/uploads/site/img/500x700/01.jpg" alt="Image">
                         @endif
                     </div>
                     <div class="col-sm-7">
@@ -111,7 +116,7 @@
                                     <h2>{{$partner->title}}</h2>
                                     <p>{{$partner->description}}</p>
                                 </div>
-                                <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" class="btn-theme btn-theme-md btn-default-bg text-uppercase" target='_blank'>Հղում դեպի գրանցում</a>
+                                <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" class="btn-theme btn-theme-md btn-default-bg text-uppercase" target='_blank'>{{trans('site.link_to_registration')}}</a>
                             </div>
                         </div>
                     </div>
@@ -197,7 +202,7 @@
                     <div class="col-sm-4 sm-margin-b-50">
                         <div class="margin-b-20">
                             <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                                <img class="img-responsive" src="/uploads/site/img/970x647/01.jpg" alt="Latest Products Image">
+                                <img class="img-responsive" src="{{url()}}/uploads/site/img/970x647/01.jpg" alt="Latest Products Image">
                             </div>
                         </div>
                         <h4><a href="#">Triangle Roof</a> <span class="text-uppercase margin-l-20">Management</span></h4>
@@ -210,7 +215,7 @@
                     <div class="col-sm-4 sm-margin-b-50">
                         <div class="margin-b-20">
                             <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                                <img class="img-responsive" src="/uploads/site/img/970x647/02.jpg" alt="Latest Products Image">
+                                <img class="img-responsive" src="{{url()}}/uploads/site/img/970x647/02.jpg" alt="Latest Products Image">
                             </div>
                         </div>
                         <h4><a href="#">Curved Corners</a> <span class="text-uppercase margin-l-20">Developmeny</span></h4>
@@ -223,7 +228,7 @@
                     <div class="col-sm-4 sm-margin-b-50">
                         <div class="margin-b-20">
                             <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                                <img class="img-responsive" src="/uploads/site/img/970x647/03.jpg" alt="Latest Products Image">
+                                <img class="img-responsive" src="{{url()}}/uploads/site/img/970x647/03.jpg" alt="Latest Products Image">
                             </div>
                         </div>
                         <h4><a href="#">Bird On Green</a> <span class="text-uppercase margin-l-20">Design</span></h4>
@@ -236,48 +241,6 @@
             </div>
         </div>
         <!-- End Work -->
-
-        <!-- Clients -->
-        <div class="bg-color-sky-light">
-            <div class="content-lg container">
-                <!-- Swiper Clients -->
-                <div class="swiper-slider swiper-clients">
-                    <!-- Swiper Wrapper -->
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img class="swiper-clients-img" src="/uploads/site/img/clients/01.png" alt="Clients Logo">
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="swiper-clients-img" src="/uploads/site/img/clients/02.png" alt="Clients Logo">
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="swiper-clients-img" src="/uploads/site/img/clients/03.png" alt="Clients Logo">
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="swiper-clients-img" src="/uploads/site/img/clients/04.png" alt="Clients Logo">
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="swiper-clients-img" src="/uploads/site/img/clients/05.png" alt="Clients Logo">
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="swiper-clients-img" src="/uploads/site/img/clients/06.png" alt="Clients Logo">
-                        </div>
-                    </div>
-                    <!-- End Swiper Wrapper -->
-                </div>
-                <!-- End Swiper Clients -->
-            </div>
-        </div>
-        <!-- End Clients -->
-
-        <!-- Promo Banner -->
-        <div class="promo-banner parallax-window" data-parallax="scroll" data-image-src="/uploads/site/img/1920x1080/01.jpg">
-            <div class="container-sm content-lg">
-                <h2 class="promo-banner-title">Displaying the Result</h2>
-                <p class="promo-banner-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-            </div>
-        </div>
-        <!-- End Promo Banner -->
             
         <!-- Contact -->
         <div id="contact">
@@ -285,29 +248,18 @@
                 <div class="container content-lg">
                     <div class="row margin-b-40">
                         <div class="col-sm-6">
-                           <h2>Contact Me</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
+                           <h2>{{trans('site.menus.contact')}}</h2>
                         </div>
                     </div>
                     <!--// end row -->
 
                     <div class="row">
+                        @foreach($contacts as $contact)
                         <div class="col-md-3 col-xs-6 md-margin-b-30">
-                            <h4>Location</h4>
-                            <a href="#">Brookyln, New York</a>
+                            <h4>{{$contact->title}}</h4>
+                            <a href="javascript:void(0)">{{$contact->description}}</a>
                         </div>
-                        <div class="col-md-3 col-xs-6 md-margin-b-30">
-                            <h4>Phone</h4>
-                            <a href="#">+77 234 548 00 00</a>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <h4>Email</h4>
-                            <a href="mailto:#">alex.teseira@gmail.com</a>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <h4>Web</h4>
-                            <a href="#">alex.teseira.com</a>
-                        </div>
+                        @endforeach
                     </div>
                     <!--// end row -->
                 </div>

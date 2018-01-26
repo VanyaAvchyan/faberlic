@@ -28,16 +28,15 @@
     <!-- Custom Theme Style -->
     <link href="/build/css/custom.min.css" rel="stylesheet">
   </head>
-
   <body class="nav-md">
     <div class="container body">
         <div class="main_container">
+          @if(auth()->check())    
           <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
               <div class="navbar nav_title" style="border: 0;">
                 <a href="{{url('user')}}" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
               </div>
-
               <div class="clearfix"></div>
 
               <!-- menu profile quick info -->
@@ -64,6 +63,7 @@
                         <li><a href="{{url('user/offer')}}">Մեր բիզնես առաջարկը</a></li>
                         <li><a href="{{url('user/video/1')}}">Video 1</a></li>
                         <li><a href="{{url('user/video/2')}}">Video 2</a></li>
+                        <li><a href="{{url('user/contact')}}">Contacts</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -82,7 +82,8 @@
                 <ul class="nav navbar-nav navbar-right">
                   <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                      <img src="/uploads/images/{{auth()->user()->avatar}}" alt="">{{auth()->user()->name}}
+                      
+                        <img src="/uploads/images/{{auth()->user()->avatar}}" alt="">{{auth()->user()->name}}
                       <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -93,6 +94,7 @@
               </nav>
             </div>
           </div>
+        @endif
           <!-- /top navigation -->
             @yield('content')
         </div>
