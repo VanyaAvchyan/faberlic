@@ -1,5 +1,4 @@
 <?php
-echo __DIR__;exit;
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
