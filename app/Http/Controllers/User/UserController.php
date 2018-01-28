@@ -7,6 +7,7 @@ use App\Partner;
 use App\Video;
 use App\Offer;
 use App\Contact;
+use App\Faq;
 
 class UserController extends Controller 
 {
@@ -115,41 +116,73 @@ class UserController extends Controller
         Offer::first()->update($offer);
         return redirect()->back()->with('success', 'Success !');
     }
-    
-    public function getContact($action=false, $id=false)
+
+    /**
+     * Contact
+     */
+    public function getContact($id = false)
     {
-        $model = false;
-        if($action && $id)
-        {
-            if($action == 'delete')
-            {
-                Contact::where('id', $id)->delete();
-                return redirect('user/contact');
-            }
-            elseif($action == 'update')
-            {
-//                $contact = request()->except('_method','_token');
-//                $contact['user_id'] = auth()->user()->id;
-                $model = Contact::find($id);
-            }
-        }
-        $contacts = Contact::all();
-        return view('user/contacts', ['model' => $model,'contacts' => $contacts]);
+        $model = Contact::find($id);
+        if($id && !$model)
+            return redirect('user/contact');
+        $models = Contact::all();
+        return view('user/contacts', ['model' => $model, 'models' => $models]);
     }
     
     public function postContact()
     {
-        $offer = request()->except('_method', '_token');
-        $offer['user_id'] = auth()->user()->id;
-        Contact::create($offer);
+        $data = request()->except('_method', '_token');
+        $data['user_id'] = auth()->user()->id;
+        Contact::create($data);
         return redirect()->back()->with('success', 'Success !');
     }
 
     public function putContact($id)
     {
-        $offer = request()->except('_method','_token');
-        $offer['user_id'] = auth()->user()->id;
-        Contact::where($id)->update($offer);
+        $data = request()->except('_method','_token');
+        $data['user_id'] = auth()->user()->id;
+        Contact::where('id', $id)->update($data);
         return redirect()->back()->with('success', 'Success !');
     }
+
+    public function deleteContact($id)
+    {
+        Contact::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Success !');
+    }
+    
+    /**
+     * F.A.Q
+     */
+    public function getFaq($id = false)
+    {
+        $model = Faq::find($id);
+        if($id && !$model)
+            return redirect('user/faq');
+        $models = Faq::all();
+        return view('user/faqs', ['model' => $model, 'models' => $models]);
+    }
+    
+    public function postFaq()
+    {
+        $data = request()->except('_method', '_token');
+        $data['user_id'] = auth()->user()->id;
+        Faq::create($data);
+        return redirect()->back()->with('success', 'Success !');
+    }
+
+    public function putFaq($id)
+    {
+        $data = request()->except('_method','_token');
+        $data['user_id'] = auth()->user()->id;
+        Faq::where('id', $id)->update($data);
+        return redirect()->back()->with('success', 'Success !');
+    }
+
+    public function deleteFaq($id)
+    {
+        Faq::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Success !');
+    }
+    
 }

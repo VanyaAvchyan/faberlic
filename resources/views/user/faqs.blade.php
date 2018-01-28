@@ -4,22 +4,22 @@
 <div class="right_col" role="main">
     <div class="x_panel">
         @if($model)
-          {!! Form::model($model, array('url' => 'user/contact/'.$model->id, 'method' => 'PUT', 'class' => 'form-horizontal form-label-left'))!!}
+          {!! Form::model($model, array('url' => 'user/faq/'.$model->id, 'method' => 'PUT', 'class' => 'form-horizontal form-label-left'))!!}
         @else
-          {!! Form::open(array('url' => 'user/contact', 'method' => 'POST', 'class' => 'form-horizontal form-label-left'))!!}
+          {!! Form::open(array('url' => 'user/faq', 'method' => 'POST', 'class' => 'form-horizontal form-label-left'))!!}
         @endif
           <div>
-              {!! Form::label('title', 'Contact Title') !!}
-              {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Contact Title']) !!}
+              {!! Form::label('title', 'F.A.Q Title') !!}
+              {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'F.A.Q Title']) !!}
           </div>
           <div>
               {!! Form::label('description', 'Description') !!}
-              {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
+              {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
           </div>
           <div>
             <br/>
             <button class="btn btn-primary">Create</button>
-            <a href="{{url('user/contact')}}" class="btn btn-primary">Cancel</a>
+            <a href="{{url('user/faq')}}" class="btn btn-primary">Cancel</a>
           </div>
         {!! Form::close() !!}
     <div class="row">
@@ -46,14 +46,14 @@
                         <td>{{$m->title}}</td>
                         <td>{{$m->description}}</td>
                         <td>
-                            <a href="{{url('user/contact/'.$m->id)}}">
+                            <a href="{{url('user/faq/'.$m->id)}}">
                                 <span class="glyphicon glyphicon-pencil pull-left" aria-hidden="true"></span>
                             </a>
                             
-                            {!! Form::open(array('url' => 'user/contact/'.$m->id, 'method' => 'DELETE', 'class' => 'form-horizontal form-label-left'))!!}
+                            {!! Form::open(array('url' => 'user/faq/'.$m->id, 'method' => 'DELETE', 'class' => 'form-horizontal form-label-left'))!!}
                                 <button class="btn btn-primary">Delete</button>
                             {!! Form::close() !!}
-                            <a href="{{url('user/contact/delete/'.$m->id)}}">
+                            <a href="{{url('user/faq/delete/'.$m->id)}}">
                                 <span class="glyphicon glyphicon-trash pull-right" aria-hidden="true"></span>
                             </a>
                         </td>

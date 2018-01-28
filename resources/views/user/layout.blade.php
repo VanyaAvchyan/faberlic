@@ -64,6 +64,7 @@
                         <li><a href="{{url('user/video/1')}}">Video 1</a></li>
                         <li><a href="{{url('user/video/2')}}">Video 2</a></li>
                         <li><a href="{{url('user/contact')}}">Contacts</a></li>
+                        <li><a href="{{url('user/faq')}}">F.A.Q</a></li>
                       </ul>
                     </li>
                   </ul>
