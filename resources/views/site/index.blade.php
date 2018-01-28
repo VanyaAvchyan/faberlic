@@ -73,8 +73,12 @@
             <div class="row">
                 <div class="col-sm-6 sm-margin-b-60">
                     <div class="margin-b-30">
-                        <h1 class="promo-block-title">{{$offer->title}}</h1>
-                        <p class="promo-block-text">{{$offer->description}}</p>
+                        @if($offer)
+                            <h1 class="promo-block-title">{{$offer->title}}</h1>
+                            <p class="promo-block-text">{{$offer->description}}</p>
+                        @else
+                            <h1 class="promo-block-title">Offer is empty</h1>
+                        @endif
                     </div>
                     <ul class="list-inline">
                         <li><a href="#" class="social-icons"><i class="icon-social-facebook"></i></a></li>
@@ -117,8 +121,12 @@
                     <div class="section-seperator margin-b-50">
                         <div class="margin-b-50">
                             <div class="margin-b-30">
-                                <h2>{{$partner->title}}</h2>
-                                <p>{{$partner->description}}</p>
+                                @if(!$video->isEmpty())
+                                    <h2>{{$partner->title}}</h2>
+                                    <p>{{$partner->description}}</p>
+                                @else
+                                    <h2>Partner is empty</h2>
+                                @endif
                             </div>
                             <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" class="btn-theme btn-theme-md btn-default-bg text-uppercase" target='_blank'>{{trans('site.link_to_registration')}}</a>
                         </div>
@@ -285,7 +293,7 @@
             </div>
             <div class="modal-body">
                 <p>
-                    <iframe width="420" height="345" src="https://www.youtube.com/embed/{{$video[0]->url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe width="420" height="345" src="https://www.youtube.com/embed/uqRqFr7Brqg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </p>
             </div>
             <div class="modal-footer">
