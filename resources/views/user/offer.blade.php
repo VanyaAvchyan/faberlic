@@ -8,18 +8,42 @@
         @else
           {!! Form::open(array('url' => 'user/offer', 'method' => 'POST', 'class' => 'form-horizontal form-label-left'))!!}
         @endif
-          <div>
-              {!! Form::label('title', 'Offer title') !!}
-              {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Offer title']) !!}
-          </div>
-          <div>
-              {!! Form::label('description', 'Description') !!}
-              {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
-          </div>
-          <div>
-            <br/>
-            <button class="btn btn-primary">Create</button>
-          </div>
+        <div>
+            <div>
+                {!! Form::label('title_am', 'Offer Info AM') !!}
+                {!! Form::text('title_am', null, ['class' => 'form-control']) !!}
+            </div>
+            <div>
+                {!! Form::label('description_am', 'Description AM') !!}
+                {!! Form::textarea('description_am', null, ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <hr/>
+        <div>
+            <div>
+                {!! Form::label('title_ru', 'Offer Info RU') !!}
+                {!! Form::text('title_ru', null, ['class' => 'form-control']) !!}
+            </div>
+            <div>
+                {!! Form::label('description_ru', 'Description RU') !!}
+                {!! Form::textarea('description_ru', null, ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <hr/>
+        <div>
+            <div>
+                {!! Form::label('title_en', 'Offer Info EN') !!}
+                {!! Form::text('title_en', null, ['class' => 'form-control']) !!}
+            </div>
+            <div>
+                {!! Form::label('description_en', 'Description EN') !!}
+                {!! Form::textarea('description_en', null, ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <br/>
+        <div>
+          <button class="btn btn-primary">Create</button>
+        </div>
         {!! Form::close() !!}
     </div>
 </div>

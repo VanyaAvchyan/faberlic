@@ -121,9 +121,9 @@
                     <div class="section-seperator margin-b-50">
                         <div class="margin-b-50">
                             <div class="margin-b-30">
-                                @if(!$video->isEmpty())
-                                    <h2>{{$partner->title}}</h2>
-                                    <p>{{$partner->description}}</p>
+                                @if($partner)
+                                    <h2>{{$partner->{('title_').App::getLocale()} }}</h2>
+                                    <p>{{$partner->{('description_').App::getLocale()} }}</p>
                                 @else
                                     <h2>Partner is empty</h2>
                                 @endif

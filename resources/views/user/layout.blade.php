@@ -59,8 +59,8 @@
                   <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
-                        <li><a href="{{url('user/partners')}}">Դառնալով մեր գործընկերը, Դուք</a></li>
-                        <li><a href="{{url('user/offer')}}">Մեր բիզնես առաջարկը</a></li>
+                        <li><a href="{{url('user/offer')}}">1. Մեր բիզնես առաջարկը</a></li>
+                        <li><a href="{{url('user/partners')}}">2. Դառնալով մեր գործընկերը, Դուք</a></li>
                         <li><a href="{{url('user/video/1')}}">Video 1</a></li>
                         <li><a href="{{url('user/video/2')}}">Video 2</a></li>
                         <li><a href="{{url('user/contact')}}">Contacts</a></li>

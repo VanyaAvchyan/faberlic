@@ -8,6 +8,7 @@ use App\Video;
 use App\Offer;
 use App\Contact;
 use App\Faq;
+use App\Http\Requests\PartnerRequest;
 
 class UserController extends Controller 
 {
@@ -55,17 +56,17 @@ class UserController extends Controller
         return view('user/partners', ['model' => $model]);
     }
 
-    public function postPartner()
+    public function postPartner(PartnerRequest $request)
     {
-        $partner = request()->except('_token');
+        $partner = $request->except('_token');
         $partner['user_id'] = auth()->user()->id;
         Partner::create($partner);
         return redirect()->back()->with('success', 'Success !');
     }
 
-    public function putPartner()
+    public function putPartner(PartnerRequest $request)
     {
-        $partner = request()->except('_method','_token');
+        $partner = $request->except('_method','_token');
         Partner::first()->update($partner);
         return redirect()->back()->with('success', 'Success !');
     }

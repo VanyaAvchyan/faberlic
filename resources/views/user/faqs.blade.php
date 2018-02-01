@@ -38,24 +38,17 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
-
-
                 <tbody>
                    @foreach($models as $m)
                     <tr>
                         <td>{{$m->title}}</td>
                         <td>{{$m->description}}</td>
                         <td>
-                            <a href="{{url('user/faq/'.$m->id)}}">
-                                <span class="glyphicon glyphicon-pencil pull-left" aria-hidden="true"></span>
-                            </a>
-                            
+                            <a href="{{url('user/faq/'.$m->id)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                             {!! Form::open(array('url' => 'user/faq/'.$m->id, 'method' => 'DELETE', 'class' => 'form-horizontal form-label-left'))!!}
-                                <button class="btn btn-primary">Delete</button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </button>
                             {!! Form::close() !!}
-                            <a href="{{url('user/faq/delete/'.$m->id)}}">
-                                <span class="glyphicon glyphicon-trash pull-right" aria-hidden="true"></span>
-                            </a>
+                            
                         </td>
                     </tr>
                     @endforeach
