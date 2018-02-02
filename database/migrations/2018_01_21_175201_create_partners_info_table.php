@@ -19,6 +19,7 @@ class CreatePartnersInfoTable extends Migration
             $table->string('title_am');
             $table->string('title_ru');
             $table->string('title_en');
+            
             $table->text('description_am');
             $table->text('description_ru');
             $table->text('description_en');

@@ -8,5 +8,6 @@ return [
         'contact'       => 'Контакты',
         'experience'    => 'Experience',
     ],
+    'faq'           => 'ЧАВО',
     'link_to_registration' => 'Ссылка на регистрацию'
 ];

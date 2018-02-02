@@ -6,6 +6,7 @@ use App\Video;
 use App\Offer;
 use App\Contact;
 use App\Faq;
+use App\Info;
 use App;
 class SiteController extends Controller
 {
@@ -17,6 +18,8 @@ class SiteController extends Controller
         $video = Video::all();
         $contacts = Contact::all();
         $faqs = Faq::all();
+        $about_us = Info::where('type', 'about_us')->first();
+        
         return view('site/index', [
                                     'user'      => auth()->user(),
                                     'video'     => $video,
@@ -25,6 +28,7 @@ class SiteController extends Controller
                                     'offer'     => $offer,
                                     'contacts'  => $contacts,
                                     'faqs'      => $faqs,
+                                    'about_us'  => $about_us,
                                 ]);
     }
 

@@ -8,5 +8,6 @@ return [
         'experience'    => 'Experience',
         'contact'       => 'Contacts',
     ],
+    'faq'           => 'F.A.Q',
     'link_to_registration' => 'Link to registration'
 ];

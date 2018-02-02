@@ -8,6 +8,7 @@ use App\Video;
 use App\Offer;
 use App\Contact;
 use App\Faq;
+use App\Info;
 use App\Http\Requests\PartnerRequest;
 
 class UserController extends Controller 
@@ -49,7 +50,30 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Error !');
         return redirect()->back()->with('success', 'Success !');
     }
+    
+    // Info
+    public function getInfo($type)
+    {
+        $model = Info::where( 'type', $type )->first();
+        return view('user/info', ['model' => $model, 'type' => $type ]);
+    }
 
+    public function postInfo()
+    {
+        $partner = request()->except('_token');
+        $partner['user_id'] = auth()->user()->id;
+        Info::create($partner);
+        return redirect()->back()->with('success', 'Success !');
+    }
+
+    public function putInfo()
+    {
+        $partner = request()->except('_method','_token');
+        Info::first()->update($partner);
+        return redirect()->back()->with('success', 'Success !');
+    }
+    
+    // Partner
     public function getPartners()
     {
         $model = Partner::first();
@@ -73,16 +97,15 @@ class UserController extends Controller
 
     public function getVideo($id)
     {
-        $model = Video::find($id);
         if($id > 2)
             return redirect('user');
+        $model = Video::find($id);
         return view('user/video', ['model' => $model, 'video_num' => $id]);
     }
 
     public function postVideo($id)
     {
         $video = request()->except('_method', '_token');
-        $video['id'] = $id;
         $video['user_id'] = auth()->user()->id;
         Video::create($video);
         return redirect()->back()->with('success', 'Success !');
