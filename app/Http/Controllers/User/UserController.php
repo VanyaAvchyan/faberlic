@@ -9,19 +9,61 @@ use App\Offer;
 use App\Contact;
 use App\Faq;
 use App\Info;
+use App\Image;
+
 use App\Http\Requests\PartnerRequest;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller 
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('User', ['except' => ['getLogin', 'getLogout', 'postLogin', 'getUser']]);
     }
 
     public function getIndex()
     {
-        return view('user/index');
+        return view('user/index',['user' => auth()->user()]);
     }
 
+    // User
+    public function postCreate()
+    {
+        $user = request()->except('_token');
+        $user['password'] = bcrypt($user['password']);
+        if(!User::create($user))
+            return redirect()->back()->with('error', 'Error !');
+        return redirect()->back()->with('success', 'Success !');
+    }
+
+    public function putUpdate(UserRequest $request)
+    {
+        $user = $request->except('_method', '_token');
+        if($user['password'])
+            $user['password'] = bcrypt($user['password']);
+        if($request->hasFile('avatar'))
+        {
+            $file = $request->file('avatar');
+            $filename = uniqid().'.'.$file->getClientOriginalExtension();
+            $user['avatar'] = $filename;
+            $path = url().'/uploads/user/'.$filename;
+            Image::make($file)->save($path);
+        }
+        dd($user);
+        if(!User::create($user))
+            return redirect()->back()->with('error', 'Error !');
+        return redirect()->back()->with('success', 'Success !');
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public function getLogin()
     {
         return view('user/login');
@@ -42,18 +84,11 @@ class UserController extends Controller
         return redirect('user/login');
     }
 
-    public function postCreate()
-    {
-        $user = request()->except('_token');
-        $user['password'] = bcrypt($user['password']);
-        if(!User::create($user))
-            return redirect()->back()->with('error', 'Error !');
-        return redirect()->back()->with('success', 'Success !');
-    }
-    
     // Info
-    public function getInfo($type)
+    public function getInfo($type=false)
     {
+        if(!$type)
+            return redirect('user');
         $model = Info::where( 'type', $type )->first();
         return view('user/info', ['model' => $model, 'type' => $type ]);
     }
@@ -68,11 +103,12 @@ class UserController extends Controller
 
     public function putInfo()
     {
-        $partner = request()->except('_method','_token');
-        Info::first()->update($partner);
+        $info = request()->except('_method','_token');
+        $type = request()->get('type');
+        Info::where( 'type', $type )->update($info);
         return redirect()->back()->with('success', 'Success !');
     }
-    
+
     // Partner
     public function getPartners()
     {
@@ -95,15 +131,17 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Success !');
     }
 
-    public function getVideo($id)
+    // Video
+    public function getVideo($id=null)
     {
-        if($id > 2)
-            return redirect('user');
-        $model = Video::find($id);
+        if($id)
+            $model = Video::find($id);
+        else
+            $model = Video::where('id', '>', 2)->get();
         return view('user/video', ['model' => $model, 'video_num' => $id]);
     }
 
-    public function postVideo($id)
+    public function postVideo()
     {
         $video = request()->except('_method', '_token');
         $video['user_id'] = auth()->user()->id;
@@ -119,12 +157,19 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Success !');
     }
 
+    public function deleteVideo($id)
+    {
+        Video::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Success !');
+    }
+
+    // Offer
     public function getOffer()
     {
         $model = Offer::first();
         return view('user/offer', ['model' => $model]);
     }
-    
+
     public function postOffer()
     {
         $offer = request()->except('_method', '_token');
@@ -208,5 +253,4 @@ class UserController extends Controller
         Faq::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Success !');
     }
-    
 }

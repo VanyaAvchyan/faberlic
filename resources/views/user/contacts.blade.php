@@ -22,51 +22,46 @@
             <a href="{{url('user/contact')}}" class="btn btn-primary">Cancel</a>
           </div>
         {!! Form::close() !!}
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="x_panel">
-            <div class="x_title">
-              <h2>Իմ կոնտակտները</h2>
-              <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-              <table id="datatable" class="table table-striped table-bordered">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Իմ կոնտակտները</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <table id="datatable" class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
 
 
-                <tbody>
-                   @foreach($models as $m)
-                    <tr>
-                        <td>{{$m->title}}</td>
-                        <td>{{$m->description}}</td>
-                        <td>
-                            <a href="{{url('user/contact/'.$m->id)}}">
-                                <span class="glyphicon glyphicon-pencil pull-left" aria-hidden="true"></span>
-                            </a>
-                            
-                            {!! Form::open(array('url' => 'user/contact/'.$m->id, 'method' => 'DELETE', 'class' => 'form-horizontal form-label-left'))!!}
-                                <button class="btn btn-primary">Delete</button>
-                            {!! Form::close() !!}
-                            <a href="{{url('user/contact/delete/'.$m->id)}}">
-                                <span class="glyphicon glyphicon-trash pull-right" aria-hidden="true"></span>
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-              </table>
+                    <tbody>
+                       @foreach($models as $m)
+                        <tr>
+                            <td>{{$m->title}}</td>
+                            <td>{{$m->description}}</td>
+
+                            <td>
+                                <a href="{{url('user/contact/'.$m->id)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                {!! Form::open(array('url' => 'user/contact/'.$m->id, 'method' => 'DELETE', 'class' => 'form-horizontal form-label-left'))!!}
+                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </button>
+                                {!! Form::close() !!}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-          </div>
         </div>
     </div>
-</div
-
+</div>
 
 
 @endsection

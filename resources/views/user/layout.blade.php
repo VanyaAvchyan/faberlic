@@ -65,8 +65,10 @@
                         <li><a href="{{url('user/video/2')}}">Video 2</a></li>
                         <li><a href="{{url('user/info/about_us')}}">Մեր մասին</a></li>
                         <li><a href="{{url('user/info/our_product')}}">Մեր ապրանքատեսականին</a></li>
+                        <li><a href="{{url('user/info/undecided')}}">Չեմ կողմնորոշվում</a></li>
                         <li><a href="{{url('user/contact')}}">Contacts</a></li>
                         <li><a href="{{url('user/faq')}}">F.A.Q</a></li>
+                        <li><a href="{{url('user/video')}}">Videoner</a></li>
                       </ul>
                     </li>
                   </ul>

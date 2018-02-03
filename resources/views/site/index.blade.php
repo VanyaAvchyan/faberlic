@@ -95,7 +95,9 @@
                         <img class="promo-block-img img-responsive" src="{{$video[0]->{('thumb_').App::getLocale()} }}" align="">
                     </div>
                     @else
-                        <img class="promo-block-img img-responsive" src="{{url()}}/uploads/site/img/mockup/avatar-01.png" align="Avatar">
+                        <div class="promo-block-img-wrap">
+                            <img class="promo-block-img img-responsive" src="{{url()}}/uploads/site/img/mockup/avatar-01.png" align="Avatar">
+                        </div>
                     @endif
                 </div>
             </div>
@@ -125,7 +127,7 @@
                                     <h2>{{$partner->{('title_').App::getLocale()} }}</h2>
                                     {{$partner->{('description_').App::getLocale()} }}
                                 @else
-                                    <h2>About Me</h2>
+                                    <h2>Դառնալով մեր գործընկերը</h2>
                                     <p>I'm Alisa Portman, orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                 @endif
@@ -191,12 +193,38 @@
                                 <i class="service-icon icon-mustache"></i>
                             </div>
                             <div class="service-info">
-                                <h3>Մեր ապրանքատեսականին</h3>
-                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                @if($our_product)
+                                    <h3>{{$our_product->{('title_').App::getLocale()} }}</h3>
+                                    {{ $our_product->{('description_').App::getLocale()} }}
+                                @else
+                                    <h3>Մեր ապրանքատեսականին</h3>
+                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                @endif
+                                
                             </div>
                         </div>
                     </div>
-                    <!--// FAQ -->
+                    <!--// OUR PRODUCTS -->
+
+                    <!-- Our Products -->
+                    <div class="col-md-3 col-sm-6 md-margin-b-4">
+                        <div class="service" data-height="height">
+                            <div class="service-element">
+                                <i class="service-icon icon-mustache"></i>
+                            </div>
+                            <div class="service-info">
+                                @if($undecided)
+                                    <h3>{{$undecided->{('title_').App::getLocale()} }}</h3>
+                                    {{ $undecided->{('description_').App::getLocale()} }}
+                                @else
+                                    <h3>Չեմ կողմնորոշվում</h3>
+                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                @endif
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--// OUR PRODUCTS -->
 
                 </div>
                 <!--// end row -->
@@ -205,103 +233,38 @@
     </div>
     <!-- End Experience -->
 
-    <!-- Work -->
-    <div id="work">
+<!-- Work -->
+<div id="work">
+    <div class="bg-color-sky-light">
         <div class="container content-lg">
             <div class="row margin-b-40">
                 <div class="col-sm-6">
-                    <h2>Latest Products</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
+                   <h2>Videoner</h2>
                 </div>
             </div>
-            <!--// end row -->
 
+            <!--// end row -->
             <div class="row">
-                <!-- Latest Products -->
-                <div class="col-sm-4 sm-margin-b-50">
-                    <div class="margin-b-20">
-                        <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                            <img class="img-responsive" src="img/970x647/01.jpg" alt="Latest Products Image">
-                        </div>
-                    </div>
-                    <h4><a href="#">Triangle Roof</a> <span class="text-uppercase margin-l-20">Management</span></h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-                    <a class="link" href="#">Read More</a>
-                </div>
-                <!-- End Latest Products -->
 
-                <!-- Latest Products -->
-                <div class="col-sm-4 sm-margin-b-50">
-                    <div class="margin-b-20">
-                        <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                            <img class="img-responsive" src="img/970x647/02.jpg" alt="Latest Products Image">
-                        </div>
-                    </div>
-                    <h4><a href="#">Curved Corners</a> <span class="text-uppercase margin-l-20">Developmeny</span></h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-                    <a class="link" href="#">Read More</a>
+                <div class="col-md-1">
+                    <img class="img-responsive" src="http://faberlic.local/uploads/site/img/500x700/01.jpg" alt="Image">
                 </div>
-                <!-- End Latest Products -->
 
-                <!-- Latest Products -->
-                <div class="col-sm-4 sm-margin-b-50">
-                    <div class="margin-b-20">
-                        <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                            <img class="img-responsive" src="img/970x647/03.jpg" alt="Latest Products Image">
-                        </div>
-                    </div>
-                    <h4><a href="#">Bird On Green</a> <span class="text-uppercase margin-l-20">Design</span></h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-                    <a class="link" href="#">Read More</a>
+                <div class="col-md-1">
+                    <img class="img-responsive" src="http://faberlic.local/uploads/site/img/500x700/01.jpg" alt="Image">
                 </div>
-                <!-- End Latest Products -->
+                
+                <div class="col-md-1">
+                    <img class="img-responsive" src="http://faberlic.local/uploads/site/img/500x700/01.jpg" alt="Image">
+                </div>
+
             </div>
             <!--// end row -->
+
         </div>
     </div>
+</div>
     <!-- End Work -->
-
-    <!-- Clients -->
-    <div class="bg-color-sky-light">
-        <div class="content-lg container">
-            <!-- Swiper Clients -->
-            <div class="swiper-slider swiper-clients">
-                <!-- Swiper Wrapper -->
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img class="swiper-clients-img" src="img/clients/01.png" alt="Clients Logo">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="swiper-clients-img" src="img/clients/02.png" alt="Clients Logo">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="swiper-clients-img" src="img/clients/03.png" alt="Clients Logo">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="swiper-clients-img" src="img/clients/04.png" alt="Clients Logo">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="swiper-clients-img" src="img/clients/05.png" alt="Clients Logo">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="swiper-clients-img" src="img/clients/06.png" alt="Clients Logo">
-                    </div>
-                </div>
-                <!-- End Swiper Wrapper -->
-            </div>
-            <!-- End Swiper Clients -->
-        </div>
-    </div>
-    <!-- End Clients -->
-
-    <!-- Promo Banner -->
-    <div class="promo-banner parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/01.jpg">
-        <div class="container-sm content-lg">
-            <h2 class="promo-banner-title">Displaying the Result</h2>
-            <p class="promo-banner-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-        </div>
-    </div>
-    <!-- End Promo Banner -->
 
     <!-- Contact -->
     <div id="contact">

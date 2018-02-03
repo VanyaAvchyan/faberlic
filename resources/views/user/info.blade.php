@@ -10,7 +10,7 @@
         @endif
         <div>
             <div>
-                {!! Form::label('title_am', 'Info title AM') !!}
+                {!! Form::label('title_am', ucfirst($type).' title AM') !!}
                 {!! Form::text('title_am', null, ['class' => 'form-control']) !!}
             </div>
             <div>
@@ -21,7 +21,7 @@
         <hr/>
         <div>
             <div>
-                {!! Form::label('title_ru', 'Info title RU') !!}
+                {!! Form::label('title_ru', ucfirst($type).' title RU') !!}
                 {!! Form::text('title_ru', null, ['class' => 'form-control']) !!}
             </div>
             <div>
@@ -32,7 +32,7 @@
         <hr/>
         <div>
             <div>
-                {!! Form::label('title_en', 'Info title EN') !!}
+                {!! Form::label('title_en', ucfirst($type).' title EN') !!}
                 {!! Form::text('title_en', null, ['class' => 'form-control']) !!}
             </div>
             <div>

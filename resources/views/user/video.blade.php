@@ -3,7 +3,7 @@
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="x_panel">
-        @if($model)
+        @if($model && $video_num)
           {!! Form::model($model, array('url' => 'user/video/'.$video_num, 'method' => 'PUT', 'class' => 'form-horizontal form-label-left')) !!}
         @else
           {!! Form::open(array('url' => 'user/video/'.$video_num, 'method' => 'POST', 'class' => 'form-horizontal form-label-left'))!!}
@@ -90,6 +90,47 @@
             <button class="btn btn-primary">Create</button>
           </div>
         {!! Form::close() !!}
+
+        @if(!$video_num)
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Իմ Videoner@</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <table id="datatable" class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+
+
+                    <tbody>
+                       @foreach($model as $m)
+                        <tr>
+                            <td>{{$m->title_am}}</td>
+                            <td>{{$m->description_am}}</td>
+                            <td>
+                                <a href="{{url('user/video/'.$m->id)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                {!! Form::open(array('url' => 'user/video/'.$m->id, 'method' => 'DELETE', 'class' => 'form-horizontal form-label-left'))!!}
+                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </button>
+                                {!! Form::close() !!}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
+
 @endsection
