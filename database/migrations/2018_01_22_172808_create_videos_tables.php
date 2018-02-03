@@ -19,18 +19,13 @@ class CreateVideosTables extends Migration
             $table->string('title_am');
             $table->string('title_ru');
             $table->string('title_en');
-            
-            $table->text('description_am');
-            $table->text('description_ru');
-            $table->text('description_en');
-            
+
             $table->string('url_am');
             $table->string('url_ru');
             $table->string('url_en');
             
-            $table->string('thumb_am');
-            $table->string('thumb_ru');
-            $table->string('thumb_en');
+            $table->string('order');
+            
             
             $table->timestamps();
         });

@@ -13,19 +13,28 @@ class SiteController extends Controller
 {
     public function getIndex($locale = 'am')
     {
+        $admin = User::where('role', 1)->first();
         App::setLocale($locale);
-        $partner = Partner::first();
-        $offer   = Offer::first();
-        $video = Video::all();
+        $partner = Partner::where('user_id', $admin->id)->first();
+        $offer   = Offer::where('user_id', $admin->id)->first();
+        $videos  = Video::where('user_id', $admin->id)->get();
+        $main_videos = [
+            Video::whereIn('order', ['first'])
+                        ->where('user_id' , auth()->user()->id)
+                        ->first(),
+            Video::whereIn('order', ['second'])
+                        ->where('user_id' , auth()->user()->id)
+                        ->first()
+        ];
+        $main_videos = array_filter($main_videos);
         $contacts = Contact::all();
-        $faqs = Faq::all();
+        $faqs = Faq::where('user_id', $admin->id)->get();
         $about_us    = Info::where('type', 'about_us')->first();
         $our_product = Info::where('type', 'our_product')->first();
         $undecided   = Info::where('type', 'undecided')->first();
 
         return view('site/index', [
-                                    'user'          => auth()->user(),
-                                    'video'         => $video,
+                                    'videos'        => $videos,
                                     'code'          => auth()->user()->username,
                                     'partner'       => $partner,
                                     'offer'         => $offer,
@@ -34,28 +43,36 @@ class SiteController extends Controller
                                     'about_us'      => $about_us,
                                     'our_product'   => $our_product,
                                     'undecided'     => $undecided,
+                                    'main_videos'   => $main_videos,
                                 ]);
     }
 
     public function getSiteByCode($code = false, $locale = 'am')
     {
         $user = User::where('username', $code)->first();
-//        dd($user,$code);
-        if(!$code or !$user)
+        if( !$code or !$user )
             return view('site/page_404');
         App::setLocale($locale);
-        $partner = Partner::where('user_id', $user->id)->first();
-        $video = Video::all();
-        $offer   = Offer::where('user_id', $user->id)->first();
-        $contacts = Contact::all();
-        $faqs = Faq::all();
-        $about_us    = Info::where('type', 'about_us')->first();
-        $our_product = Info::where('type', 'our_product')->first();
-        $undecided   = Info::where('type', 'undecided')->first();
-        
+        $partner        = Partner::where('user_id', $user->id)->first();
+        $videos          = Video::all();
+        $main_videos = [
+            Video::whereIn('order', ['first'])
+                        ->where('user_id' , auth()->user()->id)
+                        ->first(),
+            Video::whereIn('order', ['second'])
+                        ->where('user_id' , auth()->user()->id)
+                        ->first()
+        ];
+        $main_videos = array_filter($main_videos);
+        $offer          = Offer::where('user_id', $user->id)->first();
+        $contacts       = Contact::where('user_id', $user->id)->get();
+        $faqs           = Faq::where('user_id', $user->id)->get();
+        $about_us       = Info::where([ 'type' => 'about_us', 'user_id' => $user->id ])->first();
+        $our_product    = Info::where([ 'type' => 'our_product', 'user_id' => $user->id ])->first();
+        $undecided      = Info::where([ 'type' => 'undecided', 'user_id' => $user->id ])->first();
+
         return view('site/index', [
-                                    'user'          => auth()->user(),
-                                    'video'         => $video,
+                                    'videos'        => $videos,
                                     'code'          => auth()->user()->username,
                                     'partner'       => $partner,
                                     'offer'         => $offer,
@@ -64,6 +81,7 @@ class SiteController extends Controller
                                     'about_us'      => $about_us,
                                     'our_product'   => $our_product,
                                     'undecided'     => $undecided,
+                                    'main_videos'   => $main_videos,
                                 ]);
     }
 }

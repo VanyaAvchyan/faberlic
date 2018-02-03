@@ -42,7 +42,9 @@
               <!-- menu profile quick info -->
               <div class="profile clearfix">
                 <div class="profile_pic">
-                  <img src="/uploads/user/{{auth()->user()->avatar}}" alt="{{auth()->user()->name}}" class="img-circle profile_img">
+                    @if(auth()->user()->role === 1)
+                        <img src="/uploads/user/{{auth()->user()->avatar}}" alt="{{auth()->user()->name}}" class="img-circle profile_img">
+                    @endif
                 </div>
                 <div class="profile_info">
                   <span>Welcome,</span>
@@ -60,9 +62,9 @@
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                         <li><a href="{{url('user/offer')}}">1. Մեր բիզնես առաջարկը</a></li>
+                        <li><a href="{{url('user/video/first')}}">Video 1</a></li>
+                        <li><a href="{{url('user/video/second')}}">Video 2</a></li>
                         <li><a href="{{url('user/partners')}}">2. Դառնալով մեր գործընկերը, Դուք</a></li>
-                        <li><a href="{{url('user/video/1')}}">Video 1</a></li>
-                        <li><a href="{{url('user/video/2')}}">Video 2</a></li>
                         <li><a href="{{url('user/info/about_us')}}">Մեր մասին</a></li>
                         <li><a href="{{url('user/info/our_product')}}">Մեր ապրանքատեսականին</a></li>
                         <li><a href="{{url('user/info/undecided')}}">Չեմ կողմնորոշվում</a></li>

@@ -23,18 +23,12 @@ class Video extends Model
         'title_am', 
         'title_ru', 
         'title_en',
-        
-        'description_am',
-        'description_ru',
-        'description_en',
-        
-        'thumb_am',
-        'thumb_ru',
-        'thumb_en',
-        
+
         'url_am',
         'url_ru',
         'url_en',
+        
+        'order',
     ];
 
 }

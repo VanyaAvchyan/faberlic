@@ -89,10 +89,10 @@
                     </ul>
                 </div>
                 <div class="col-sm-6">
-                    @if(!$video->isEmpty())
-                    <div class="promo-block-img-wrap video1" data-toggle="modal" data-target="#myModal0" data-youtube_url="{{$video[0]->{('url_').App::getLocale()} }}">
-                        <span class="video1-title">{{$video[0]->{('title_').App::getLocale()} }}</span>
-                        <img class="promo-block-img img-responsive" src="{{$video[0]->{('thumb_').App::getLocale()} }}" align="">
+                    @if(isset($main_videos[0]))
+                    <div class="promo-block-img-wrap video1" data-toggle="modal" data-target="#myModal0" data-youtube_url="{{$main_videos[0]->{('url_').App::getLocale()} }}">
+                        <span class="video1-title">{{$main_videos[0]->{('title_').App::getLocale()} }}</span>
+                        <img class="promo-block-img img-responsive" src="https://img.youtube.com/{{ str_replace('v=', 'vi/', parse_url( $main_videos[0]->{('url_').App::getLocale()}, PHP_URL_QUERY )) }}/0.jpg" align="">
                     </div>
                     @else
                         <div class="promo-block-img-wrap">
@@ -112,9 +112,9 @@
         <div class="container content-lg">
             <div class="row">
                 <div class="col-sm-5 sm-margin-b-60 video2" data-toggle="modal" data-target="#myModal1">
-                    @if(!$video->isEmpty() && isset($video[1]))
-                        <span class="video2-title">{{$video[1]->{('title_').App::getLocale()} }}</span>
-                        <img class="promo-block-img img-responsive" src="{{$video[1]->{('thumb_').App::getLocale()} }}" align="">
+                    @if(isset($main_videos[1]))
+                        <span class="video2-title">{{$main_videos[1]->{('title_').App::getLocale()} }}</span>
+                        <img class="promo-block-img img-responsive" src="https://img.youtube.com/{{ str_replace('v=', 'vi/', parse_url( $main_videos[1]->{('url_').App::getLocale()}, PHP_URL_QUERY )) }}/0.jpg" align="">
                     @else
                         <img class="full-width img-responsive" src="{{url()}}/uploads/site/img/500x700/01.jpg" alt="Image">
                     @endif
@@ -195,7 +195,7 @@
                             <div class="service-info">
                                 @if($our_product)
                                     <h3>{{$our_product->{('title_').App::getLocale()} }}</h3>
-                                    {{ $our_product->{('description_').App::getLocale()} }}
+                                    {!! $our_product->{('description_').App::getLocale()} !!}
                                 @else
                                     <h3>Մեր ապրանքատեսականին</h3>
                                     <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
@@ -245,19 +245,11 @@
 
             <!--// end row -->
             <div class="row">
-
-                <div class="col-md-1">
-                    <img class="img-responsive" src="http://faberlic.local/uploads/site/img/500x700/01.jpg" alt="Image">
+                @foreach($videos as $video)
+                <div class="col-md-2">
+                    <img class="img-responsive" src="https://img.youtube.com/{{ str_replace('v=', 'vi/', parse_url( $video->{('url_').App::getLocale()}, PHP_URL_QUERY )) }}/0.jpg" alt="Image">
                 </div>
-
-                <div class="col-md-1">
-                    <img class="img-responsive" src="http://faberlic.local/uploads/site/img/500x700/01.jpg" alt="Image">
-                </div>
-                
-                <div class="col-md-1">
-                    <img class="img-responsive" src="http://faberlic.local/uploads/site/img/500x700/01.jpg" alt="Image">
-                </div>
-
+                @endforeach
             </div>
             <!--// end row -->
 
@@ -294,7 +286,7 @@
     <!-- Back To Top -->
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
-    @for($i=0; $i < $video->count(); $i++)
+    @for($i=0 , $videoCnt = count($main_videos); $i < $videoCnt; $i++)
     <!-- Modal -->
     <div class="modal fade" id="myModal{{$i}}" role="dialog">
         <div class="modal-dialog">
@@ -303,11 +295,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">{{$video[$i]->{('title_').App::getLocale()} }}</h4>
+                <h4 class="modal-title">{{$main_videos[$i]->{('title_').App::getLocale()} }}</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    <iframe width="420" height="345" src="{{$video[$i]->{('url_').App::getLocale()} }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe width="420" height="345" src="https://www.youtube.com/embed/{{ str_replace('v=', '', parse_url( $main_videos[$i]->{('url_').App::getLocale()}, PHP_URL_QUERY )) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </p>
             </div>
             <div class="modal-footer">

@@ -66,24 +66,26 @@ class UserController extends Controller
     
     public function putUpdate(UserRequest $request)
     {
-        $user = $request->except('_method', '_token');
-        if($user['password'])
-            $user['password'] = bcrypt($user['password']);
-        if($request->hasFile('avatar'))
+        if(auth()->user()->role === 1)
         {
-            $file = $request->file('avatar');
-            $filename = uniqid().'.'.$file->getClientOriginalExtension();
-            $user['avatar'] = $filename;
-            $path = public_path('uploads/user/'.$filename);
-            if(File::exists(public_path('uploads/user/'. auth()->user()->avatar)))
+            $user = $request->except('_method', '_token');
+            if($user['password'])
+                $user['password'] = bcrypt($user['password']);
+            if($request->hasFile('avatar'))
             {
-                File::delete(public_path('uploads/user/'. auth()->user()->avatar));
+                $file = $request->file('avatar');
+                $filename = uniqid().'.'.$file->getClientOriginalExtension();
+                $user['avatar'] = $filename;
+                $path = public_path('uploads/user/'.$filename);
+                if(File::exists(public_path('uploads/user/'. auth()->user()->avatar)))
+                    File::delete(public_path('uploads/user/'. auth()->user()->avatar));
+                Image::make($file)->save($path);
             }
-            Image::make($file)->save($path);
+            if(!User::where('id', auth()->user()->id)->update($user))
+                return redirect()->back()->with('error', 'Error !');
+            return redirect()->back()->with('success', 'Success !');
         }
-        if(!User::where('id', auth()->user()->id)->update($user))
-            return redirect()->back()->with('error', 'Error !');
-        return redirect()->back()->with('success', 'Success !');
+        return redirect()->with('error', 'Permissions denied');
     }
     
     public function deleteUsers($id)
@@ -125,7 +127,7 @@ class UserController extends Controller
     {
         if(!$type)
             return redirect('user');
-        $model = Info::where( 'type', $type )->first();
+        $model = Info::where( [ 'type' => $type, 'user_id' => auth()->user()->id ] )->first();
         return view('user/info', ['model' => $model, 'type' => $type ]);
     }
 
@@ -141,7 +143,7 @@ class UserController extends Controller
     {
         $info = request()->except('_method','_token');
         $type = request()->get('type');
-        Info::where( 'type', $type )->update($info);
+        Info::where( [ 'type' => $type, 'user_id' => auth()->user()->id ] )->update($info);
         return redirect()->back()->with('success', 'Success !');
     }
 
@@ -170,11 +172,21 @@ class UserController extends Controller
     // Video
     public function getVideo($id=null)
     {
-        if($id)
-            $model = Video::find($id);
-        else
-            $model = Video::where('id', '>', 2)->get();
-        return view('user/video', ['model' => $model, 'video_num' => $id]);
+        $models = $model = [];
+        if($id == 'first' or $id == 'second')
+        {
+            $model = Video::where(['user_id' => auth()->user()->id, 'order' => $id])->first();
+        } elseif($id) {
+            $model = Video::whereNotIn('order', ['first', 'second'])
+                        ->where('user_id' , auth()->user()->id)
+                        ->where('id' , $id)
+                        ->first();
+        } else {
+            $models = Video::whereNotIn('order', ['first', 'second'])
+                        ->where('user_id' , auth()->user()->id)
+                        ->get();
+        }
+        return view('user/video', ['model' => $model, 'models' => $models, 'order' => $id]);
     }
 
     public function postVideo()
@@ -189,8 +201,16 @@ class UserController extends Controller
     {
         $video = request()->except('_method','_token');
         $video['user_id'] = auth()->user()->id;
-        Video::where('id', $id)->update($video);
-        return redirect()->back()->with('success', 'Success !');
+        if($id == 'first' or $id == 'second')
+        {
+            Video::where(['order' => $id, 'user_id' => $video['user_id']])->update($video);
+        } else {
+            Video::where(['id' => $id, 'user_id' => $video['user_id']])->update($video);
+        }
+        if($id == 'first' or $id == 'second')
+            return redirect()->back()->with('success', 'Success !');
+        return redirect('user/video')->with('success', 'Success !');
+        
     }
 
     public function deleteVideo($id)
@@ -246,13 +266,13 @@ class UserController extends Controller
     {
         $data = request()->except('_method','_token');
         $data['user_id'] = auth()->user()->id;
-        Contact::where('id', $id)->update($data);
+        Contact::where([ 'id' => $id, 'user_id' => auth()->user()->id ])->update($data);
         return redirect()->back()->with('success', 'Success !');
     }
 
     public function deleteContact($id)
     {
-        Contact::where('id', $id)->delete();
+        Contact::where([ 'id' => $id, 'user_id' => auth()->user()->id ])->delete();
         return redirect()->back()->with('success', 'Success !');
     }
     
@@ -268,10 +288,10 @@ class UserController extends Controller
             if(!$model)
                 return redirect('user/faq');
         }
-        $models = Faq::all();
+        $models = Faq::where([ 'id' => $id, 'user_id' => auth()->user()->id ])->get();
         return view('user/faqs', ['model' => $model, 'models' => $models]);
     }
-    
+
     public function postFaq()
     {
         $data = request()->except('_method', '_token');
@@ -284,13 +304,13 @@ class UserController extends Controller
     {
         $data = request()->except('_method','_token');
         $data['user_id'] = auth()->user()->id;
-        Faq::where('id', $id)->update($data);
+        Faq::where([ 'id' => $id, 'user_id' => auth()->user()->id ])->update($data);
         return redirect('user/faq')->with('success', 'Success !');
     }
 
     public function deleteFaq($id)
     {
-        Faq::where('id', $id)->delete();
+        Faq::where([ 'id' => $id, 'user_id' => auth()->user()->id ])->delete();
         return redirect()->back()->with('success', 'Success !');
     }
 }
