@@ -9,7 +9,7 @@ use App\Offer;
 use App\Contact;
 use App\Faq;
 use App\Info;
-use App\Image;
+use Image, File;
 
 use App\Http\Requests\PartnerRequest;
 use App\Http\Requests\UserRequest;
@@ -21,21 +21,49 @@ class UserController extends Controller
         $this->middleware('User', ['except' => ['getLogin', 'getLogout', 'postLogin', 'getUser']]);
     }
 
-    public function getIndex()
+    public function getIndex($id = false)
     {
         return view('user/index',['user' => auth()->user()]);
     }
 
-    // User
-    public function postCreate()
+    public function getUsers($id=false)
     {
-        $user = request()->except('_token');
+        $model = null;
+        if($id)
+        {
+            $model = User::where(['id' => $id])->first();
+            if(!$model)
+                return redirect('user/faq');
+        }
+        $models = User::where('role', '!=', 1)->get();
+        return view('user/users', ['model' => $model, 'models' => $models]);
+    }
+    // User
+    public function postCreate(UserRequest $request)
+    {
+        $user = $request->except('_method', '_token');
+        $user['banned'] = $request->get('banned') ? 1: 0;
         $user['password'] = bcrypt($user['password']);
+        $user['role'] = 2;
         if(!User::create($user))
             return redirect()->back()->with('error', 'Error !');
         return redirect()->back()->with('success', 'Success !');
     }
 
+    public function putUser($id)
+    {
+        if(auth()->user()->role === 1)
+        {
+            $user = request()->except('_method', '_token');
+            if($user['password'])
+                $user['password'] = bcrypt($user['password']);
+            if(!User::where('id', $id)->update($user))
+                return redirect()->back()->with('error', 'Error !');
+            return redirect('user/users')->with('success', 'Success !');
+        }
+        return redirect()->back()->with('error', 'Error !');
+    }
+    
     public function putUpdate(UserRequest $request)
     {
         $user = $request->except('_method', '_token');
@@ -46,23 +74,31 @@ class UserController extends Controller
             $file = $request->file('avatar');
             $filename = uniqid().'.'.$file->getClientOriginalExtension();
             $user['avatar'] = $filename;
-            $path = url().'/uploads/user/'.$filename;
+            $path = public_path('uploads/user/'.$filename);
+            if(File::exists(public_path('uploads/user/'. auth()->user()->avatar)))
+            {
+                File::delete(public_path('uploads/user/'. auth()->user()->avatar));
+            }
             Image::make($file)->save($path);
         }
-        dd($user);
-        if(!User::create($user))
+        if(!User::where('id', auth()->user()->id)->update($user))
             return redirect()->back()->with('error', 'Error !');
         return redirect()->back()->with('success', 'Success !');
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
+    public function deleteUsers($id)
+    {
+        if(auth()->user()->role === 1)
+        {
+            User::where('id', '!=' , auth()->user()->id)
+                    ->where('id', $id)
+                    ->delete();
+            
+            return redirect()->back()->with('success', 'Success !');
+        }
+        return redirect()->back()->with('error', 'Have\'t permissions !!!');
+    }
+
     
     public function getLogin()
     {
@@ -225,9 +261,13 @@ class UserController extends Controller
      */
     public function getFaq($id = false)
     {
-        $model = Faq::find($id);
-        if($id && !$model)
-            return redirect('user/faq');
+        $model = null;
+        if($id)
+        {
+            $model = Faq::where(['id' => $id, 'user_id' => auth()->user()->id])->first();
+            if(!$model)
+                return redirect('user/faq');
+        }
         $models = Faq::all();
         return view('user/faqs', ['model' => $model, 'models' => $models]);
     }
@@ -245,7 +285,7 @@ class UserController extends Controller
         $data = request()->except('_method','_token');
         $data['user_id'] = auth()->user()->id;
         Faq::where('id', $id)->update($data);
-        return redirect()->back()->with('success', 'Success !');
+        return redirect('user/faq')->with('success', 'Success !');
     }
 
     public function deleteFaq($id)

@@ -21,8 +21,8 @@ class UserRequest extends Request {
     {
         return [
             'name'      => 'required',
-            'email'     => 'required',
-            'username'  => 'required',
+            'email'     => 'required|unique:users',
+            'username'  => 'required|unique:users',
             'info'      => 'required'
         ];
     }

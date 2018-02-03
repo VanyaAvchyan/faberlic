@@ -176,8 +176,8 @@
                             <div class="service-info">
                                 <h3>{{trans('site.faq')}}</h3>
                                 @foreach($faqs as $faq)
-                                    <h4>{{$faq->title}}</h4>
-                                    <p class="faq_description faq_description_{{$faq->id}} ">{{$faq->description}}</p>
+                                    <h4>{{$faq->{('title_').App::getLocale()} }}</h4>
+                                    <p class="faq_description faq_description_{{$faq->id}} ">{{$faq->{('description_').App::getLocale()} }}</p>
                                     <a class="link faq_title" data-id="{{$faq->id}}" href="javascript:void(0)">Read More</a>
                                 <hr>
                                 @endforeach

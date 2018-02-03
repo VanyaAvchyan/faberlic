@@ -34,10 +34,10 @@ class User
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->check()) {
+        if (!auth()->check())
             return redirect()->guest('user/login');
-        }
-
+        elseif(auth()->user()->banned)
+            return redirect()->back()->with('error', 'You are banned. Please contact with admin');
         return $next($request);
     }
 }

@@ -42,7 +42,7 @@
               <!-- menu profile quick info -->
               <div class="profile clearfix">
                 <div class="profile_pic">
-                  <img src="/uploads/images/{{auth()->user()->avatar}}" alt="{{auth()->user()->name}}" class="img-circle profile_img">
+                  <img src="/uploads/user/{{auth()->user()->avatar}}" alt="{{auth()->user()->name}}" class="img-circle profile_img">
                 </div>
                 <div class="profile_info">
                   <span>Welcome,</span>
@@ -69,6 +69,9 @@
                         <li><a href="{{url('user/contact')}}">Contacts</a></li>
                         <li><a href="{{url('user/faq')}}">F.A.Q</a></li>
                         <li><a href="{{url('user/video')}}">Videoner</a></li>
+                        @if(auth()->user()->role === 1)
+                            <li><a href="{{url('user/users')}}">Users</a></li>
+                        @endif
                       </ul>
                     </li>
                   </ul>

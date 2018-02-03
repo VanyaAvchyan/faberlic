@@ -5,7 +5,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Form Validation</h3>
+                <h3>Create or update users</h3>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -30,7 +30,11 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_content">
-                            {!! Form::model($user, array('url' => 'user/update/','files' => true, 'method' => 'PUT', 'class' => 'form-horizontal form-label-left')) !!}
+                            @if($model)
+                                {!! Form::model($model, array('url' => 'user/user/'.$model->id, 'method' => 'PUT', 'class' => 'form-horizontal form-label-left')) !!}
+                            @else
+                                {!! Form::open(array('url' => 'user/create', 'method' => 'POST', 'class' => 'form-horizontal form-label-left'))!!}
+                            @endif
                             <span class="section">Personal Info</span>
 
                             <div class="item form-group">
@@ -60,20 +64,18 @@
                                     {!! Form::textarea('info', null, ['class' => 'form-control col-md-7 col-xs-12', 'placeholder' => 'Info']) !!}
                                 </div>
                             </div>
-                            
-                            @if(auth()->user()->role === 1)
-                            <div class="item form-group">
-                                {!! Form::label('avatar', 'Avatar', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    {!! Form::file('avatar', array('class' => 'image')) !!}
-                                </div>
-                            </div>
-                            @endif
-                            
+
                             <div class="item form-group">
                                 {!! Form::label('password', 'Password', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     {!! Form::text('password', '', ['class' => 'form-control col-md-7 col-xs-12', 'placeholder' => 'Password']) !!}
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                {!! Form::label('banned', 'Banned', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                                <div class="icheckbox_flat-green">
+                                    <input type="checkbox" class="flat" name="banned" style="">
                                 </div>
                             </div>
 
@@ -84,6 +86,45 @@
                                 </div>
                             </div>
                             {!! Form::close() !!}
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                  <div class="x_panel">
+                                    <div class="x_title">
+                                      <h2>Իմ userner@</h2>
+                                      <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                      <table id="datatable" class="table table-striped table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>Name</th>
+                                            <th>Faberlic code</th>
+                                            <th>Banned</th>
+                                            <th>Actions</th>
+                                          </tr>
+                                        </thead>
+
+                                        <tbody>
+                                           @foreach($models as $m)
+                                            <tr>
+                                                <td>{{$m->name}}</td>
+                                                <td>{{$m->username}}</td>
+                                                <td> @if( !$m->banned )No @else Yes @endif</td>
+
+                                                <td>
+                                                    <a href="{{url('user/users/'.$m->id)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                                    {!! Form::open(array('url' => 'user/users/'.$m->id, 'method' => 'DELETE', 'class' => 'form-horizontal form-label-left'))!!}
+                                                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </button>
+                                                    {!! Form::close() !!}
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
                             
                         </div>
                     </div>

@@ -7,6 +7,7 @@ use App\Offer;
 use App\Contact;
 use App\Faq;
 use App\Info;
+use App\User;
 use App;
 class SiteController extends Controller
 {
@@ -21,11 +22,11 @@ class SiteController extends Controller
         $about_us    = Info::where('type', 'about_us')->first();
         $our_product = Info::where('type', 'our_product')->first();
         $undecided   = Info::where('type', 'undecided')->first();
-        
+
         return view('site/index', [
                                     'user'          => auth()->user(),
                                     'video'         => $video,
-                                    'code'          => 408134,
+                                    'code'          => auth()->user()->username,
                                     'partner'       => $partner,
                                     'offer'         => $offer,
                                     'contacts'      => $contacts,
@@ -36,8 +37,33 @@ class SiteController extends Controller
                                 ]);
     }
 
-    public function getSiteByCode($code = 408134)
+    public function getSiteByCode($code = false, $locale = 'am')
     {
-        dd($code);
+        $user = User::where('username', $code)->first();
+//        dd($user,$code);
+        if(!$code or !$user)
+            return view('site/page_404');
+        App::setLocale($locale);
+        $partner = Partner::where('user_id', $user->id)->first();
+        $video = Video::all();
+        $offer   = Offer::where('user_id', $user->id)->first();
+        $contacts = Contact::all();
+        $faqs = Faq::all();
+        $about_us    = Info::where('type', 'about_us')->first();
+        $our_product = Info::where('type', 'our_product')->first();
+        $undecided   = Info::where('type', 'undecided')->first();
+        
+        return view('site/index', [
+                                    'user'          => auth()->user(),
+                                    'video'         => $video,
+                                    'code'          => auth()->user()->username,
+                                    'partner'       => $partner,
+                                    'offer'         => $offer,
+                                    'contacts'      => $contacts,
+                                    'faqs'          => $faqs,
+                                    'about_us'      => $about_us,
+                                    'our_product'   => $our_product,
+                                    'undecided'     => $undecided,
+                                ]);
     }
 }
