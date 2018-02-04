@@ -26,7 +26,7 @@ class UserRequest extends Request {
             'name'      => 'required',
             'email'     => 'required'.$unique,
             'username'  => 'required'.$unique,
-            'info'      => 'required'
+//            'info'      => 'required'
         ];
     }
 }
