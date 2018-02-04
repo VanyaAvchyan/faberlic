@@ -152,7 +152,7 @@ class UserController extends Controller
     // Partner
     public function getPartners()
     {
-        $model = Partner::first();
+        $model = Partner::where(['user_id' => auth()->user()->id])->first();
         return view('user/partners', ['model' => $model]);
     }
 
@@ -167,7 +167,7 @@ class UserController extends Controller
     public function putPartner(PartnerRequest $request)
     {
         $partner = $request->except('_method','_token');
-        Partner::first()->update($partner);
+        Partner::where(['user_id' => auth()->user()->id])->first()->update($partner);
         return redirect()->back()->with('success', 'Success !');
     }
 
@@ -217,14 +217,14 @@ class UserController extends Controller
 
     public function deleteVideo($id)
     {
-        Video::where('id', $id)->delete();
+        Video::where(['id' => $id, 'user_id' => auth()->user()->id])->delete();
         return redirect()->back()->with('success', 'Success !');
     }
 
     // Offer
     public function getOffer()
     {
-        $model = Offer::first();
+        $model = Offer::where(['user_id' => auth()->user()->id])->first();
         return view('user/offer', ['model' => $model]);
     }
 
@@ -240,7 +240,7 @@ class UserController extends Controller
     {
         $offer = request()->except('_method','_token');
         $offer['user_id'] = auth()->user()->id;
-        Offer::first()->update($offer);
+        Offer::where(['user_id' => auth()->user()->id])->update($offer);
         return redirect()->back()->with('success', 'Success !');
     }
 
@@ -249,13 +249,17 @@ class UserController extends Controller
      */
     public function getContact($id = false)
     {
-        $model = Contact::find($id);
-        if($id && !$model)
-            return redirect('user/contact');
-        $models = Contact::all();
+        $model = null;
+        if($id)
+        {
+            $model = Contact::where(['id' => $id, 'user_id' => auth()->user()->id])->first();
+            if(!$model)
+                return redirect('user/contact');
+        }
+        $models = Contact::where(['user_id' => auth()->user()->id ])->get();
         return view('user/contacts', ['model' => $model, 'models' => $models]);
     }
-    
+
     public function postContact()
     {
         $data = request()->except('_method', '_token');
@@ -290,7 +294,7 @@ class UserController extends Controller
             if(!$model)
                 return redirect('user/faq');
         }
-        $models = Faq::where([ 'id' => $id, 'user_id' => auth()->user()->id ])->get();
+        $models = Faq::where(['user_id' => auth()->user()->id ])->get();
         return view('user/faqs', ['model' => $model, 'models' => $models]);
     }
 
