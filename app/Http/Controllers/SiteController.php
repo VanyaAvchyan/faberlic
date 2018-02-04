@@ -20,10 +20,10 @@ class SiteController extends Controller
         $videos  = Video::where('user_id', $admin->id)->get();
         $main_videos = [
             Video::whereIn('order', ['first'])
-                        ->where('user_id' , auth()->user()->id)
+                        ->where('user_id' , $admin->id)
                         ->first(),
             Video::whereIn('order', ['second'])
-                        ->where('user_id' , auth()->user()->id)
+                        ->where('user_id' , $admin->id)
                         ->first()
         ];
         $main_videos = array_filter($main_videos);
@@ -35,7 +35,7 @@ class SiteController extends Controller
 
         return view('site/index', [
                                     'videos'        => $videos,
-                                    'code'          => auth()->user()->username,
+                                    'code'          => $admin->username,
                                     'partner'       => $partner,
                                     'offer'         => $offer,
                                     'contacts'      => $contacts,
@@ -57,10 +57,10 @@ class SiteController extends Controller
         $videos          = Video::all();
         $main_videos = [
             Video::whereIn('order', ['first'])
-                        ->where('user_id' , auth()->user()->id)
+                        ->where('user_id' , $admin->id)
                         ->first(),
             Video::whereIn('order', ['second'])
-                        ->where('user_id' , auth()->user()->id)
+                        ->where('user_id' , $admin->id)
                         ->first()
         ];
         $main_videos = array_filter($main_videos);
