@@ -7,6 +7,8 @@ return [
         'partner'       => 'Դառնալ գործընկեր',
         'experience'    => 'Experience',
         'contact'       => 'Կապ մեզ հետ',
+        'about_us'      => 'Մեր մասին',
+        'videos'        => 'Վիդեո',
     ],
     'faq'           => 'ՀՏՀ',
     'link_to_registration' => 'Հղում դեպի գրանցում'
