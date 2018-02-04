@@ -55,6 +55,7 @@ class UserController extends Controller
         if(auth()->user()->role === 1)
         {
             $user = request()->except('_method', '_token');
+            $user['banned'] = request()->get('banned') ? 1: 0;
             if($user['password'])
                 $user['password'] = bcrypt($user['password']);
             if(!User::where('id', $id)->update($user))
@@ -63,31 +64,27 @@ class UserController extends Controller
         }
         return redirect()->back()->with('error', 'Error !');
     }
-    
+
     public function putUpdate(UserRequest $request)
     {
-        if(auth()->user()->role === 1)
+        $user = $request->except('_method', '_token');
+        if($user['password'])
+            $user['password'] = bcrypt($user['password']);
+        else
+            unset($user['password']);
+        if($request->hasFile('avatar'))
         {
-            $user = $request->except('_method', '_token');
-            if($user['password'])
-                $user['password'] = bcrypt($user['password']);
-            else
-                unset($user['password']);
-            if($request->hasFile('avatar'))
-            {
-                $file = $request->file('avatar');
-                $filename = uniqid().'.'.$file->getClientOriginalExtension();
-                $user['avatar'] = $filename;
-                $path = public_path('uploads/user/'.$filename);
-                if(File::exists(public_path('uploads/user/'. auth()->user()->avatar)))
-                    File::delete(public_path('uploads/user/'. auth()->user()->avatar));
-                Image::make($file)->save($path);
-            }
-            if(!User::where('id', auth()->user()->id)->update($user))
-                return redirect()->back()->with('error', 'Error !');
-            return redirect()->back()->with('success', 'Success !');
+            $file = $request->file('avatar');
+            $filename = uniqid().'.'.$file->getClientOriginalExtension();
+            $user['avatar'] = $filename;
+            $path = public_path('uploads/user/'.$filename);
+            if(File::exists(public_path('uploads/user/'. auth()->user()->avatar)))
+                File::delete(public_path('uploads/user/'. auth()->user()->avatar));
+            Image::make($file)->save($path);
         }
-        return redirect()->with('error', 'Permissions denied');
+        if(!User::where('id', auth()->user()->id)->update($user))
+            return redirect()->back()->with('error', 'Error !');
+        return redirect()->back()->with('success', 'Success !');
     }
     
     public function deleteUsers($id)

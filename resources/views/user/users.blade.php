@@ -75,7 +75,7 @@
                             <div class="item form-group">
                                 {!! Form::label('banned', 'Banned', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) !!}
                                 <div class="icheckbox_flat-green">
-                                    <input type="checkbox" class="flat" name="banned" style="">
+                                    <input type="checkbox" class="flat" name="banned" style="" @if($model && $model->banned) checked="checked" @endif />
                                 </div>
                             </div>
 

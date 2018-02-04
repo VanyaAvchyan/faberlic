@@ -73,7 +73,9 @@
                         <li><a href="{{url('user/info/our_product')}}">Մեր ապրանքատեսականին</a></li>
                         <li><a href="{{url('user/info/undecided')}}">Չեմ կողմնորոշվում</a></li>
                         <li><a href="{{url('user/contact')}}">Contacts</a></li>
-                        <li><a href="{{url('user/faq')}}">F.A.Q</a></li>
+                        @if(auth()->user()->role === 1)
+                            <li><a href="{{url('user/faq')}}">F.A.Q</a></li>
+                        @endif
                         <li><a href="{{url('user/video')}}">Videoner</a></li>
                         @if(auth()->user()->role === 1)
                             <li><a href="{{url('user/users')}}">Users</a></li>

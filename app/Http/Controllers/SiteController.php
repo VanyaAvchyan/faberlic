@@ -27,7 +27,7 @@ class SiteController extends Controller
                         ->first()
         ];
         $main_videos = array_filter($main_videos);
-        $contacts = Contact::all();
+        $contacts = Contact::where('user_id', $admin->id)->get();
         $faqs = Faq::where('user_id', $admin->id)->get();
         $about_us    = Info::where('type', 'about_us')->first();
         $our_product = Info::where('type', 'our_product')->first();
@@ -49,31 +49,55 @@ class SiteController extends Controller
 
     public function getSiteByCode($code = false, $locale = 'am')
     {
+        $admin = User::where('role', 1)->first();
         $user = User::where('username', $code)->first();
-        if( !$code or !$user )
-            return view('site/page_404');
+        if(!$user )
+            return redirect('/');
         App::setLocale($locale);
-        $partner        = Partner::where('user_id', $user->id)->first();
-        $videos          = Video::all();
+        $partner = Partner::where('user_id', $admin->id)->first();
+        if(!$partner)
+            $partner         = Partner::where('user_id', $user->id)->first();
+        $videos = Video::where('user_id', $user->id)->get();
+        if($videos->isEmpty())
+            $videos = Video::where('user_id', $admin->id)->get();
+        $video1 = Video::whereIn('order', ['first'])
+                        ->where('user_id' , $user->id)
+                        ->first();
+        $video2 = Video::whereIn('order', ['second'])
+                        ->where('user_id' , $user->id)
+                        ->first();
+        if(!$video1)
+            $video1 = Video::whereIn('order', ['first'])
+                        ->where('user_id' , $admin->id)
+                        ->first();
+        if(!$video2)
+            $video2 = Video::whereIn('order', ['second'])
+                        ->where('user_id' , $admin->id)
+                        ->first();
         $main_videos = [
-            Video::whereIn('order', ['first'])
-                        ->where('user_id' , $admin->id)
-                        ->first(),
-            Video::whereIn('order', ['second'])
-                        ->where('user_id' , $admin->id)
-                        ->first()
+            $video1,$video2
         ];
         $main_videos = array_filter($main_videos);
-        $offer          = Offer::where('user_id', $user->id)->first();
-        $contacts       = Contact::where('user_id', $user->id)->get();
-        $faqs           = Faq::where('user_id', $user->id)->get();
-        $about_us       = Info::where([ 'type' => 'about_us', 'user_id' => $user->id ])->first();
-        $our_product    = Info::where([ 'type' => 'our_product', 'user_id' => $user->id ])->first();
-        $undecided      = Info::where([ 'type' => 'undecided', 'user_id' => $user->id ])->first();
+        $offer = Offer::where('user_id', $user->id)->first();
+        if(!$offer)
+            $offer = Offer::where('user_id', $admin->id)->first();
 
+        $contacts = Contact::where('user_id', $user->id)->get();
+        if($contacts->isEmpty())
+            $contacts = Contact::where('user_id', $admin->id)->get();
+        $faqs = Faq::where('user_id', $admin->id)->get();
+        $about_us = Info::where([ 'type' => 'about_us', 'user_id' => $user->id ])->first();
+        if(!$about_us)
+            $about_us = Info::where([ 'type' => 'about_us', 'user_id' => $admin->id ])->first();
+        $our_product = Info::where([ 'type' => 'our_product', 'user_id' => $user->id ])->first();
+        if(!$our_product)
+            $our_product = Info::where([ 'type' => 'our_product', 'user_id' => $admin->id ])->first();
+        $undecided = Info::where([ 'type' => 'undecided', 'user_id' => $user->id ])->first();
+        if(!$undecided)
+            $undecided = Info::where([ 'type' => 'undecided', 'user_id' => $admin->id ])->first();
         return view('site/index', [
                                     'videos'        => $videos,
-                                    'code'          => auth()->user()->username,
+                                    'code'          => $user->username,
                                     'partner'       => $partner,
                                     'offer'         => $offer,
                                     'contacts'      => $contacts,

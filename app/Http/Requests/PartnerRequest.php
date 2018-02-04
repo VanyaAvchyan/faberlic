@@ -19,12 +19,12 @@ class PartnerRequest extends Request {
     public function rules()
     {
         return [
-            'title_am'       => 'required',
-            'title_ru'       => 'required',
-            'title_en'       => 'required',
-            'description_am' => 'required',
-            'description_ru' => 'required',
-            'description_en' => 'required',
+//            'title_am'       => 'required',
+//            'title_ru'       => 'required',
+//            'title_en'       => 'required',
+//            'description_am' => 'required',
+//            'description_ru' => 'required',
+//            'description_en' => 'required',
         ];
     }
 }
