@@ -265,6 +265,7 @@
                 <div class="row margin-b-40">
                     <div class="col-sm-6">
                        <h2>{{trans('site.menus.contact')}}</h2>
+                       {!! $user->info !!}
                     </div>
                 </div>
                 <!--// end row -->
