@@ -71,12 +71,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 sm-margin-b-60">
-                    <div class="margin-b-30">
+                    <div class="margin-b-10">
                         @if($offer)
-                        <h1 class="promo-block-title">{!! $offer->{('title_').App::getLocale()}  !!}</h1>
-                        {!! $offer->{('description_').App::getLocale()} !!}
+                            <h1>{!! $offer->{('title_').App::getLocale()}  !!}</h1>
+                            <p class="promo-block-text">{!! $offer->{('description_').App::getLocale()} !!}</p>
                         @else
-                            <h1 class="promo-block-title">Alisa <br/> Portman</h1>
+                            <h2 class="promo-block-title">Alisa <br/> Portman</h2>
                             <p class="promo-block-text">Web &amp; UI/UX Designer</p>
                         @endif
                     </div>
@@ -176,7 +176,7 @@
                             <div class="service-info">
                                 <h3>{{trans('site.faq')}}</h3>
                                 @foreach($faqs as $faq)
-                                    <h4>{{$faq->{('title_').App::getLocale()} }}</h4>
+                                    <h5>{{$faq->{('title_').App::getLocale()} }}</h5>
                                     <p class="faq_description faq_description_{{$faq->id}} ">{!! $faq->{('description_').App::getLocale()} !!}</p>
                                     <a class="link faq_title" data-id="{{$faq->id}}" href="javascript:void(0)">Read More</a>
                                 <hr>
