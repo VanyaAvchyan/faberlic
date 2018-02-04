@@ -74,7 +74,7 @@
                     <div class="margin-b-30">
                         @if($offer)
                         <h1 class="promo-block-title">{!! $offer->{('title_').App::getLocale()}  !!}</h1>
-                        {{$offer->{('description_').App::getLocale()} }}
+                        {!! $offer->{('description_').App::getLocale()} !!}
                         @else
                             <h1 class="promo-block-title">Alisa <br/> Portman</h1>
                             <p class="promo-block-text">Web &amp; UI/UX Designer</p>
@@ -125,7 +125,7 @@
                             <div class="margin-b-30">
                                 @if($partner)
                                     <h2>{{$partner->{('title_').App::getLocale()} }}</h2>
-                                    {{$partner->{('description_').App::getLocale()} }}
+                                    {!! $partner->{('description_').App::getLocale()} !!}
                                 @else
                                     <h2>Դառնալով մեր գործընկերը</h2>
                                     <p>I'm Alisa Portman, orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -157,7 +157,7 @@
                             <div class="service-info">
                                 @if($about_us)
                                     <h3>{{$about_us->{('title_').App::getLocale()} }}</h3>
-                                    {{ $about_us->{('description_').App::getLocale()} }}
+                                    {!! $about_us->{('description_').App::getLocale()} !!}
                                 @else
                                     <h3>Մեր մասին</h3>
                                     <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
@@ -177,7 +177,7 @@
                                 <h3>{{trans('site.faq')}}</h3>
                                 @foreach($faqs as $faq)
                                     <h4>{{$faq->{('title_').App::getLocale()} }}</h4>
-                                    <p class="faq_description faq_description_{{$faq->id}} ">{{$faq->{('description_').App::getLocale()} }}</p>
+                                    <p class="faq_description faq_description_{{$faq->id}} ">{!! $faq->{('description_').App::getLocale()} !!}</p>
                                     <a class="link faq_title" data-id="{{$faq->id}}" href="javascript:void(0)">Read More</a>
                                 <hr>
                                 @endforeach
@@ -215,7 +215,7 @@
                             <div class="service-info">
                                 @if($undecided)
                                     <h3>{{$undecided->{('title_').App::getLocale()} }}</h3>
-                                    {{ $undecided->{('description_').App::getLocale()} }}
+                                    {!! $undecided->{('description_').App::getLocale()} !!}
                                 @else
                                     <h3>Չեմ կողմնորոշվում</h3>
                                     <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>

@@ -24,5 +24,19 @@ class AdminTableSeeder extends Seeder
             'created_at' =>  date('Y-m-d H:i:s'),
             'updated_at' =>  date('Y-m-d H:i:s'),
         ]);
+
+        DB::table('users')->insert([
+            'id'         => 2,
+            'name'       => 'Test',
+            'username'   => 'test',
+            'email'      => 'test@admin',
+            'avatar'     => 'avatar.jpg',
+            'banned'     => 0,
+            'info'       => 'Informacia im masin',
+            'role'       => 1,
+            'password'   =>  bcrypt('test'),
+            'created_at' =>  date('Y-m-d H:i:s'),
+            'updated_at' =>  date('Y-m-d H:i:s'),
+        ]);
     }
 }
