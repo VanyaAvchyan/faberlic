@@ -71,6 +71,8 @@ class UserController extends Controller
             $user = $request->except('_method', '_token');
             if($user['password'])
                 $user['password'] = bcrypt($user['password']);
+            else
+                unset($user['password']);
             if($request->hasFile('avatar'))
             {
                 $file = $request->file('avatar');
