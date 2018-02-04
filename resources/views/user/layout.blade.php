@@ -8,7 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    @if(auth()->check())
+    <title>Hello @if(auth()->user()->role === 1) Admin  : {{auth()->user()->name}} @else  User  : {{auth()->user()->name}} @endif !</title>
+    @else
+    <title>Hello Guest !</title>
+    @endif
 
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
