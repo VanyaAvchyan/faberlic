@@ -51,7 +51,7 @@
                     @endif
                 </div>
                 <div class="profile_info">
-                  <span>Welcome,</span>
+                  <span>@if(auth()->user()->role === 1) Admin @else User @endif,</span>
                   <h2>{{auth()->user()->name}}</h2>
                 </div>
               </div>
