@@ -103,6 +103,8 @@ class UserController extends Controller
     
     public function getLogin()
     {
+        if(auth()->check())
+            return redirect ('user');
         return view('user/login');
     }
 
@@ -114,6 +116,7 @@ class UserController extends Controller
 
     public function postLogin()
     {
+        auth()->logout();
         if (auth()->attempt(request()->only('username', 'password')))
         {
             return redirect('user');

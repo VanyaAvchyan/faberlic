@@ -23,11 +23,8 @@
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="favicon.ico"/>
-        <style>
-            p {
-                color:#000
-            }
-        </style>
+
+        <link href="{{url()}}/site/css/common.css" rel="stylesheet" type="text/css"/>
     </head>
     <!-- END HEAD -->
 

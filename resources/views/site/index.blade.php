@@ -1,26 +1,9 @@
+<?php
+?>
+
+
 @extends('site/layout')
 @section('content')
-    <style>
-        .video1, .video2{
-            cursor: pointer
-        }
-        .video1-title, .video2-title {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            color: #fff;
-            z-index: 1000;
-            transform: translateX(-50%);
-        }
-
-        .video1-title:hover, .video2-title:hover {
-            background : #008a9e;
-            padding : 2px;
-        }
-        .faq_description {
-            display: none
-        }
-    </style>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -90,9 +73,20 @@
                 </div>
                 <div class="col-sm-6">
                     @if(isset($main_videos[0]))
-                    <div class="promo-block-img-wrap video1" data-toggle="modal" data-target="#myModal0" data-youtube_url="{{$main_videos[0]->{('url_').App::getLocale()} }}">
+                    <?php
+                        $match = [];
+                        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $main_videos[0]->{('url_').App::getLocale()}, $match);
+                        $youtube_id = $match[1];
+                    ?>
+                    <div 
+                        class="promo-block-img-wrap video1" 
+                        data-toggle="modal" 
+                        data-target="#myModal" 
+                        data-youtube_id="{{ $youtube_id }}"
+                        data-title="{{ $main_videos[0]->{('title_').App::getLocale()} }}"
+                        >
                         <span class="video1-title">{{$main_videos[0]->{('title_').App::getLocale()} }}</span>
-                        <img class="promo-block-img img-responsive" src="https://img.youtube.com/{{ str_replace('v=', 'vi/', parse_url( $main_videos[0]->{('url_').App::getLocale()}, PHP_URL_QUERY )) }}/0.jpg" align="">
+                        <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" align="">
                     </div>
                     @else
                         <div class="promo-block-img-wrap">
@@ -111,10 +105,26 @@
     <div id="about">
         <div class="container content-lg">
             <div class="row">
-                <div class="col-sm-5 sm-margin-b-60 video2" data-toggle="modal" data-target="#myModal1">
+                <div class="col-sm-5 sm-margin-b-60 video2">
                     @if(isset($main_videos[1]))
+                        <?php
+                            $match = [];
+                            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $main_videos[1]->{('url_').App::getLocale()}, $match);
+                            $youtube_id = $match[1];
+                        ?>
+                    <div
+                        data-toggle="modal"
+                        data-target="#myModal"
+                        data-youtube_id="{{ $youtube_id }}"
+                        data-title="{{ $main_videos[1]->{('title_').App::getLocale()} }}"
+                    >
                         <span class="video2-title">{{$main_videos[1]->{('title_').App::getLocale()} }}</span>
-                        <img class="promo-block-img img-responsive" src="https://img.youtube.com/{{ str_replace('v=', 'vi/', parse_url( $main_videos[1]->{('url_').App::getLocale()}, PHP_URL_QUERY )) }}/0.jpg" align="">
+                        <img 
+                            class="promo-block-img img-responsive"
+                            src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" 
+                            align=""
+                        >
+                    </div>
                     @else
                         <img class="full-width img-responsive" src="{{url()}}/uploads/site/img/500x700/01.jpg" alt="Image">
                     @endif
@@ -239,20 +249,30 @@
         <div class="container content-lg">
             <div class="row margin-b-40">
                 <div class="col-sm-6">
-                   <h2>Videoner</h2>
+                   <h2>{{trans('site.menus.videos')}}</h2>
                 </div>
             </div>
 
             <!--// end row -->
             <div class="row">
                 @foreach($videos as $video)
+                    <?php
+                        $match = [];
+                        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video->{('url_').App::getLocale()}, $match);
+                        $youtube_id = $match[1];
+                    ?>
                 <div class="col-md-2">
-                    <img class="img-responsive" src="https://img.youtube.com/{{ str_replace('v=', 'vi/', parse_url( $video->{('url_').App::getLocale()}, PHP_URL_QUERY )) }}/0.jpg" alt="Image">
+                    <img 
+                        data-toggle="modal" 
+                        data-target="#myModal" 
+                        data-youtube_id="{{$youtube_id}}"
+                        data-title="{{ $video->{('title_').App::getLocale()} }}"
+                        class="img-responsive  videos" 
+                        src="https://img.youtube.com/vi/{{ $youtube_id }}/0.jpg" alt="Image">
                 </div>
                 @endforeach
             </div>
             <!--// end row -->
-
         </div>
     </div>
 </div>
@@ -264,7 +284,7 @@
             <div class="container content-lg">
                 <div class="row margin-b-40">
                     <div class="col-sm-6">
-                       <h2>{{trans('site.menus.contact')}}</h2>
+                       <h2>{{ trans('site.menus.contact') }}</h2>
                        {!! $user->info !!}
                     </div>
                 </div>
@@ -287,35 +307,39 @@
     <!-- Back To Top -->
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
-    @for($i=0 , $videoCnt = count($main_videos); $i < $videoCnt; $i++)
     <!-- Modal -->
-    <div class="modal fade" id="myModal{{$i}}" role="dialog">
+    <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">{{$main_videos[$i]->{('title_').App::getLocale()} }}</h4>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="video_title">Title</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>
-                    <iframe width="420" height="345" src="https://www.youtube.com/embed/{{ str_replace('v=', '', parse_url( $main_videos[$i]->{('url_').App::getLocale()}, PHP_URL_QUERY )) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
         </div>
     </div>
-    @endfor
-    
+
     @section('js')
         <script>
             $('.faq_title').on('click', function() {
                 var faq_id = $(this).data('id');
                 $('.faq_description_'+faq_id).toggle();
+            });
+
+            $('#myModal').on('shown.bs.modal', function (e) {
+                var $invoker = $(e.relatedTarget);
+                var iframe = '<iframe width="420" height="345" src="https://www.youtube.com/embed/'+$invoker.data('youtube_id')+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+                $(this).find('.modal-body').html(iframe);
+                $(this).find('.modal-header .video_title').text($invoker.data('title'));
+            });
+            
+            $("#myModal").on('hidden.bs.modal', function (e) {
+                $(this).find('.modal-body').html('');
             });
         </script>
     @endsection
