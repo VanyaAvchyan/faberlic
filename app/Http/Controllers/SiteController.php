@@ -57,10 +57,10 @@ class SiteController extends Controller
         App::setLocale($locale);
         $partner = Partner::where('user_id', $admin->id)->first();
         if(!$partner)
-            $partner         = Partner::where('user_id', $user->id)->first();
-        $videos = Video::where('user_id', $user->id)->get();
+            $partner = Partner::where('user_id', $user->id)->first();
+        $videos  = Video::whereNotIn('order', ['first', 'second'])->where('user_id', $user->id)->get();
         if($videos->isEmpty())
-            $videos = Video::where('user_id', $admin->id)->get();
+            $videos = Video::whereNotIn('order', ['first', 'second'])->where('user_id', $admin->id)->get();
         $video1 = Video::whereIn('order', ['first'])
                         ->where('user_id' , $user->id)
                         ->first();
