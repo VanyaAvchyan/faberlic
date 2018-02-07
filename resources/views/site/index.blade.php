@@ -1,7 +1,3 @@
-<?php
-?>
-
-
 @extends('site/layout')
 @section('content')
     <!--========== HEADER ==========-->
@@ -186,7 +182,9 @@
                                 <h3>{{trans('site.faq')}}</h3>
                                 @foreach($faqs as $faq)
                                     <h5>{{$faq->{('title_').App::getLocale()} }}</h5>
-                                    <p class="faq_description faq_description_{{$faq->id}} ">{!! $faq->{('description_').App::getLocale()} !!}</p>
+                                    <div class="faq_description faq_description_{{$faq->id}}">
+                                        {!! $faq->{('description_').App::getLocale()} !!}
+                                    </div>
                                     <a class="link faq_title" data-id="{{$faq->id}}" href="javascript:void(0)">Read More</a>
                                 <hr>
                                 @endforeach
@@ -333,27 +331,70 @@
         data-show-faces="true"
         >
     </div>
-    @section('js')
-        <script>
-            var shared_info = {
-                "url"         : '{{url('/'.App::getLocale()) }}',
-                "title"       : '{{ $offer->{('title_').App::getLocale()} }}',
-                "description" : '{{ $offer->{('description_').App::getLocale()} }}',
-            };
-            $('.social__buttons .facebook').on('click', function(e){
-                e.preventDefault();
-                window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shared_info.url)+'&t='+encodeURIComponent(shared_info.title)+'&d='+encodeURIComponent(shared_info.description),shared_info.title,'width=626,height=436');
-//                postToFeed(shared_info.title, shared_info.description, shared_info.url, '{{url()}}/uploads/site/logo.jpg');
-            });
-            $('.social__buttons .twitter').on('click', function(e) {
-                e.preventDefault();
-                console.log(1111);
-            });
-            $('.social__buttons .linkedin').on('click', function(e) {
-                e.preventDefault();
-                console.log(1111);
-            });
-        </script>
-    @endsection
+@section('js')
+    <script>
+        var Share = {
+            vkontakte: function(purl, ptitle, pimg, text) {
+                    url  = 'http://vkontakte.ru/share.php?';
+                    url += 'url='          + encodeURIComponent(purl);
+                    url += '&title='       + encodeURIComponent(ptitle);
+                    url += '&description=' + encodeURIComponent(text);
+                    url += '&image='       + encodeURIComponent(pimg);
+                    url += '&noparse=true';
+                    Share.popup(url);
+            },
+            odnoklassniki: function(purl, text) {
+                    url  = 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1';
+                    url += '&st.comments=' + encodeURIComponent(text);
+                    url += '&st._surl='    + encodeURIComponent(purl);
+                    Share.popup(url);
+            },
+            facebook: function(purl, ptitle, pimg, text) {
+                    url  = 'http://www.facebook.com/sharer.php?s=100';
+                    url += '&p[title]='     + encodeURIComponent(ptitle);
+                    url += '&p[summary]='   + encodeURIComponent(text);
+                    url += '&p[url]='       + encodeURIComponent(purl);
+                    url += '&p[images][0]=' + encodeURIComponent(pimg);
+                    Share.popup(url);
+            },
+            twitter: function(purl, ptitle) {
+                    url  = 'http://twitter.com/share?';
+                    url += 'text='      + encodeURIComponent(ptitle);
+                    url += '&url='      + encodeURIComponent(purl);
+                    url += '&counturl=' + encodeURIComponent(purl);
+                    Share.popup(url);
+            },
+            mailru: function(purl, ptitle, pimg, text) {
+                    url  = 'http://connect.mail.ru/share?';
+                    url += 'url='          + encodeURIComponent(purl);
+                    url += '&title='       + encodeURIComponent(ptitle);
+                    url += '&description=' + encodeURIComponent(text);
+                    url += '&imageurl='    + encodeURIComponent(pimg);
+                    Share.popup(url)
+            },
+
+            popup: function(url) {
+                var w = 700;
+                var h = 500;
+                var y = window.top.outerHeight / 2 + window.top.screenY - ( w / 2) - 100
+                var x = window.top.outerWidth / 2 + window.top.screenX - ( h / 2)
+                window.open(url, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+y+', left='+x);
+            }
+        };
+        var shared_info = {
+            "url"         : '{{url('/'.App::getLocale()) }}',
+            "title"       : '{!! $offer->{('title_').App::getLocale()} !!}',
+            "description" : '{!! $offer->{('description_').App::getLocale()} !!}',
+            "image" : '{{url()}}/uploads/site/logo.jpg',
+        };
+        shared_info.description = $(shared_info.description).text();
+        shared_info.title       = $(shared_info.title).text();
+        
+        $('.social__buttons .facebook, .social__buttons .twitter, .social__buttons .linkedin, ').on('click', function(e) {
+            e.preventDefault();
+            Share.popup(shared_info.url, shared_info.title, shared_info.image, shared_info.description );
+        });
+    </script>
+@endsection
     <!--========== END PAGE LAYOUT ==========-->
 @endsection

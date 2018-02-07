@@ -50,8 +50,8 @@
         <script src="{{url()}}/site/js/components/progress-bar.min.js" type="text/javascript"></script>
         <script src="{{url()}}/site/js/components/swiper.min.js" type="text/javascript"></script>
         <script src="{{url()}}/site/js/components/wow.min.js" type="text/javascript"></script>
-        <script src="{{url()}}/site/js/common.js" type="text/javascript"></script>
         <script src="{{url()}}/site/js/social.js" type="text/javascript"></script>
+        <script src="{{url()}}/site/js/common.js" type="text/javascript"></script>
         @yield('js')
     </body>
     <!-- END BODY -->
