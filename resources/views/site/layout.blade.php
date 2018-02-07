@@ -3,14 +3,6 @@
     <!-- BEGIN HEAD -->
     <head>
         <meta charset="utf-8"/>
-        
-        <!-- Facebook meta -->
-        <meta property="og:url"           content="{{url('/'.App::getLocale()) }}" />
-        <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="{{ $offer->{('title_').App::getLocale()} }}" />
-        <meta property="og:description"   content="{!! $offer->{('description_').App::getLocale()} !!}" />
-        <!-- end Facebook meta -->
-        
         <title>Biznesfl</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
