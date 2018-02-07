@@ -61,9 +61,9 @@
                     </div>
                     
                     <ul class="list-inline social__buttons">
-                        <li><a href="#" class="social-icons facebook"><i class="icon-social-facebook"></i></a></li>
-                        <li><a href="#" class="social-icons twitter"><i class="icon-social-twitter"></i></a></li>
-                        <li><a href="#" class="social-icons linkedin"><i class="icon-social-linkedin"></i></a></li>
+                        <li><a href="#" class="social-icons facebook" data-share_tipe="facebook"><i class="icon-social-facebook"></i></a></li>
+                        <li><a href="#" class="social-icons twitter" data-share_tipe="twitter"><i class="icon-social-twitter"></i></a></li>
+                        <li><a href="#" class="social-icons linkedin" data-share_tipe="linkedin"><i class="icon-social-linkedin"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6">
@@ -374,6 +374,7 @@
             },
 
             popup: function(url) {
+                console.log();
                 var w = 700;
                 var h = 500;
                 var y = window.top.outerHeight / 2 + window.top.screenY - ( w / 2) - 100
@@ -389,10 +390,16 @@
         };
         shared_info.description = $(shared_info.description).text();
         shared_info.title       = $(shared_info.title).text();
-        
-        $('.social__buttons .facebook, .social__buttons .twitter, .social__buttons .linkedin, ').on('click', function(e) {
+
+        $('.social__buttons .facebook, .social__buttons .twitter, .social__buttons .linkedin').on('click', function(e) {
             e.preventDefault();
-            Share.popup(shared_info.url, shared_info.title, shared_info.image, shared_info.description );
+            console.log($(this).data('share_tipe'));
+            var share_tipe = $(this).data('share_tipe');
+            switch(share_tipe) {
+                case 'facebook' : Share.facebook(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
+                case 'twitter'  : Share.twitter(shared_info.url, shared_info.title) ;break;
+                case 'linkedin' : Share.linkedin(shared_info.url, shared_info.title) ;break;
+            }
         });
     </script>
 @endsection
