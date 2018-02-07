@@ -63,12 +63,11 @@
                             <p class="promo-block-text">Web &amp; UI/UX Designer</p>
                         @endif
                     </div>
-                    <ul class="list-inline">
-                        <li><a href="#" class="social-icons"><i class="icon-social-facebook"></i></a></li>
-                        <li><a href="#" class="social-icons"><i class="icon-social-twitter"></i></a></li>
-                        <li><a href="#" class="social-icons"><i class="icon-social-dribbble"></i></a></li>
-                        <li><a href="#" class="social-icons"><i class="icon-social-behance"></i></a></li>
-                        <li><a href="#" class="social-icons"><i class="icon-social-linkedin"></i></a></li>
+                    
+                    <ul class="list-inline social__buttons">
+                        <li><a href="#" class="social-icons facebook"><i class="icon-social-facebook"></i></a></li>
+                        <li><a href="#" class="social-icons twitter"><i class="icon-social-twitter"></i></a></li>
+                        <li><a href="#" class="social-icons linkedin"><i class="icon-social-linkedin"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6">
@@ -142,7 +141,7 @@
                                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                 @endif
                             </div>
-                            <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" class="btn-theme btn-theme-md btn-default-bg text-uppercase">{{trans('site.link_to_registration')}}</a>
+                            <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" class="btn-theme btn-theme-md btn-default-bg text-uppercase" target="_blank">{{trans('site.link_to_registration')}}</a>
                         </div>
                     </div>
                 </div>
@@ -324,22 +323,35 @@
         </div>
     </div>
 
+    
+
+    
+    <div
+        class="fb-like"
+        data-share="true"
+        data-width="450"
+        data-show-faces="true"
+        >
+    </div>
     @section('js')
         <script>
-            $('.faq_title').on('click', function() {
-                var faq_id = $(this).data('id');
-                $('.faq_description_'+faq_id).toggle();
+            var shared_info = {
+                "url"         : '{{url('/'.App::getLocale()) }}',
+                "title"       : '{{ $offer->{('title_').App::getLocale()} }}',
+                "description" : '{{ $offer->{('description_').App::getLocale()} }}',
+            };
+            $('.social__buttons .facebook').on('click', function(e){
+                e.preventDefault();
+                window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shared_info.url)+'&t='+encodeURIComponent(shared_info.title)+'&d='+encodeURIComponent(shared_info.description),shared_info.title,'width=626,height=436');
+//                postToFeed(shared_info.title, shared_info.description, shared_info.url, '{{url()}}/uploads/site/logo.jpg');
             });
-
-            $('#myModal').on('shown.bs.modal', function (e) {
-                var $invoker = $(e.relatedTarget);
-                var iframe = '<iframe width="420" height="345" src="https://www.youtube.com/embed/'+$invoker.data('youtube_id')+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-                $(this).find('.modal-body').html(iframe);
-                $(this).find('.modal-header .video_title').text($invoker.data('title'));
+            $('.social__buttons .twitter').on('click', function(e) {
+                e.preventDefault();
+                console.log(1111);
             });
-            
-            $("#myModal").on('hidden.bs.modal', function (e) {
-                $(this).find('.modal-body').html('');
+            $('.social__buttons .linkedin').on('click', function(e) {
+                e.preventDefault();
+                console.log(1111);
             });
         </script>
     @endsection
