@@ -59,11 +59,12 @@
                             <p class="promo-block-text">Web &amp; UI/UX Designer</p>
                         @endif
                     </div>
-                    
                     <ul class="list-inline social__buttons">
-                        <li><a href="#" class="social-icons facebook" data-share_tipe="facebook"><i class="icon-social-facebook"></i></a></li>
-                        <li><a href="#" class="social-icons twitter" data-share_tipe="twitter"><i class="icon-social-twitter"></i></a></li>
-                        <li><a href="#" class="social-icons linkedin" data-share_tipe="linkedin"><i class="icon-social-linkedin"></i></a></li>
+                        <li><a href="#" class="social-icons facebook" data-share_tipe="facebook"><span class="fa fa-facebook"></span></a></li>
+                        <li><a href="#" class="social-icons twitter" data-share_tipe="twitter"><span class="fa fa-twitter"></span></a></li>
+                        <li><a href="#" class="social-icons linkedin" data-share_tipe="linkedin"><span class="fa fa-linkedin"></span></i></a></li>
+                        <li><a href="#" class="social-icons vkontakte" data-share_tipe="vkontakte"><span class="fa fa-vk"></span></a></li>
+                        <li><a href="#" class="social-icons odnoklassniki" data-share_tipe="odnoklassniki"><span class="fa fa-odnoklassniki"></span></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6">
@@ -320,17 +321,6 @@
             </div>
         </div>
     </div>
-
-    
-
-    
-    <div
-        class="fb-like"
-        data-share="true"
-        data-width="450"
-        data-show-faces="true"
-        >
-    </div>
 @section('js')
     <script>
         var Share = {
@@ -343,7 +333,16 @@
                     url += '&noparse=true';
                     Share.popup(url);
             },
-            odnoklassniki: function(purl, text) {
+            linkedin: function(purl, ptitle, pimg, text) {
+                // source=stackoverflow.com
+                    url  = 'https://www.linkedin.com/shareArticle?mini=true';
+                    url += '&url='          + encodeURIComponent(purl);
+                    url += '&title='        + encodeURIComponent(ptitle);
+                    url += '&summary='      + encodeURIComponent(text);
+                    url += '&source='       + encodeURIComponent(purl);
+                    Share.popup(url);
+            },
+            odnoklassniki: function(purl, ptitle, pimg, text) {
                     url  = 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1';
                     url += '&st.comments=' + encodeURIComponent(text);
                     url += '&st._surl='    + encodeURIComponent(purl);
@@ -357,7 +356,7 @@
                     url += '&p[images][0]=' + encodeURIComponent(pimg);
                     Share.popup(url);
             },
-            twitter: function(purl, ptitle) {
+            twitter: function(purl, ptitle, pimg, text) {
                     url  = 'http://twitter.com/share?';
                     url += 'text='      + encodeURIComponent(ptitle);
                     url += '&url='      + encodeURIComponent(purl);
@@ -391,17 +390,20 @@
         shared_info.description = $(shared_info.description).text();
         shared_info.title       = $(shared_info.title).text();
 
-        $('.social__buttons .facebook, .social__buttons .twitter, .social__buttons .linkedin').on('click', function(e) {
+        $('.social__buttons li a').on('click', function(e) {
             e.preventDefault();
-            console.log($(this).data('share_tipe'));
+//            console.log($(this).data('share_tipe'));
             var share_tipe = $(this).data('share_tipe');
-            switch(share_tipe) {
-                case 'facebook' : Share.facebook(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
-                case 'twitter'  : Share.twitter(shared_info.url, shared_info.title) ;break;
-                case 'linkedin' : Share.linkedin(shared_info.url, shared_info.title) ;break;
+            switch( share_tipe )
+            {
+                case 'facebook'      : Share.facebook(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
+                case 'twitter'       : Share.twitter(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
+                case 'linkedin'      : Share.linkedin(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
+                case 'vkontakte'     : Share.vkontakte(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
+                case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
             }
         });
     </script>
 @endsection
-    <!--========== END PAGE LAYOUT ==========-->
+<!--========== END PAGE LAYOUT ==========-->
 @endsection

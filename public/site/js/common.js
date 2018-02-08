@@ -13,3 +13,4 @@ $('#myModal').on('shown.bs.modal', function (e) {
 $("#myModal").on('hidden.bs.modal', function (e) {
     $(this).find('.modal-body').html('');
 });
+
