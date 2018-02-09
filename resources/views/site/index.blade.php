@@ -74,10 +74,10 @@
                         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $main_videos[0]->{('url_').App::getLocale()}, $match);
                         $youtube_id = $match[1];
                     ?>
-                    <div 
-                        class="promo-block-img-wrap video1" 
-                        data-toggle="modal" 
-                        data-target="#myModal" 
+                    <div
+                        class="promo-block-img-wrap video1"
+                        data-toggle="modal"
+                        data-target="#myModal"
                         data-youtube_id="{{ $youtube_id }}"
                         data-title="{{ $main_videos[0]->{('title_').App::getLocale()} }}"
                         >
@@ -115,9 +115,9 @@
                         data-title="{{ $main_videos[1]->{('title_').App::getLocale()} }}"
                     >
                         <span class="video2-title">{{$main_videos[1]->{('title_').App::getLocale()} }}</span>
-                        <img 
+                        <img
                             class="promo-block-img img-responsive"
-                            src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" 
+                            src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg"
                             align=""
                         >
                     </div>
@@ -153,7 +153,7 @@
         <div class="bg-color-sky-light" data-auto-height="true">
             <div class="container content-lg">
                 <div class="row row-space-2 margin-b-4">
-                    
+
                     <!-- About us -->
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
                         <div class="service" data-height="height">
@@ -172,7 +172,7 @@
                         </div>
                     </div>
                     <!--// About us -->
-                    
+
                     <!-- FAQ -->
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
                         <div class="service" data-height="height">
@@ -208,7 +208,7 @@
                                     <h3>Մեր ապրանքատեսականին</h3>
                                     <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
                                 @endif
-                                
+
                             </div>
                         </div>
                     </div>
@@ -228,7 +228,7 @@
                                     <h3>Չեմ կողմնորոշվում</h3>
                                     <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
                                 @endif
-                                
+
                             </div>
                         </div>
                     </div>
@@ -260,12 +260,12 @@
                         $youtube_id = $match[1];
                     ?>
                 <div class="col-md-2">
-                    <img 
-                        data-toggle="modal" 
-                        data-target="#myModal" 
+                    <img
+                        data-toggle="modal"
+                        data-target="#myModal"
                         data-youtube_id="{{$youtube_id}}"
                         data-title="{{ $video->{('title_').App::getLocale()} }}"
-                        class="img-responsive  videos" 
+                        class="img-responsive  videos"
                         src="https://img.youtube.com/vi/{{ $youtube_id }}/0.jpg" alt="Image">
                 </div>
                 @endforeach
@@ -292,7 +292,13 @@
                     @foreach($contacts as $contact)
                     <div class="col-md-3 col-xs-6 md-margin-b-30">
                         <h4>{{$contact->title}}</h4>
-                        <a href="javascript:void(0)">{{$contact->description}}</a>
+                        <!-- <a href="javascript:void(0)">{{$contact->description}}</a> -->
+                        <?php
+                            $arr_contacts = explode("|", $contact->description)
+                        ?>
+                        @foreach($arr_contacts as $item)
+                            <span class="contact__item">{{trim($item)}}</span><br>
+                        @endforeach
                     </div>
                     @endforeach
                 </div>

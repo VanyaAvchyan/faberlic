@@ -24,3 +24,8 @@
 p, span {
     color: #000
 }
+
+/*contacts*/
+.contact__item {
+    cursor: pointer;
+}
