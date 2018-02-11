@@ -4,7 +4,7 @@
 window.fbAsyncInit = function() {
     // 1696277890422658
     FB.init({
-        appId      : '442541682832316',
+        appId      : '1696277890422658',
         xfbml      : true,
         mobile_iframe: true,
         version    : 'v2.12'
