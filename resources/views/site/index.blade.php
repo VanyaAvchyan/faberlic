@@ -331,7 +331,6 @@
                     url += '&title='       + encodeURIComponent(ptitle);
                     url += '&description=' + encodeURIComponent(text);
                     url += '&image='       + encodeURIComponent(pimg);
-                    url += '&noparse=true';
                     Share.popup(url);
             },
             linkedin: function(purl, ptitle, pimg, text) {
@@ -349,7 +348,8 @@
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
-                    url  = 'https://www.facebook.com/sharer.php?s=100';
+                    url  = 'https://facebook.com/sharer/sharer.php?';
+                    url += '&s=100';
                     url += '&p[title]='     + encodeURIComponent(ptitle);
                     url += '&p[summary]='   + encodeURIComponent(text);
                     url += '&p[url]='       + encodeURIComponent(purl);
@@ -359,7 +359,7 @@
             twitter: function(purl, ptitle, pimg, text) {
                     url  = 'https://twitter.com/share?';
                     url += 'title='     + encodeURIComponent(ptitle);
-                    url += '&text=AAA+bbb'     + encodeURIComponent(text);
+                    url += '&text='     + encodeURIComponent(text);
                     url += '&url='      + encodeURIComponent(purl);
                     url += '&counturl=' + encodeURIComponent(purl);
                     Share.popup(url);
