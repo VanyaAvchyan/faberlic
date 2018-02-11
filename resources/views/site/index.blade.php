@@ -359,7 +359,7 @@
             twitter: function(purl, ptitle, pimg, text) {
                     url  = 'http://twitter.com/share?';
                     url += 'title='     + encodeURIComponent(ptitle);
-                    url += '&text='     + encodeURIComponent(text);
+                    url += '&text=AAA+bbb'     + encodeURIComponent(text);
                     url += '&url='      + encodeURIComponent(purl);
                     url += '&counturl=' + encodeURIComponent(purl);
                     Share.popup(url);
