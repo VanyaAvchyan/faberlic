@@ -52,8 +52,8 @@
                 <div class="col-sm-6 sm-margin-b-60">
                     <div class="margin-b-10">
                         @if($offer)
-                            <h1>{!! $offer->{('title_').App::getLocale()}  !!}</h1>
-                            <p class="promo-block-text">{!! $offer->{('description_').App::getLocale()} !!}</p>
+                            <h1 class="main__title">{!! $offer->{('title_').App::getLocale()}  !!}</h1>
+                            <div class="promo-block-text main__description">{!! $offer->{('description_').App::getLocale()} !!}</div>
                         @else
                             <h2 class="promo-block-title">Alisa <br/> Portman</h2>
                             <p class="promo-block-text">Web &amp; UI/UX Designer</p>
@@ -384,17 +384,13 @@
         };
         var shared_info = {
             "url"         : "{{url('/'.App::getLocale()) }}",
-            "title"       : "{{ $offer->{('title_').App::getLocale()} }}",
-            "description" : "{{ strip_tags($offer->{('description_').App::getLocale()}) }}",
-            "image"       : "{{url()}}/uploads/site/logo.jpg",
+            "title"       : $('.main__title').html(),
+            "description" : $('.main__description').html(),
+            "image"       : $('.logo img').attr('src'),
         };
-
-//        shared_info.description = $(shared_info.description).text();
-//        shared_info.title       = $(shared_info.title).text();
 
         $('.social__buttons li a').on('click', function(e) {
             e.preventDefault();
-//            console.log($(this).data('share_tipe'));
             var share_tipe = $(this).data('share_tipe');
             switch( share_tipe )
             {
