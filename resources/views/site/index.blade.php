@@ -350,15 +350,16 @@
             },
             facebook: function(purl, ptitle, pimg, text) {
                     url  = 'http://www.facebook.com/sharer.php?s=100';
-                    url += '&p[title]='     + ptitle;
-                    url += '&p[summary]='   + text;
-                    url += '&p[url]='       + purl;
-                    url += '&p[images][0]=' + pimg;
+                    url += '&p[title]='     + encodeURIComponent(ptitle);
+                    url += '&p[summary]='   + encodeURIComponent(text);
+                    url += '&p[url]='       + encodeURIComponent(purl);
+                    url += '&p[images][0]=' + encodeURIComponent(pimg);
                     Share.popup(url);
             },
             twitter: function(purl, ptitle, pimg, text) {
                     url  = 'http://twitter.com/share?';
-                    url += 'text='      + encodeURIComponent(ptitle);
+                    url += 'title='     + encodeURIComponent(ptitle);
+                    url += '&text='     + encodeURIComponent(text);
                     url += '&url='      + encodeURIComponent(purl);
                     url += '&counturl=' + encodeURIComponent(purl);
                     Share.popup(url);
@@ -383,13 +384,13 @@
         };
         var shared_info = {
             "url"         : "{{url('/'.App::getLocale()) }}",
-            "title"       : "{!! $offer->{('title_').App::getLocale()} !!}",
+            "title"       : "{{ $offer->{('title_').App::getLocale()} }}",
             "description" : "{{ strip_tags($offer->{('description_').App::getLocale()}) }}",
             "image"       : "{{url()}}/uploads/site/logo.jpg",
         };
 
-        shared_info.description = $(shared_info.description).text();
-        shared_info.title       = $(shared_info.title).text();
+//        shared_info.description = $(shared_info.description).text();
+//        shared_info.title       = $(shared_info.title).text();
 
         $('.social__buttons li a').on('click', function(e) {
             e.preventDefault();
