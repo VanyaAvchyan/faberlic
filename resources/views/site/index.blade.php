@@ -293,12 +293,7 @@
                     <div class="col-md-3 col-xs-6 md-margin-b-30">
                         <h4>{{$contact->title}}</h4>
                         <!-- <a href="javascript:void(0)">{{$contact->description}}</a> -->
-                        <?php
-                            $arr_contacts = explode("|", $contact->description)
-                        ?>
-                        @foreach($arr_contacts as $item)
-                            <span class="contact__item">{{trim($item)}}</span><br>
-                        @endforeach
+                        {!! $contact->description !!}
                     </div>
                     @endforeach
                 </div>
@@ -340,7 +335,6 @@
                     Share.popup(url);
             },
             linkedin: function(purl, ptitle, pimg, text) {
-                // source=stackoverflow.com
                     url  = 'https://www.linkedin.com/shareArticle?mini=true';
                     url += '&url='          + encodeURIComponent(purl);
                     url += '&title='        + encodeURIComponent(ptitle);

@@ -14,7 +14,7 @@
           </div>
           <div>
               {!! Form::label('description', 'Description') !!}
-              {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
+              {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
           </div>
           <div>
             <br/>
