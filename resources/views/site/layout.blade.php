@@ -3,6 +3,8 @@
     <!-- BEGIN HEAD -->
     <head>
         <meta charset="utf-8"/>
+        <meta name="title" content="{{ $offer->{('title_').App::getLocale()} }}">
+        <meta name="description" content="{{ strip_tags($offer->{('description_').App::getLocale()}) }}">
         <title>Biznesfl</title>
         <!-- GLOBAL MANDATORY STYLES -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
