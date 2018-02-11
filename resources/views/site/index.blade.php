@@ -348,13 +348,15 @@
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
-                    url  = 'https://facebook.com/sharer/sharer.php?';
-                    url += '&s=100';
-                    url += '&p[title]='     + encodeURIComponent(ptitle);
-                    url += '&p[summary]='   + encodeURIComponent(text);
-                    url += '&p[url]='       + encodeURIComponent(purl);
-                    url += '&p[images][0]=' + encodeURIComponent(pimg);
-                    Share.popup(url);
+                    var obj = {method: 'feed', link: purl, picture: pimg, name: ptitle, description: text};
+                    FB.ui(obj, function(r){});
+//                    url  = 'https://facebook.com/sharer/sharer.php?';
+//                    url += '&s=100';
+//                    url += '&p[title]='     + encodeURIComponent(ptitle);
+//                    url += '&p[summary]='   + encodeURIComponent(text);
+//                    url += '&p[url]='       + encodeURIComponent(purl);
+//                    url += '&p[images][0]=' + encodeURIComponent(pimg);
+//                    Share.popup(url);
             },
             twitter: function(purl, ptitle, pimg, text) {
                     url  = 'https://twitter.com/share?';
