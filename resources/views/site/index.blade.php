@@ -349,8 +349,6 @@
             },
             facebook: function(purl, ptitle, pimg, text) {
                     var obj = {method: 'feed', link: purl, picture: pimg, name: ptitle, description: text};
-                    console.log(obj);
-                    debugger;
                     FB.ui(obj, function(r){});
 //                    url  = 'https://facebook.com/sharer/sharer.php?';
 //                    url += '&s=100';
