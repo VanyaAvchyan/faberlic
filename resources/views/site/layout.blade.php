@@ -5,6 +5,13 @@
         <meta charset="utf-8"/>
         <meta name="title" content='{{ $offer->{('title_').App::getLocale()} }}'>
         <meta name="description" content='{{ $offer->{('description_').App::getLocale()} }}'>
+        
+        <meta property="og:url"                content="{{url('/'.App::getLocale()) }}" />
+        <meta property="og:type"               content="article" />
+        <meta property="og:title"              content="{{ $offer->{('title_').App::getLocale()} }}" />
+        <meta property="og:description"        content="{{ $offer->{('description_').App::getLocale()} }}" />
+        <meta property="og:image"              content="{{url()}}/uploads/site/logo.jpg" />
+
         <title>Biznesfl</title>
         <!-- GLOBAL MANDATORY STYLES -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
