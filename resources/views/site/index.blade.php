@@ -349,6 +349,7 @@
             },
             facebook: function(purl, ptitle, pimg, text) {
                     var obj = {method: 'feed', link: purl, picture: pimg, name: ptitle, description: text};
+                    console.log(obj);
                     FB.ui(obj, function(r){});
 //                    url  = 'https://facebook.com/sharer/sharer.php?';
 //                    url += '&s=100';
@@ -380,7 +381,7 @@
             "url"         : "{{url('/'.App::getLocale()) }}",
             "title"       : $('.main__title').html(),
             "description" : $('.main__description').html(),
-            "image"       : $('.logo img').attr('src'),
+            "image"       : '{{url()}}/uploads/site/share_img.jpg',
         };
 
         $('.social__buttons li a').on('click', function(e) {

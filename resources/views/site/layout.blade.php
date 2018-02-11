@@ -6,11 +6,6 @@
         
         <meta name="title" content='{{ $offer->{('title_').App::getLocale()} }}'>
         <meta name="description" content='{{ $offer->{('description_').App::getLocale()} }}'>
-        
-        <meta property="og:title" content="{{ $offer->{('title_').App::getLocale()} }}">
-        <meta property="og:image" content="{{url()}}/uploads/site/logo.jpg">
-        <meta property="og:site_name" content="Biznesfl">
-        <meta property="og:description" content="{{ $offer->{('description_').App::getLocale()} }}">
 
         <title>Biznesfl : {{ $offer->{('title_').App::getLocale()} }}</title>
         <!-- GLOBAL MANDATORY STYLES -->
