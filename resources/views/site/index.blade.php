@@ -359,7 +359,8 @@
                             +'&related=twitterapi,twitter'
                             +'&text='+encodeURIComponent(text)
                             +'&hashtags='+encodeURIComponent(hashtags);
-                    Share.popup(url);
+                    Share.popup('https://twitter.com/intent/tweet');
+//                    Share.popup(url);
             },
 
             popup: function(url) {
