@@ -17,7 +17,7 @@ class SiteController extends Controller
         $url = isset($match[1]) ? $match[1] : '';
         
         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
-        $img = isset($match[1]) ? "https://img.youtube.com/vi/{$match[1]}/0.jpg" : '';
+        $img = isset($match[1]) ? "https://img.youtube.com/vi/{$match[1]}/3.jpg" : '';
         
         $sharedInfo = [
             'title'       => $offer->{'title_'.$locale},
