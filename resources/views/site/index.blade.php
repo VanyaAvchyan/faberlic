@@ -352,13 +352,11 @@
                     console.log(obj);
                     FB.ui(obj, function(r){});
             },
-            twitter: function(purl, via, hashtags, text) {
+            twitter: function(purl, via) {
                     var url  = 'https://twitter.com/intent/tweet?'
                             +'&url='+encodeURIComponent(purl)
-                            +'&text='+encodeURIComponent(text)
                             +'&via='+ via
-                            +'&related='+via
-                            +'&hashtags='+encodeURIComponent(hashtags);
+                            +'&related='+via;
                     Share.popup(url);
             },
 
@@ -383,7 +381,7 @@
             switch( share_tipe )
             {
                 case 'facebook'      : Share.facebook(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
-                case 'twitter'       : Share.twitter(shared_info.url, 'biznesfl', 'biznesfl' ,shared_info.image+' '+shared_info.title+' '+ shared_info.description ) ;break;
+                case 'twitter'       : Share.twitter(shared_info.url, 'biznesfl') ;break;
                 case 'linkedin'      : Share.linkedin(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'vkontakte'     : Share.vkontakte(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
