@@ -28,6 +28,7 @@ class SiteController extends Controller
             'title'       => $offer->{'title_'.$locale},
             'description' => strip_tags($offer->{'description_'.$locale}),
             'image'       => $img,
+            'url'         => $url,
             'user'        => $user,
         ];
         return $sharedInfo;
