@@ -11,18 +11,24 @@ use App\User;
 use App;
 class SiteController extends Controller
 {
-    private function getSharedInfo($offer, $locale)
+    private function getSharedInfo($user , $offer, $locale)
     {
         preg_match('/src="([^"]+)"/', $offer->{'description_'.$locale}, $match);
         $url = isset($match[1]) ? $match[1] : '';
         
         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
-        $img = isset($match[1]) ? "https://img.youtube.com/vi/{$match[1]}/3.jpg" : '';
+        $img = isset($match[1]) ? [
+            "https://img.youtube.com/vi/{$match[1]}/0.jpg",
+            "https://img.youtube.com/vi/{$match[1]}/1.jpg",
+            "https://img.youtube.com/vi/{$match[1]}/2.jpg",
+            "https://img.youtube.com/vi/{$match[1]}/3.jpg",
+        ] : '';
         
         $sharedInfo = [
             'title'       => $offer->{'title_'.$locale},
             'description' => strip_tags($offer->{'description_'.$locale}),
             'image'       => $img,
+            'user'        => $user,
         ];
         return $sharedInfo;
     }
@@ -33,7 +39,7 @@ class SiteController extends Controller
         App::setLocale($locale);
         $partner = Partner::where('user_id', $admin->id)->first();
         $offer   = Offer::where('user_id', $admin->id)->first();
-        $shared_info = $this->getSharedInfo($offer, $locale);
+        $shared_info = $this->getSharedInfo($admin , $offer, $locale);
         $videos  = Video::whereNotIn('order', ['first', 'second'])->where('user_id', $admin->id)->get();
         $main_videos = [
             Video::whereIn('order', ['first'])
@@ -101,7 +107,7 @@ class SiteController extends Controller
         if(!$offer)
             $offer = Offer::where('user_id', $admin->id)->first();
 
-        $shared_info = $this->getSharedInfo($offer, $locale);
+        $shared_info = $this->getSharedInfo($admin , $offer, $locale);
         
         $contacts = Contact::where('user_id', $user->id)->get();
         if($contacts->isEmpty())

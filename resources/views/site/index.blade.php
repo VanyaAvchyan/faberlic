@@ -352,12 +352,13 @@
                     console.log(obj);
                     FB.ui(obj, function(r){});
             },
-            twitter: function(purl, ptitle, pimg, text) {
-                    url  = 'https://twitter.com/share?';
-                    url += 'title='     + encodeURIComponent(ptitle);
-                    url += '&text='     + encodeURIComponent(text);
-                    url += '&url='      + encodeURIComponent(purl);
-                    url += '&counturl=' + encodeURIComponent(purl);
+            twitter: function(purl, via, hashtags, text) {
+                    var url  = 'https://twitter.com/share?'
+                            +'&url='+encodeURIComponent(purl)
+                            +'&via='+ via
+                            +'&related=twitterapi,twitter'
+                            +'&text='+encodeURIComponent(text)
+                            +'&hashtags='+encodeURIComponent(hashtags);
                     Share.popup(url);
             },
 
@@ -374,10 +375,8 @@
             "url"         : "{{url('/'.App::getLocale()) }}",
             "title"       : '{{ $shared_info['title'] }}',
             "description" : '{{ $shared_info['description'] }}',
-            "image"       : '{{ $shared_info['image'] }}',
+            "image"       : '{{ $shared_info['image'][3] }}',
         };
-
-console.log(shared_info);
 
         $('.social__buttons li a').on('click', function(e) {
             e.preventDefault();
@@ -385,7 +384,7 @@ console.log(shared_info);
             switch( share_tipe )
             {
                 case 'facebook'      : Share.facebook(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
-                case 'twitter'       : Share.twitter(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
+                case 'twitter'       : Share.twitter(shared_info.url, 'biznesfl', 'biznesfl' ,shared_info.description ) ;break;
                 case 'linkedin'      : Share.linkedin(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'vkontakte'     : Share.vkontakte(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;

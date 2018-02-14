@@ -4,16 +4,28 @@
     <head>
         <meta charset="utf-8"/>
         
-        <meta name="title" content='{{ $offer->{('title_').App::getLocale()} }}'>
-        <meta name="description" content='{{ $offer->{('description_').App::getLocale()} }}'>
+        <meta name="title" content='{{ $shared_info['title'] }}'>
+        <meta name="description" content='{{ $shared_info['description'] }}'>
         
+        <!--facebook share info-->
         <meta property="og:url" content="{{url('/'.App::getLocale()) }}">
         <meta property="og:type" content="website">
         <meta property="og:title" content="{{ $shared_info['title'] }}">
-        <meta property="og:image" content="{{ $shared_info['image'] }}">
+        <meta property="og:image" content="{{ $shared_info['image'][3] }}">
         <meta property="og:description" content="{{ $shared_info['description'] }}">
         <meta property="fb:app_id" content="1696277890422658">
-
+        <!--end facebook share info-->
+        
+        <!--Twitter share info-->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@biznesfl">
+        <meta name="twitter:creator" content="@{{ $shared_info['user']->name }}">
+        <meta name="twitter:title" content="{{ $shared_info['title'] }}">
+        <meta name="twitter:description" content="{{ $shared_info['description'] }}">
+        <meta name="twitter:image" content="{{ $shared_info['image'][0] }}">
+        <meta name="twitter:twitter:domain" content="{{url('/'.App::getLocale()) }}">
+        <!--end Twitter share info-->
+        
         <title>Biznesfl</title>
         
         <!-- GLOBAL MANDATORY STYLES -->
