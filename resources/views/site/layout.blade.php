@@ -9,12 +9,13 @@
         
         <meta property="og:url" content="{{url('/'.App::getLocale()) }}">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="{{ $offer->{('title_').App::getLocale()} }}">
-        <meta property="og:image" content="{{url()}}/uploads/site/share_img.jpg">
-        <meta property="og:description" content="{{ $offer->{('description_').App::getLocale()} }}">
+        <meta property="og:title" content="{{ $shared_info['title'] }}">
+        <meta property="og:image" content="{{ $shared_info['image'] }}">
+        <meta property="og:description" content="{{ $shared_info['description'] }}">
         <meta property="fb:app_id" content="1696277890422658">
 
-        <title>Biznesfl : {{ $offer->{('title_').App::getLocale()} }}</title>
+        <title>Biznesfl</title>
+        
         <!-- GLOBAL MANDATORY STYLES -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css" rel="stylesheet" type="text/css">

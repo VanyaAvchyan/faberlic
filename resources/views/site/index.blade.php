@@ -351,13 +351,6 @@
                     var obj = {method: 'feed', link: purl, picture: pimg, name: ptitle, description: text};
                     console.log(obj);
                     FB.ui(obj, function(r){});
-//                    url  = 'https://facebook.com/sharer/sharer.php?';
-//                    url += '&s=100';
-//                    url += '&p[title]='     + encodeURIComponent(ptitle);
-//                    url += '&p[summary]='   + encodeURIComponent(text);
-//                    url += '&p[url]='       + encodeURIComponent(purl);
-//                    url += '&p[images][0]=' + encodeURIComponent(pimg);
-//                    Share.popup(url);
             },
             twitter: function(purl, ptitle, pimg, text) {
                     url  = 'https://twitter.com/share?';
@@ -379,10 +372,12 @@
         };
         var shared_info = {
             "url"         : "{{url('/'.App::getLocale()) }}",
-            "title"       : $('.main__title').html(),
-            "description" : $('.main__description').html(),
-            "image"       : '{{url()}}/uploads/site/share_img.jpg',
+            "title"       : '{{ $shared_info['title'] }}',
+            "description" : '{{ $shared_info['description'] }}',
+            "image"       : '{{ $shared_info['image'] }}',
         };
+
+console.log(shared_info);
 
         $('.social__buttons li a').on('click', function(e) {
             e.preventDefault();
