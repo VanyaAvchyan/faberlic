@@ -83,7 +83,7 @@
                         >
                         <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" />
                         <div class="" style="text-align: center;">
-                            <b>{{$main_videos[0]->{('title_').App::getLocale()} }}</b>
+                            <b style="font-size:20px">{{$main_videos[0]->{('title_').App::getLocale()} }}</b>
                         </div>
                     </div>
                     @else
