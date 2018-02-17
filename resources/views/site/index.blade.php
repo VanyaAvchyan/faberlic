@@ -65,7 +65,6 @@
                         <li><a href="#" class="social-icons vkontakte" data-share_tipe="vkontakte"><span class="fa fa-vk"></span></a></li>
                         <li><a href="#" class="social-icons telegram" data-share_tipe="telegram"><span class="fa fa-telegram"></span></a></li>
                         <li><a href="#" class="social-icons odnoklassniki" data-share_tipe="odnoklassniki"><span class="fa fa-odnoklassniki"></span></a></li>
-                        <li><a href="#" class="social-icons instagram" data-share_tipe="instagram"><span class="fa fa-instagram"></span></i></a></li>
                         <li><a href="#" class="social-icons linkedin" data-share_tipe="linkedin"><span class="fa fa-linkedin"></span></i></a></li>
                     </ul>
                 </div>
@@ -376,10 +375,6 @@
                             'url='+encodeURIComponent(purl);
                     Share.popup(url);
             },
-            instagram: function(purl, ptitle, pimg, text) {
-                    var url = 'https://www.instagram.com/p/BFKjVxkBsCC/embed';
-                    Share.popup(url);
-            },
 
             popup: function(url) {
                 var w = 700;
@@ -407,7 +402,6 @@
                 case 'vkontakte'     : Share.vkontakte(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'telegram'      : Share.telegram(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
-                case 'instagram'      : Share.instagram(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
             }
         });
     </script>
