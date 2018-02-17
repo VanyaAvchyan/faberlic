@@ -396,8 +396,9 @@
         h1 {
             color: red;
         }
-        .header_navigation_block , .footer_block {
-            background: #c9ffca;
+        .header_navigation_block , .footer_block, .btn-default-bg {
+            background: #a1d3ff;
+            border-color: transparent;
         }
     </style>
 @endsection
