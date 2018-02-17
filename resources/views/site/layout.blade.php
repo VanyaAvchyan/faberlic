@@ -11,7 +11,7 @@
         <meta property="og:url" content="{{url('/'.App::getLocale()) }}">
         <meta property="og:type" content="website">
         <meta property="og:title" content="{{ $shared_info['title'] }}">
-        <meta property="og:image" content="{{ $shared_info['image'][3] }}">
+        <meta property="og:image" content="{{ $shared_info['image'][0] }}">
         <meta property="og:description" content="{{ $shared_info['description'] }}">
         <meta property="fb:app_id" content="1696277890422658">
         <!--end facebook share info-->

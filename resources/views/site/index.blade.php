@@ -388,7 +388,7 @@
             "url"         : "{{url('/'.App::getLocale()) }}",
             "title"       : '{{ $shared_info['title'] }}',
             "description" : '{{ $shared_info['description'] }}',
-            "image"       : '{{ $shared_info['image'][3] }}',
+            "image"       : '{{ $shared_info['image'][0] }}',
         };
 
         $('.social__buttons li a').on('click', function(e) {
@@ -400,7 +400,7 @@
                 case 'twitter'       : Share.twitter(shared_info.url, 'biznesfl', shared_info.description) ;break;
                 case 'linkedin'      : Share.linkedin(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'vkontakte'     : Share.vkontakte(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
-                case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, '{{ $shared_info['image'][0] }}', shared_info.description ) ;break;
+                case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'telegram'      : Share.telegram(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
             }
         });
