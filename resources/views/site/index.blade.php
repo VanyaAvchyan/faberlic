@@ -65,6 +65,7 @@
                         <li><a href="#" class="social-icons linkedin" data-share_tipe="linkedin"><span class="fa fa-linkedin"></span></i></a></li>
                         <li><a href="#" class="social-icons vkontakte" data-share_tipe="vkontakte"><span class="fa fa-vk"></span></a></li>
                         <li><a href="#" class="social-icons odnoklassniki" data-share_tipe="odnoklassniki"><span class="fa fa-odnoklassniki"></span></a></li>
+                        <li><a href="#" class="social-icons telegram" data-share_tipe="telegram"><span class="fa fa-telegram"></span></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6">
@@ -342,19 +343,19 @@
             },
             linkedin: function(purl, ptitle, pimg, text) {
                     var url  = 'https://www.linkedin.com/shareArticle';
-                    url += '&url='          + encodeURIComponent(purl);
+                    url += '?url='          + encodeURIComponent(purl);
                     url += '&title='        + encodeURIComponent(ptitle);
-                    url += '&summary='      + encodeURIComponent(text);
+                    url += '&summary='      + encodeURIComponent(pimg)+ ' ' + encodeURIComponent(text);
                     url += '&source='       + encodeURIComponent(purl);
-                    //url = 'https://www.linkedin.com/shareArticle?a=dsMlRs6SV58&u=%2Fwatch%3Fv%3DO1xgHj8nCFw%26feature%3Dshare&title=Falcon Rising (2014) Fight Scene - Lateef Crowder Dos Santos&summary=Falcon Rising (2014) Lateef Crowder Dos Santos - Fight Scene&source=Youtube';
+                    url += '&image='       + encodeURIComponent(pimg);
 
-                    Share.popup(encodeURIComponent(url));
-//                    Share.popup(url);
+                    Share.popup(url);
             },
             odnoklassniki: function(purl, ptitle, pimg, text) {
-                    url  = 'https://ok.ru/dk?st.cmd=addShare&st.s=1';
-                    url += '&st.comments=' + encodeURIComponent(text);
-                    url += '&st._surl='    + encodeURIComponent(purl);
+                    var url = 'https://connect.ok.ru/dk?st.cmd=WidgetSharePreview'
+                            + '&st.imageUrl=' + encodeURIComponent(pimg)
+                            + '&st.shareUrl=' + encodeURIComponent(purl);
+                    
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
@@ -368,6 +369,11 @@
                             +'&via='+ via
                             //+'&text='+encodeURIComponent(text)
                             +'&related='+via;
+                    Share.popup(url);
+            },
+            telegram: function(purl, ptitle, pimg, text) {
+                    var url = 'https://t.me/share/url?'+
+                            'url='+encodeURIComponent(purl);
                     Share.popup(url);
             },
 
@@ -396,6 +402,7 @@
                 case 'linkedin'      : Share.linkedin(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'vkontakte'     : Share.vkontakte(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
+                case 'telegram'      : Share.telegram(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
             }
         });
     </script>
