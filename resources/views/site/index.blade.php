@@ -400,7 +400,7 @@
                 case 'twitter'       : Share.twitter(shared_info.url, 'biznesfl', shared_info.description) ;break;
                 case 'linkedin'      : Share.linkedin(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'vkontakte'     : Share.vkontakte(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
-                case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
+                case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, '{{ $shared_info['image'][0] }}', shared_info.description ) ;break;
                 case 'telegram'      : Share.telegram(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
             }
         });
