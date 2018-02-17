@@ -355,7 +355,6 @@
                     var url = 'https://connect.ok.ru/dk?st.cmd=WidgetSharePreview'
                             + '&st.imageUrl=' + encodeURIComponent(pimg)
                             + '&st.shareUrl=' + encodeURIComponent(purl);
-                    
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
