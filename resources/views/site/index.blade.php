@@ -253,13 +253,23 @@
 
             <!--// end row -->
             <div class="row">
+                <?php
+                    $video_col_num = round (12 / $videos->count());
+//                    if($videos->count() <=3)
+//                        $video_col_num = 12/$videos->count();
+//                    else
+//                        $video_col_num = round (12 / $videos->count());
+                    
+//                    dd($video_col_num);
+                ?>
                 @foreach($videos as $video)
                     <?php
                         $match = [];
                         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video->{('url_').App::getLocale()}, $match);
                         $youtube_id = $match[1];
+                        
                     ?>
-                <div class="col-md-2">
+                <div class="col-md-{{$video_col_num}}">
                     <img
                         data-toggle="modal"
                         data-target="#myModal"
