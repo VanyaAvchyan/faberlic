@@ -65,8 +65,8 @@
                         <li><a href="#" class="social-icons vkontakte" data-share_tipe="vkontakte"><span class="fa fa-vk"></span></a></li>
                         <li><a href="#" class="social-icons telegram" data-share_tipe="telegram"><span class="fa fa-telegram"></span></a></li>
                         <li><a href="#" class="social-icons odnoklassniki" data-share_tipe="odnoklassniki"><span class="fa fa-odnoklassniki"></span></a></li>
-                        <li><a href="#" class="social-icons linkedin" data-share_tipe="linkedin"><span class="fa fa-linkedin"></span></i></a></li>
                         <li><a href="#" class="social-icons instagram" data-share_tipe="instagram"><span class="fa fa-instagram"></span></i></a></li>
+                        <li><a href="#" class="social-icons linkedin" data-share_tipe="linkedin"><span class="fa fa-linkedin"></span></i></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6">
