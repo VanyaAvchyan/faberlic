@@ -1,9 +1,9 @@
 @extends('site/layout')
 @section('content')
     <!--========== HEADER ==========-->
-    <header class="header navbar-fixed-top">
+    <header class="header navbar-fixed-top" style="background-image:url(uploads/site/background.jpg);">
         <!-- Navbar -->
-        <nav class="navbar" role="navigation">
+        <nav class="" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="menu-container js_nav-item">
@@ -46,7 +46,7 @@
     <!--========== END HEADER ==========-->
 
     <!--========== SLIDER ==========-->
-    <div class="promo-block">
+    <div class="promo-block" style="background-image:url(uploads/site/background.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 sm-margin-b-60">
@@ -98,9 +98,9 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- About -->
-    <div id="about">
+    <div id="about" style="background-image:url(uploads/site/background.jpg);">
         <div class="container content-lg">
-            <div class="row" style="background-image:url(uploads/site/background.jpg); background-repeat: repeat-x;">
+            <div class="row">
                 <div class="col-sm-5 sm-margin-b-60 video2">
                     @if(isset($main_videos[1]))
                         <?php
@@ -149,8 +149,8 @@
     <!-- End About -->
 
     <!-- Experience -->
-    <div id="experience">
-        <div class="bg-color-sky-light" data-auto-height="true">
+    <div id="experience" style="background-image:url(uploads/site/background.jpg);">
+        <div class="" data-auto-height="true">
             <div class="container content-lg">
                 <div class="row row-space-2 margin-b-4">
 
@@ -242,8 +242,8 @@
     <!-- End Experience -->
 
 <!-- Work -->
-<div id="work">
-    <div class="bg-color-sky-light">
+<div id="work" style="background-image:url(uploads/site/background.jpg);">
+    <div class="">
         <div class="container content-lg">
             <div class="row margin-b-40">
                 <div class="col-sm-6">
@@ -277,8 +277,8 @@
     <!-- End Work -->
 
     <!-- Contact -->
-    <div id="contact">
-        <div class="bg-color-sky-light">
+    <div id="contact" style="background-image:url(uploads/site/background.jpg);">
+        <div class="">
             <div class="container content-lg">
                 <div class="row margin-b-40">
                     <div class="col-sm-6">
@@ -397,7 +397,7 @@
             color: red;
         }
         .header_navigation_block , .footer_block, .btn-default-bg {
-            background: #a1d3ff;
+            background: #c5e4ff87;
             border-color: transparent;
         }
         
