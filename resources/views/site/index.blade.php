@@ -121,7 +121,7 @@
                             src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg"
                             align=""
                         >
-                        <b>{{$main_videos[1]->{('title_').App::getLocale()} }}</b>
+                        <h4>{{$main_videos[1]->{('title_').App::getLocale()} }}</h4>
                     </div>
                     @else
                         <img class="full-width img-responsive" src="{{url()}}/uploads/site/img/500x700/01.jpg" alt="Image">
@@ -273,8 +273,7 @@
                         data-title="{{ $video->{('title_').App::getLocale()} }}"
                         class="img-responsive  videos"
                         src="https://img.youtube.com/vi/{{ $youtube_id }}/0.jpg" alt="Image">
-                    <br>
-                    <b>{{ $video->{('title_').App::getLocale()} }}</b>
+                    <h4>{{ $video->{('title_').App::getLocale()} }}</h4>
                 </div>
                 @endforeach
             </div>
