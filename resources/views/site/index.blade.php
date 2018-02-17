@@ -100,7 +100,7 @@
     <!-- About -->
     <div id="about">
         <div class="container content-lg">
-            <div class="row">
+            <div class="row" style="background-image:url(uploads/site/background.jpg); background-repeat: repeat-x;">
                 <div class="col-sm-5 sm-margin-b-60 video2">
                     @if(isset($main_videos[1]))
                         <?php
@@ -400,6 +400,8 @@
             background: #a1d3ff;
             border-color: transparent;
         }
+        
+        
     </style>
 @endsection
 <!--========== END PAGE LAYOUT ==========-->
