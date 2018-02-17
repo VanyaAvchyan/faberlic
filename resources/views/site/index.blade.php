@@ -15,14 +15,14 @@
                     <!-- Logo -->
                     <div class="logo">
                         <a class="logo-wrap" href="#body">
-                            <img class="logo-img" src="{{url()}}/uploads/site/logo.jpg" alt="Asentus Logo">
+                            <img class="logo-img" src="{{url()}}/uploads/site/logo.png" alt="Asentus Logo">
                         </a>
                     </div>
                     <!-- End Logo -->
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse nav-collapse">
+                <div class="collapse navbar-collapse nav-collapse header_navigation_block">
                     <div class="menu-container">
                         <ul class="nav navbar-nav navbar-nav-left">
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#body">{{trans('site.menus.offer')}}</a></li>
@@ -158,7 +158,7 @@
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
                         <div class="service" data-height="height">
                             <div class="service-element">
-                                <i class="service-icon icon-mustache"></i>
+                                <i class="service-icon"></i>
                             </div>
                             <div class="service-info">
                                 @if($about_us)
@@ -177,7 +177,7 @@
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
                         <div class="service" data-height="height">
                             <div class="service-element">
-                                <i class="service-icon icon-mustache"></i>
+                                <i class="service-icon"></i>
                             </div>
                             <div class="service-info">
                                 <h3>{{trans('site.faq')}}</h3>
@@ -198,7 +198,7 @@
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
                         <div class="service" data-height="height">
                             <div class="service-element">
-                                <i class="service-icon icon-mustache"></i>
+                                <i class="service-icon"></i>
                             </div>
                             <div class="service-info">
                                 @if($our_product)
@@ -218,7 +218,7 @@
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
                         <div class="service" data-height="height">
                             <div class="service-element">
-                                <i class="service-icon icon-mustache"></i>
+                                <i class="service-icon"></i>
                             </div>
                             <div class="service-info">
                                 @if($undecided)
@@ -288,7 +288,7 @@
                 </div>
                 <!--// end row -->
 
-                <div class="row">
+                <div class="row footer_block">
                     @foreach($contacts as $contact)
                     <div class="col-md-3 col-xs-6 md-margin-b-30">
                         <h4>{{$contact->title}}</h4>
@@ -334,12 +334,15 @@
                     Share.popup(url);
             },
             linkedin: function(purl, ptitle, pimg, text) {
-                    url  = 'https://www.linkedin.com/shareArticle?mini=true';
+                    var url  = 'https://www.linkedin.com/shareArticle';
                     url += '&url='          + encodeURIComponent(purl);
                     url += '&title='        + encodeURIComponent(ptitle);
                     url += '&summary='      + encodeURIComponent(text);
                     url += '&source='       + encodeURIComponent(purl);
-                    Share.popup(url);
+                    //url = 'https://www.linkedin.com/shareArticle?a=dsMlRs6SV58&u=%2Fwatch%3Fv%3DO1xgHj8nCFw%26feature%3Dshare&title=Falcon Rising (2014) Fight Scene - Lateef Crowder Dos Santos&summary=Falcon Rising (2014) Lateef Crowder Dos Santos - Fight Scene&source=Youtube';
+
+                    Share.popup(encodeURIComponent(url));
+//                    Share.popup(url);
             },
             odnoklassniki: function(purl, ptitle, pimg, text) {
                     url  = 'https://ok.ru/dk?st.cmd=addShare&st.s=1';
@@ -352,10 +355,11 @@
                     console.log(obj);
                     FB.ui(obj, function(r){});
             },
-            twitter: function(purl, via) {
+            twitter: function(purl, via, text) {
                     var url  = 'https://twitter.com/intent/tweet?'
                             +'&url='+encodeURIComponent(purl)
                             +'&via='+ via
+                            //+'&text='+encodeURIComponent(text)
                             +'&related='+via;
                     Share.popup(url);
             },
@@ -381,13 +385,21 @@
             switch( share_tipe )
             {
                 case 'facebook'      : Share.facebook(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
-                case 'twitter'       : Share.twitter(shared_info.url, 'biznesfl') ;break;
+                case 'twitter'       : Share.twitter(shared_info.url, 'biznesfl', shared_info.description) ;break;
                 case 'linkedin'      : Share.linkedin(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'vkontakte'     : Share.vkontakte(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
             }
         });
     </script>
+    <style>
+        h1 {
+            color: red;
+        }
+        .header_navigation_block , .footer_block {
+            background: #c9ffca;
+        }
+    </style>
 @endsection
 <!--========== END PAGE LAYOUT ==========-->
 @endsection
