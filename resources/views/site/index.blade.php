@@ -75,14 +75,16 @@
                         $youtube_id = $match[1];
                     ?>
                     <div
-                        class="promo-block-img-wrap video1"
+                        class="promo-block-img-wrap"
                         data-toggle="modal"
                         data-target="#myModal"
                         data-youtube_id="{{ $youtube_id }}"
                         data-title="{{ $main_videos[0]->{('title_').App::getLocale()} }}"
                         >
-                        <span class="video1-title">{{$main_videos[0]->{('title_').App::getLocale()} }}</span>
-                        <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" align="">
+                        <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" />
+                        <div class="" style="text-align: center;">
+                            <b>{{$main_videos[0]->{('title_').App::getLocale()} }}</b>
+                        </div>
                     </div>
                     @else
                         <div class="promo-block-img-wrap">
@@ -114,12 +116,12 @@
                         data-youtube_id="{{ $youtube_id }}"
                         data-title="{{ $main_videos[1]->{('title_').App::getLocale()} }}"
                     >
-                        <span class="video2-title">{{$main_videos[1]->{('title_').App::getLocale()} }}</span>
                         <img
                             class="promo-block-img img-responsive"
                             src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg"
                             align=""
                         >
+                        <b>{{$main_videos[1]->{('title_').App::getLocale()} }}</b>
                     </div>
                     @else
                         <img class="full-width img-responsive" src="{{url()}}/uploads/site/img/500x700/01.jpg" alt="Image">
@@ -254,13 +256,7 @@
             <!--// end row -->
             <div class="row">
                 <?php
-                    $video_col_num = round (12 / $videos->count());
-//                    if($videos->count() <=3)
-//                        $video_col_num = 12/$videos->count();
-//                    else
-//                        $video_col_num = round (12 / $videos->count());
-                    
-//                    dd($video_col_num);
+                    $video_col_num = ceil (12 / $videos->count());
                 ?>
                 @foreach($videos as $video)
                     <?php
@@ -277,6 +273,8 @@
                         data-title="{{ $video->{('title_').App::getLocale()} }}"
                         class="img-responsive  videos"
                         src="https://img.youtube.com/vi/{{ $youtube_id }}/0.jpg" alt="Image">
+                    <br>
+                    <b>{{ $video->{('title_').App::getLocale()} }}</b>
                 </div>
                 @endforeach
             </div>
@@ -414,7 +412,6 @@
         .btn-default-bg{
             background: #17bed2
         }
-        
     </style>
 @endsection
 <!--========== END PAGE LAYOUT ==========-->
