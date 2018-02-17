@@ -6,10 +6,10 @@
         <nav class="" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="menu-container js_nav-item">
+                <div class="menu-container js_nav-item" style="font-weight:bold">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="toggle-icon"></span>
+                        <span class="sr-only">Menu</span>
+                        <span class="glyphicon glyphicon-menu-hamburger" style="font-weight:bold;font-size: 30px"></span>
                     </button>
 
                     <!-- Logo -->
