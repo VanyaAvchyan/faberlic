@@ -159,7 +159,7 @@
 
                     <!-- About us -->
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
-                        <div class="service" data-height="height">
+                        <div class="block4" data-height="height">
                             <div class="service-element">
                                 <i class="service-icon"></i>
                             </div>
@@ -178,7 +178,7 @@
 
                     <!-- FAQ -->
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
-                        <div class="service" data-height="height">
+                        <div class="block4" data-height="height">
                             <div class="service-element">
                                 <i class="service-icon"></i>
                             </div>
@@ -199,7 +199,7 @@
 
                     <!-- Our Products -->
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
-                        <div class="service" data-height="height">
+                        <div class="block4" data-height="height">
                             <div class="service-element">
                                 <i class="service-icon"></i>
                             </div>
@@ -219,7 +219,7 @@
 
                     <!-- Our Products -->
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
-                        <div class="service" data-height="height">
+                        <div class="block4" data-height="height">
                             <div class="service-element">
                                 <i class="service-icon"></i>
                             </div>
@@ -415,6 +415,10 @@
         
         .btn-default-bg{
             background: #17bed2
+        }
+        .block4 {
+            background: #fff;
+            padding: 20px 20px;
         }
     </style>
 @endsection
