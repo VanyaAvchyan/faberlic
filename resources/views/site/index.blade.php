@@ -73,7 +73,7 @@
                     <?php
                         $match = [];
                         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $main_videos[0]->{('url_').App::getLocale()}, $match);
-                        $youtube_id = $match[1];
+                        $youtube_id = isset($match[1])? $match[1]: 'undefined';
                     ?>
                     <div
                         class="promo-block-img-wrap"
@@ -109,7 +109,7 @@
                         <?php
                             $match = [];
                             preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $main_videos[1]->{('url_').App::getLocale()}, $match);
-                            $youtube_id = $match[1];
+                            $youtube_id = isset($match[1])? $match[1]: 'undefined';
                         ?>
                     <div
                         data-toggle="modal"
@@ -266,7 +266,7 @@
                     <?php
                         $match = [];
                         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video->{('url_').App::getLocale()}, $match);
-                        $youtube_id = $match[1];
+                        $youtube_id = isset($match[1])? $match[1]: 'undefined';
                         
                     ?>
                 <div class="col-md-{{$video_col_num}}">
@@ -390,7 +390,7 @@
             "url"         : "{{url('/'.App::getLocale()) }}",
             "title"       : '{{ $shared_info['title'] }}',
             "description" : '{{ $shared_info['description'] }}',
-            "image"       : '{{ $shared_info['image'][0] }}',
+            "image"       : '{{ isset($shared_info['image'][0])?$shared_info['image'][0]:"undefined" }}',
         };
 
         $('.social__buttons li a').on('click', function(e) {
