@@ -10,6 +10,7 @@ return [
         'about_us'      => 'Մեր մասին',
         'videos'        => 'Վիդեո',
     ],
-    'faq'           => 'ՀՏՀ',
-    'link_to_registration' => 'Հղում դեպի գրանցում'
+    'faq'               => 'ՀՏՀ',
+    'link_to_registration' => 'Հղում դեպի գրանցում',
+    'read_more'         => 'Կարդալ ավելին'
 ];

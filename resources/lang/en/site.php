@@ -11,5 +11,6 @@ return [
         'videos'        => 'Videos',
     ],
     'faq'           => 'F.A.Q',
-    'link_to_registration' => 'Registration'
+    'link_to_registration' => 'Registration',
+    'read_more'         => 'Read More'
 ];

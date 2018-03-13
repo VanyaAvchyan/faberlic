@@ -189,7 +189,10 @@
                                     <div class="faq_description faq_description_{{$faq->id}}">
                                         {!! $faq->{('description_').App::getLocale()} !!}
                                     </div>
-                                    <a class="link faq_title" data-id="{{$faq->id}}" href="javascript:void(0)">Read More</a>
+                                    <a class="faq_title" data-id="{{$faq->id}}" href="javascript:void(0)">
+                                        {{trans('site.read_more')}}
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </a>
                                 <hr>
                                 @endforeach
                             </div>
@@ -419,6 +422,15 @@
         .block4 {
             background: #fff;
             padding: 20px 20px;
+        }
+        .faq_title {
+            font-weight: bold;
+            font-size: 15px;
+            color:#70a6cc !important;
+        }
+        .faq_title span {
+            color:#70a6cc !important;
+            font-size: 12px;
         }
     </style>
 @endsection

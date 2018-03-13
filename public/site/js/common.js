@@ -1,6 +1,15 @@
 $('.faq_title').on('click', function() {
     var faq_id = $(this).data('id');
     $('.faq_description_'+faq_id).toggle();
+    var link = $('.faq_title[data-id='+faq_id+']');
+    if($('.faq_description_'+faq_id).is(":visible"))
+    {
+        link.find('span').removeClass('glyphicon-plus');
+        link.find('span').addClass('glyphicon-minus');
+    } else {
+        link.find('span').removeClass('glyphicon-minus');
+        link.find('span').addClass('glyphicon-plus');
+    }
 });
 
 $('#myModal').on('shown.bs.modal', function (e) {

@@ -11,5 +11,6 @@ return [
         'videos'        => 'Видео',
     ],
     'faq'           => 'ЧАВО',
-    'link_to_registration' => 'Регистрация'
+    'link_to_registration' => 'Регистрация',
+    'read_more'         => 'Подробнее'
 ];
