@@ -16,4 +16,3 @@ Route::get('lang/{lang?}', function($locale='am'){
 Route::controller('user', '\App\Http\Controllers\User\UserController');
 Route::get('/account/{code?}/{lang?}', '\App\Http\Controllers\SiteController@getSiteByCode');
 Route::get('/{lang?}', '\App\Http\Controllers\SiteController@getIndex');
-

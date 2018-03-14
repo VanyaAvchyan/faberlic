@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8"/>
         
+        @if(isset($shared_info))
         <meta name="title" content='{{ $shared_info['title'] }}'>
         <meta name="description" content='{{ $shared_info['description'] }}'>
         
@@ -25,7 +26,7 @@
         <meta name="twitter:image" content="{{ isset($shared_info['image'][0])? $shared_info['image'][0]: 'undefined' }}">
         <meta name="twitter:twitter:domain" content="{{url('/'.App::getLocale()) }}">
         <!--end Twitter share info-->
-        
+        @endif
         <title>Biznesfl</title>
         
         <!-- GLOBAL MANDATORY STYLES -->

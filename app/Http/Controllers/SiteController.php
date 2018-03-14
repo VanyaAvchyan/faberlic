@@ -11,6 +11,11 @@ use App\User;
 use App;
 class SiteController extends Controller
 {
+    private $langs = [];
+    public function __construct() {
+        $this->langs = ['am','ru','en'];
+    }
+
     private function getSharedInfo($user , $offer, $locale)
     {
         preg_match('/src="([^"]+)"/', $offer->{'description_'.$locale}, $match);
@@ -36,6 +41,8 @@ class SiteController extends Controller
 
     public function getIndex($locale = 'am')
     {
+        if(!in_array($locale, $this->langs))
+            return abort (404);
         $admin = User::where('role', 1)->first();
         App::setLocale($locale);
         $partner = Partner::where('user_id', $admin->id)->first();
@@ -75,6 +82,8 @@ class SiteController extends Controller
 
     public function getSiteByCode($code = false, $locale = 'am')
     {
+        if(!in_array($locale, $this->langs))
+            return abort (404);
         $admin = User::where('role', 1)->first();
         $user = User::where('username', $code)->first();
         if(!$user )
