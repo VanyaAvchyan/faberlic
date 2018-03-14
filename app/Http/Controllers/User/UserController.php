@@ -9,6 +9,8 @@ use App\Offer;
 use App\Contact;
 use App\Faq;
 use App\Info;
+use App\Training;
+use App\TrainingVideo;
 use Image, File;
 
 use App\Http\Requests\PartnerRequest;
@@ -319,4 +321,37 @@ class UserController extends Controller
         Faq::where([ 'id' => $id, 'user_id' => auth()->user()->id ])->delete();
         return redirect()->back()->with('success', 'Success !');
     }
+
+    /**
+     * Training
+     */
+    public function getTrainings()
+    {
+        $model = Training::first();
+        return view('user/trainings', ['model' => $model]);
+    }
+
+    /**
+     * Training
+     */
+    public function getTrainingVideos($id = false)
+    {
+        $model = TrainingVideo::find($id);
+        $videos = TrainingVideo::all();
+        $list = Training::first();
+        if($list)
+        {
+            $list = [
+                $list->level1 => 'Ուսուցում 1',
+                $list->level2 => 'Ուսուցում 2',
+                $list->level3 => 'Ուսուցում 3',
+            ];
+        }
+        $list = array_filter(array_flip($list));
+        $list = array_flip($list);
+        $list = [null => ''] + $list;
+        return view('user/training_videos', ['model' => $model,'videos' => $videos, 'list' => $list]);
+    }
+    
+    
 }

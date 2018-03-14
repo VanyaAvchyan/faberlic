@@ -3,6 +3,7 @@
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="x_panel">
+        @include('errors.messages')
         @if($model && $order)
           {!! Form::model($model, array('url' => 'user/video/'.$order, 'method' => 'PUT', 'class' => 'form-horizontal form-label-left')) !!}
         @else

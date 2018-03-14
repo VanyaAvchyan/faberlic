@@ -156,7 +156,6 @@
         <div class="" data-auto-height="true">
             <div class="container content-lg">
                 <div class="row row-space-2 margin-b-4">
-
                     <!-- About us -->
                     <div class="col-md-3 col-sm-6 md-margin-b-4">
                         <div class="block4" data-height="height">

@@ -1,27 +1,29 @@
-@extends('user/layout')
+@extends('site/layout')
 @section('content')
-<div>
-    <a class="hiddenanchor" id="signup"></a>
-    <div class="login_wrapper">
-      <div class="animate form login_form">
-        <section class="login_content">
+<div class="promo-block">
+    <div class="container">
+        <div class="col-sm-6">
           @include('errors.messages')
-          {!! Form::open(array('url' => 'user/login', 'method' => 'POST'))!!}
+          {!! Form::open(array('url' => 'training/login', 'method' => 'POST'))!!}
             <h1>User login</h1>
             <div>
                 {!! Form::label('username', 'Username') !!}
                 {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username']) !!}
             </div>
             <div>
-              {!! Form::label('password', 'Password') !!}
+                {!! Form::label('reg_num', 'Reg. number') !!}
+                {!! Form::text('reg_num', null, ['class' => 'form-control', 'placeholder' => 'Username']) !!}
+            </div>
+            <div>
+                {!! Form::label('password', 'Password') !!}
                 {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+                {!! Form::hidden('trainingNum', isset($trainingNum) ? $trainingNum : false) !!}
             </div>
             <div>
               <button class="btn btn-default submit" href="index.html">Log in</button>
             </div>
           {!! Form::close() !!}
-        </section>
-      </div>
+        </div>
     </div>
 </div>
 @endsection

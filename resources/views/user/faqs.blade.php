@@ -3,6 +3,7 @@
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="x_panel">
+        @include('errors.messages')
         @if($model)
           {!! Form::model($model, array('url' => 'user/faq/'.$model->id, 'method' => 'PUT', 'class' => 'form-horizontal form-label-left')) !!}
         @else

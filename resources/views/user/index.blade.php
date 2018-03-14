@@ -30,6 +30,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_content">
+                            @include('errors.messages')
                             {!! Form::model($user, array('url' => 'user/update/','files' => true, 'method' => 'PUT', 'class' => 'form-horizontal form-label-left')) !!}
                             <span class="section">Personal Info</span>
 

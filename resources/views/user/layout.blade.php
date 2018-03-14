@@ -79,6 +79,8 @@
                         <li><a href="{{url('user/video')}}">Videoner</a></li>
                         @if(auth()->user()->role === 1)
                             <li><a href="{{url('user/users')}}">Users</a></li>
+                            <li><a href="{{url('user/trainings')}}">Trainings codes</a></li>
+                            <li><a href="{{url('user/training-videos')}}">Training videos</a></li>
                         @endif
                       </ul>
                     </li>

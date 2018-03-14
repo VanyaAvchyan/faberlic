@@ -30,6 +30,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_content">
+                            @include('errors.messages')
                             @if($model)
                                 {!! Form::model($model, array('url' => 'user/user/'.$model->id, 'method' => 'PUT', 'class' => 'form-horizontal form-label-left')) !!}
                             @else
