@@ -346,14 +346,13 @@ class UserController extends Controller
                 $list->level2 => 'Ուսուցում 2',
                 $list->level3 => 'Ուսուցում 3',
             ];
-        }
-        $list = array_filter(array_flip($list));
-        
-        if($list)
-        {
+            $list = array_filter(array_flip($list));
             $list = array_flip($list);
             $list = [null => ''] + $list;
+        } else {
+            $list = [null => ''];
         }
+
         return view('user/training_videos', ['model' => $model,'videos' => $videos, 'list' => $list]);
     }
     
