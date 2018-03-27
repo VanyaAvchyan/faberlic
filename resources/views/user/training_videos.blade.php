@@ -56,7 +56,7 @@
                             <tbody>
                                @foreach($videos as $video)
                                 <tr>
-                                    <td>{{$list[$video->training_level]}}</td>
+                                    <td>{{(isset($list[$video->training_level]) ? $list[$video->training_level] : 'No')}}</td>
                                     <td>{!! $video->url_am !!}</td>
                                     <td>
                                         <a href="{{url('user/training-videos/'.$video->id)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>

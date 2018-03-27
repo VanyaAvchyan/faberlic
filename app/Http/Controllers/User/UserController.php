@@ -348,8 +348,12 @@ class UserController extends Controller
             ];
         }
         $list = array_filter(array_flip($list));
-        $list = array_flip($list);
-        $list = [null => ''] + $list;
+        
+        if($list)
+        {
+            $list = array_flip($list);
+            $list = [null => ''] + $list;
+        }
         return view('user/training_videos', ['model' => $model,'videos' => $videos, 'list' => $list]);
     }
     
