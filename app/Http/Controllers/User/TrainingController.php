@@ -31,6 +31,7 @@ class TrainingController extends Controller
         $user = User::where([
                     'username' => request()->get('username')
                 ])->first();
+        dd($user->password, Hash::check(request()->get('username'), $user->password));
         if(!$user)
             return redirect()->back()->with('error', 'Incorrect username');
         
