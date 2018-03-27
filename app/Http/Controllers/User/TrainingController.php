@@ -16,6 +16,11 @@ class TrainingController extends Controller
         $this->langs = ['am','ru','en'];
     }
 
+    public function getIndex()
+    {
+        return redirect('training/login');
+    }
+
     public function getLogin($videoNum = false)
     {
         return view('trainings/login', ['trainingNum' => request()->get('trainingNum')]);
@@ -50,11 +55,6 @@ class TrainingController extends Controller
 
     public function getVideos( $id = 1, $lang = 'am' )
     {
-//        dd(
-//            Cookie::get('has_training_access'),
-//            $id,
-//            Cookie::get('has_training_access')*1 !== $id*1
-//        );
         if(!Cookie::get('has_training_access'))
             return redirect('training/login')->with('error', 'Access denied');
         if(Cookie::get('has_training_access')*1 !== $id*1)
