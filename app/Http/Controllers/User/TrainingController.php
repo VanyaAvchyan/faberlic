@@ -28,15 +28,9 @@ class TrainingController extends Controller
 
     public function postLogin()
     {
-        $user = User::where([
-                    'username' => request()->get('username')
-                ])->first();
-        if(!$user)
-            return redirect()->back()->with('error', 'Incorrect username');
-        
-        if(!Hash::check(request()->get('username'), $user->password))
-            return redirect()->back()->with('error', 'Incorrect password');
-        
+        if (!auth()->attempt(request()->only('username', 'password')))
+            return redirect()->back()->with('error', 'Incorrect username or password');
+
         $trainingIsEmpty = Training::where('level1',request()->get('reg_num'))
                                     ->orWhere('level2',request()->get('reg_num'))
                                     ->orWhere('level3',request()->get('reg_num'))
