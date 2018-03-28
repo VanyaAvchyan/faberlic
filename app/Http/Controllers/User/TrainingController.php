@@ -42,7 +42,7 @@ class TrainingController extends Controller
             Cookie::queue('has_training_access', $trainingNum, 120);
         }
         else
-            return redirect()->back()->with('error', 'Incorrect access data');
+            return redirect()->back()->with('error', 'Incorrect Reg. number !');
 
         return redirect('training/videos/'.$trainingNum);
     }
