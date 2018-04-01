@@ -21,9 +21,9 @@ class TrainingController extends Controller
         return redirect('training/login');
     }
 
-    public function getLogin($videoNum = false)
+    public function getLogin($trainingNum = 1)
     {
-        return view('trainings/login', ['trainingNum' => request()->get('trainingNum')]);
+        return view('trainings/login', ['trainingNum' => $trainingNum]);
     }
 
     public function postLogin()
@@ -31,9 +31,7 @@ class TrainingController extends Controller
         if (!auth()->attempt(request()->only('username', 'password')))
             return redirect()->back()->with('error', 'Incorrect username or password');
 
-        $trainingIsEmpty = Training::where('level1',request()->get('reg_num'))
-                                    ->orWhere('level2',request()->get('reg_num'))
-                                    ->orWhere('level3',request()->get('reg_num'))
+        $trainingIsEmpty = Training::where('level'.request()->get('trainingNum'),request()->get('reg_num'))
                                     ->get()
                                     ->isEmpty();
         $trainingNum = request()->has('trainingNum') ? request()->get('trainingNum'): 1;
@@ -50,9 +48,9 @@ class TrainingController extends Controller
     public function getVideos( $id = 1, $lang = 'am' )
     {
         if(!Cookie::get('has_training_access'))
-            return redirect('training/login')->with('error', 'Access denied');
+            return redirect('training/login/'.$id)->with('error', 'Access denied');
         if(Cookie::get('has_training_access')*1 !== $id*1)
-            return redirect('training/login')->with('error', 'Access denied to training '.$id);
+            return redirect('training/login/'.$id)->with('error', 'Access denied to training '.$id);
 
         if(!in_array($lang, $this->langs))
             return abort(404);
