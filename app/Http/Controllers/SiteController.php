@@ -48,7 +48,7 @@ class SiteController extends Controller
         $partner = Partner::where('user_id', $admin->id)->first();
         $offer   = Offer::where('user_id', $admin->id)->first();
         $shared_info = $this->getSharedInfo($admin , $offer, $locale);
-        dd($shared_info['image']);
+//        dd($shared_info['image']);
         $videos  = Video::whereNotIn('order', ['first', 'second'])->where('user_id', $admin->id)->get();
         $main_videos = [
             Video::whereIn('order', ['first'])
