@@ -20,7 +20,6 @@ class SiteController extends Controller
     {
         preg_match('/src="([^"]+)"/', $offer->{'description_'.$locale}, $match);
         $url = isset($match[1]) ? $match[1] : '';
-        
         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
         $img = isset($match[1]) ? [
             "https://img.youtube.com/vi/{$match[1]}/0.jpg",
@@ -28,7 +27,6 @@ class SiteController extends Controller
             "https://img.youtube.com/vi/{$match[1]}/2.jpg",
             "https://img.youtube.com/vi/{$match[1]}/3.jpg",
         ] : '';
-        
         $sharedInfo = [
             'title'       => $offer->{'title_'.$locale},
             'description' => strip_tags($offer->{'description_'.$locale}),
@@ -48,7 +46,7 @@ class SiteController extends Controller
         $partner = Partner::where('user_id', $admin->id)->first();
         $offer   = Offer::where('user_id', $admin->id)->first();
         $shared_info = $this->getSharedInfo($admin , $offer, $locale);
-        dd($shared_info['image']);
+//        dd($shared_info['image']);
         $videos  = Video::whereNotIn('order', ['first', 'second'])->where('user_id', $admin->id)->get();
         $main_videos = [
             Video::whereIn('order', ['first'])
