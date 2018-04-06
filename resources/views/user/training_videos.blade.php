@@ -57,6 +57,14 @@
                                @foreach($videos as $video)
                                 <tr>
                                     <td>{{(isset($list[$video->training_level]) ? $list[$video->training_level] : 'No')}}</td>
+                                    <?php
+                                            $match = [];
+                                            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video->url_am, $match);
+                                            $youtube_id = isset($match[1])? $match[1]: false;
+                                            if($youtube_id)
+                                                $video->url_am = "<img src='https://img.youtube.com/vi/{$youtube_id}/0.jpg' width='100'/>";
+                                        
+                                    ?>
                                     <td>{!! $video->url_am !!}</td>
                                     <td>
                                         <a href="{{url('user/training-videos/'.$video->id)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
