@@ -123,14 +123,7 @@
     <!-- Bootstrap -->
     <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Custom Theme Scripts -->
-    <script src="/build/js/custom.min.js"></script>
-    
-
-    
-    
-    
-        <!-- Include external CSS. -->
+    <!-- Include external CSS. -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
  
@@ -146,6 +139,9 @@
     <!-- Include Editor JS files. -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.5/js/froala_editor.pkgd.min.js"></script>
  
+    <!-- Custom Theme Scripts -->
+    <script src="/build/js/custom.min.js"></script>
+    
     <!-- Initialize the editor. -->
     <script> $(function() { $('textarea').froalaEditor() }); </script>
 
