@@ -57,7 +57,7 @@
                                @foreach($videos as $video)
                                 <tr>
                                     <td>{{(isset($list[$video->training_level]) ? $list[$video->training_level] : 'No')}}</td>
-                                    <td>{!! $video->url_am !!}</td>
+                                    <td>{{ $video->url_am }}</td>
                                     <td>
                                         <a href="{{url('user/training-videos/'.$video->id)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                                         {!! Form::open(array('url' => 'training/video/'.$video->id, 'method' => 'DELETE', 'class' => 'form-horizontal form-label-left'))!!}
