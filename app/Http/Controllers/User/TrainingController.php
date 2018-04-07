@@ -67,7 +67,11 @@ class TrainingController extends Controller
         }
         $training_videos = TrainingVideo::where('training_level', $training_level)->get();
 //        dd($training_videos->count());
-        return view('trainings/level', ['training_videos' => $training_videos, 'lang' => $lang]);
+        return view('trainings/level', [
+                    'training_videos' => $training_videos, 
+                    'lang' => $lang,
+                    'id' => $id,
+                ]);
     }
 
     public function postCode()
