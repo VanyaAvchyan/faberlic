@@ -64,7 +64,12 @@
                         <li><a href="#" class="social-icons twitter" data-share_tipe="twitter"><span class="fa fa-twitter"></span></a></li>
                         <li><a href="#" class="social-icons vkontakte" data-share_tipe="vkontakte"><span class="fa fa-vk"></span></a></li>
                         <li><a href="#" class="social-icons telegram" data-share_tipe="telegram"><span class="fa fa-telegram"></span></a></li>
-                        <li><a href="#" class="social-icons odnoklassniki" data-share_tipe="odnoklassniki"><span class="fa fa-odnoklassniki"></span></a></li>
+                        <li>
+                            <div id="ok_shareWidget"></div>
+                            <a href="#" class="social-icons odnoklassniki" data-share_tipe="odnoklassniki">
+                                <span class="fa fa-odnoklassniki"></span>
+                            </a>
+                        </li>
                         <li><a href="#" class="social-icons linkedin" data-share_tipe="linkedin"><span class="fa fa-linkedin"></span></i></a></li>
                     </ul>
                 </div>
@@ -336,12 +341,12 @@
     <script>
         var Share = {
             vkontakte: function(purl, ptitle, pimg, text) {
-                    url  = 'https://vkontakte.ru/share.php?';
-                    url += 'url='          + encodeURIComponent(purl);
-                    url += '&title='       + encodeURIComponent(ptitle);
-                    url += '&description=' + encodeURIComponent(text);
-                    url += '&image='       + encodeURIComponent(pimg);
-                    Share.popup(url);
+                url  = 'https://vkontakte.ru/share.php?';
+                url += 'url='          + encodeURIComponent(purl);
+                url += '&title='       + encodeURIComponent(ptitle);
+//                url += '&description=' + encodeURIComponent(text);
+                url += '&image='       + encodeURIComponent(pimg);
+                Share.popup(url);
             },
             linkedin: function(purl, ptitle, pimg, text) {
                     var url  = 'https://www.linkedin.com/shareArticle';

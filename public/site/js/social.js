@@ -2,7 +2,6 @@
  * Facebook sdk init
  */
 window.fbAsyncInit = function() {
-    // 1696277890422658
     FB.init({
         appId      : '1696277890422658',
         xfbml      : true,

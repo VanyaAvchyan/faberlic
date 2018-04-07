@@ -46,6 +46,7 @@
         <link rel="shortcut icon" href="favicon.ico"/>
 
         <link href="{{url()}}/site/css/common.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
     </head>
     <!-- END HEAD -->
 
