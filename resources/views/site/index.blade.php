@@ -14,7 +14,7 @@
 
                     <!-- Logo -->
                     <div class="logo">
-                        <a class="logo-wrap" href="#body">
+                        <a class="logo-wrap" href="{{url()}}">
                             <img class="logo-img" src="{{url()}}/uploads/site/logo.png" alt="Asentus Logo">
                         </a>
                     </div>
@@ -360,9 +360,11 @@
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
-                    var obj = {method: 'feed', link: purl, picture: pimg, name: ptitle, description: text};
-                    console.log(obj);
-                    FB.ui(obj, function(r){});
+                FB.ui({
+                    method: 'share',
+                    mobile_iframe: true,
+                    href: '{{url()}}',
+                  }, function(response){}); 
             },
             twitter: function(purl, via, text) {
                     var url  = 'https://twitter.com/intent/tweet?'

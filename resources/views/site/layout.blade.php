@@ -18,12 +18,12 @@
         <!--end facebook share info-->
         <!--Twitter share info-->
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@biznesfl">
+        <meta name="twitter:site" content="biznesfl">
         <meta name="twitter:creator" content="{{ $shared_info['user']->name }}">
         <meta name="twitter:title" content="{{ $shared_info['title'] }}">
         <meta name="twitter:description" content="{{ $shared_info['description'] }}">
         <meta name="twitter:image" content="{{ isset($shared_info['image'][0])? $shared_info['image'][0]: $shared_info['url'] }}">
-        <meta name="twitter:twitter:domain" content="{{url() }}">
+        <meta name="twitter:twitter:domain" content="{{ url() }}">
         <!--end Twitter share info-->
         @endif
         <title>Biznesfl</title>
