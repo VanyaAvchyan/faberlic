@@ -1,7 +1,7 @@
 @extends('site/layout')
 @section('content')
 
-<div class="container">
+<div class="container" >
   <div class="row">
     <div class="col-sm-12">
         <ul class="nav navbar-nav navbar-nav-right">
@@ -12,7 +12,7 @@
     </div>
     <h1>Training videos </h1>
     @foreach($training_videos as $training_video)
-    <div class="col-sm-{{round(12 / count($training_videos))}}">
+    <div class="col-sm-6">
         <div class="embed-responsive embed-responsive-4by3">
             <?php
                 $match = [];
