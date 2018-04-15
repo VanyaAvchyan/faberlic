@@ -117,7 +117,7 @@
                         data-youtube_id="{{ $youtube_id }}"
                         data-title="{{ $main_videos[1]->{('title_').App::getLocale()} }}"
                     >
-                        <img class="img-responsive img-circle youtube-icon2" src="{{url()}}/site/youtube_icone.png" />
+                        <img class="img-responsive img-circle youtube-icon" src="{{url()}}/site/youtube_icone.png" />
                         <img
                             class="promo-block-img img-responsive"
                             src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg"
@@ -424,26 +424,14 @@
             color:#70a6cc !important;
             font-size: 12px;
         }
-        .youtube-icon {
+        .youtube-icon, .youtube-icon1 {
             cursor: pointer;
             position:absolute;
             z-index: 1;
-            left:40%;
-            top:40%;
         }
         .youtube-icon1 {
-            cursor: pointer;
-            position:absolute;
-            z-index: 1;
-            left:50%;
-            top:50%;
-        }
-        .youtube-icon2 {
-            cursor: pointer;
-            position:absolute;
-            z-index: 1;
-            left:45%;
-            top:40%;
+            left:14%;
+            top:10%;
         }
     </style>
 @endsection
