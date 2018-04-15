@@ -81,9 +81,10 @@
                         data-youtube_id="{{ $youtube_id }}"
                         data-title="{{ $main_videos[0]->{('title_').App::getLocale()} }}"
                         >
-                        <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" />
                         <div class="" style="text-align: center;">
+                            <img class="img-responsive img-circle youtube-icon1" src="{{url()}}/site/youtube_icone.png" />
                             <b style="font-size:20px">{{$main_videos[0]->{('title_').App::getLocale()} }}</b>
+                            <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" />
                         </div>
                     </div>
                     @else
@@ -116,6 +117,7 @@
                         data-youtube_id="{{ $youtube_id }}"
                         data-title="{{ $main_videos[1]->{('title_').App::getLocale()} }}"
                     >
+                        <img class="img-responsive img-circle youtube-icon2" src="{{url()}}/site/youtube_icone.png" />
                         <img
                             class="promo-block-img img-responsive"
                             src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg"
@@ -268,6 +270,7 @@
                         
                     ?>
                 <div class="col-md-{{$video_col_num}}">
+                    <img class="img-responsive img-circle youtube-icon" src="{{url()}}/site/youtube_icone.png" />
                     <img
                         data-toggle="modal"
                         data-target="#myModal"
@@ -420,6 +423,27 @@
         .faq_title span {
             color:#70a6cc !important;
             font-size: 12px;
+        }
+        .youtube-icon {
+            cursor: pointer;
+            position:absolute;
+            z-index: 1;
+            left:40%;
+            top:40%;
+        }
+        .youtube-icon1 {
+            cursor: pointer;
+            position:absolute;
+            z-index: 1;
+            left:50%;
+            top:50%;
+        }
+        .youtube-icon2 {
+            cursor: pointer;
+            position:absolute;
+            z-index: 1;
+            left:45%;
+            top:40%;
         }
     </style>
 @endsection
