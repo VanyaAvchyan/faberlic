@@ -277,7 +277,7 @@
                         data-title="{{ $video->{('title_').App::getLocale()} }}"
                         class="img-responsive  videos"
                         src="https://img.youtube.com/vi/{{ $youtube_id }}/0.jpg" alt="Image">
-                    <h4>{{ $video->{('title_').App::getLocale()} }}</h4>
+                    <b>{{ $video->{('title_').App::getLocale()} }}</b>
                 </div>
                 @endforeach
             </div>
