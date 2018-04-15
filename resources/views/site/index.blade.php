@@ -82,7 +82,7 @@
                         data-title="{{ $main_videos[0]->{('title_').App::getLocale()} }}"
                         >
                         <div class="" style="text-align: center;">
-                            <img class="img-responsive img-circle youtube-icon1" src="{{url()}}/site/youtube_icone.png" />
+                            <img class="img-responsive img-rounded youtube-icon1" src="{{url()}}/site/youtube_icone.png" />
                             <b style="font-size:20px">{{$main_videos[0]->{('title_').App::getLocale()} }}</b>
                             <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" />
                         </div>
@@ -117,7 +117,7 @@
                         data-youtube_id="{{ $youtube_id }}"
                         data-title="{{ $main_videos[1]->{('title_').App::getLocale()} }}"
                     >
-                        <img class="img-responsive img-circle youtube-icon" src="{{url()}}/site/youtube_icone.png" />
+                        <img class="img-responsive img-rounded youtube-icon" src="{{url()}}/site/youtube_icone.png" />
                         <img
                             class="promo-block-img img-responsive"
                             src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg"
@@ -270,7 +270,6 @@
                         
                     ?>
                 <div class="col-md-{{$video_col_num}}">
-                    <img class="img-responsive img-circle youtube-icon" src="{{url()}}/site/youtube_icone.png" />
                     <img
                         data-toggle="modal"
                         data-target="#myModal"
@@ -424,14 +423,19 @@
             color:#70a6cc !important;
             font-size: 12px;
         }
-        .youtube-icon, .youtube-icon1 {
+        .youtube-icon {
             cursor: pointer;
             position:absolute;
             z-index: 1;
+            left:45%;
+            top:40%;
         }
         .youtube-icon1 {
-            left:14%;
-            top:10%;
+            cursor: pointer;
+            position:absolute;
+            z-index: 1;
+            left:55%;
+            top:50%;
         }
     </style>
 @endsection
