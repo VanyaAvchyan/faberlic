@@ -1,7 +1,7 @@
 @extends('site/layout')
 @section('content')
     <!--========== HEADER ==========-->
-    <header class="header navbar-fixed-top" style="background-image:url(uploads/site/background.jpg);">
+    <header class="header navbar-fixed-top" style="background-image:url(/uploads/site/background.jpg);">
         <!-- Navbar -->
         <nav class="" role="navigation">
             <div class="container">
@@ -46,7 +46,7 @@
     <!--========== END HEADER ==========-->
 
     <!--========== SLIDER ==========-->
-    <div class="promo-block" style="background-image:url(uploads/site/background.jpg);">
+    <div class="promo-block" style="background-image:url(/uploads/site/background.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 sm-margin-b-60">
@@ -101,7 +101,7 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- About -->
-    <div id="about" style="background-image:url(uploads/site/background.jpg);">
+    <div id="about" style="background-image:url(/uploads/site/background.jpg);">
         <div class="container content-lg">
             <div class="row">
                 <div class="col-sm-5 sm-margin-b-60 video2">
@@ -153,7 +153,7 @@
     <!-- End About -->
 
     <!-- Experience -->
-    <div id="experience" style="background-image:url(uploads/site/background.jpg);">
+    <div id="experience" style="background-image:url(/uploads/site/background.jpg);">
         <div class="" data-auto-height="true">
             <div class="container content-lg">
                 <div class="row row-space-2 margin-b-4">
@@ -248,7 +248,7 @@
     <!-- End Experience -->
 
 <!-- Work -->
-<div id="work" style="background-image:url(uploads/site/background.jpg);">
+<div id="work" style="background-image:url(/uploads/site/background.jpg);">
     <div class="">
         <div class="container content-lg">
             <div class="row margin-b-40">
@@ -288,7 +288,7 @@
     <!-- End Work -->
 
     <!-- Contact -->
-    <div id="contact" style="background-image:url(uploads/site/background.jpg);">
+    <div id="contact" style="background-image:url(/uploads/site/background.jpg);">
         <div class="">
             <div class="container content-lg">
                 <div class="row margin-b-40">
@@ -408,7 +408,7 @@
         }
         
         .btn-default-bg{
-            background: #17bed2
+            background: #17bed2;
         }
         .block4 {
             background: #fff;
