@@ -40,7 +40,7 @@
         <link href="{{url()}}/site/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css"/>
 
         <!-- THEME STYLES -->
-        <!--<link href="{{url()}}/site/css/layout.min.css" rel="stylesheet" type="text/css"/>-->
+        <link href="{{url()}}/site/css/layout.min.css" rel="stylesheet" type="text/css"/>
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="favicon.ico"/>
