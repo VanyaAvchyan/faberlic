@@ -355,7 +355,7 @@
                 FB.ui({
                     method: 'share',
                     mobile_iframe: true,
-                    href: '{{url()}}/'+location.pathname.substr(1),
+                    href: purl,
                   }, function(response){}); 
             },
             twitter: function(purl, via, text) {
@@ -380,7 +380,7 @@
             }
         };
         var shared_info = {
-            "url"         : "{{url('/'.App::getLocale()) }}",
+            "url"         : '{{url()}}/'+location.pathname.substr(1),
             "title"       : '{{ $shared_info['title'] }}',
             "description" : '{{ $shared_info['description'] }}',
             "image"       : '{{ isset($shared_info['image'][0])?$shared_info['image'][0]:"undefined" }}',
