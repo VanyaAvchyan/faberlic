@@ -351,10 +351,11 @@
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
+                console.log('{{url()}}/'+location.pathname.substr(1));
                 FB.ui({
                     method: 'share',
                     mobile_iframe: true,
-                    href: '{{url()}}',
+                    href: '{{url()}}/'+location.pathname.substr(1),
                   }, function(response){}); 
             },
             twitter: function(purl, via, text) {

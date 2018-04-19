@@ -9,7 +9,7 @@
         <meta name="description" content='{{ $shared_info['description'] }}'>
         
         <!--facebook share info-->
-        <meta property="og:url" content="{{url() }}">
+        <meta property="og:url" content="{{ url() }}">
         <meta property="og:type" content="website">
         <meta property="og:title" content="{{ $shared_info['title'] }}">
         <meta property="og:image" content="{{ isset($shared_info['image'][0])? $shared_info['image'][0]: $shared_info['url'] }}">
