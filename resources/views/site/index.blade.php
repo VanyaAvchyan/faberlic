@@ -32,9 +32,15 @@
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">{{trans('site.menus.contact')}}</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-nav-right">
-                            <li><a href="{{url('lang/am')}}">AM</a></li>
-                            <li><a href="{{url('lang/ru')}}">RU</a></li>
-                            <li><a href="{{url('lang/en')}}">EN</a></li>
+                            @if($is_account)
+                                <li><a href="/account/{{$code}}/am">AM</a></li>
+                                <li><a href="/account/{{$code}}/ru">RU</a></li>
+                                <li><a href="/account/{{$code}}/en">EN</a></li>
+                            @else
+                                <li><a href="/am">AM</a></li>
+                                <li><a href="/ru">RU</a></li>
+                                <li><a href="/en">EN</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>

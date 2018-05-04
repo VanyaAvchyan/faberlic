@@ -76,6 +76,7 @@ class SiteController extends Controller
                                     'undecided'     => $undecided,
                                     'main_videos'   => $main_videos,
                                     'shared_info'   => $shared_info,
+                                    'is_account'    => false,
                                 ]);
     }
 
@@ -144,6 +145,7 @@ class SiteController extends Controller
                                     'undecided'     => $undecided,
                                     'main_videos'   => $main_videos,
                                     'shared_info'   => $shared_info,
+                                    'is_account'    => true,
                                 ]);
     }
 }
