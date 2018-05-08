@@ -357,7 +357,7 @@
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
-                console.log(11111, purl);
+                console.log(222222222, purl);
                 FB.api('https://graph.facebook.com/', 'post', {
                     id: purl,
                     scrape: true
