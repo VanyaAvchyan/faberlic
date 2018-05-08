@@ -6,6 +6,7 @@ window.fbAsyncInit = function() {
         appId      : '1696277890422658',
         xfbml      : true,
         mobile_iframe: true,
+        scrape: true,
         version    : 'v2.12'
     });
     FB.AppEvents.logPageView();
