@@ -368,6 +368,7 @@
                     method: 'share',
                     mobile_iframe: true,
                     href: purl,
+                    scrape: true,
                   }, function(response){}); 
             },
             twitter: function(purl, via, text) {
