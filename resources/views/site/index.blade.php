@@ -357,18 +357,16 @@
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
-                console.log(222222222, purl);
-                FB.api('https://graph.facebook.com/', 'post', {
-                    id: purl,
-                    scrape: true
-                }, function(response) {
-                    console.log('rescrape!',response);
-                });
                 FB.ui({
-                    method: 'share',
-                    mobile_iframe: true,
-                    href: purl,
-                  }, function(response){}); 
+                  method: 'share_open_graph',
+                  action_type: 'og.likes',
+                  action_properties: JSON.stringify({
+                    object:purl,
+                  })
+                }, function(response){
+                  // Debug response (optional)
+                  console.log(response);
+                });
             },
             twitter: function(purl, via, text) {
                     var url  = 'https://twitter.com/intent/tweet?'

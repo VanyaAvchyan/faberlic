@@ -18,4 +18,3 @@ window.fbAsyncInit = function() {
    js.src = "https://connect.facebook.net/en_US/sdk.js";
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
- console.log(11111111);
