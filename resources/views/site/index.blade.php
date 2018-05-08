@@ -362,13 +362,12 @@
                     id: purl,
                     scrape: true
                 }, function(response) {
-                    //console.log('rescrape!',response);
+                    console.log('rescrape!',response);
                 });
                 FB.ui({
                     method: 'share',
                     mobile_iframe: true,
                     href: purl,
-                    scrape: true,
                   }, function(response){}); 
             },
             twitter: function(purl, via, text) {
