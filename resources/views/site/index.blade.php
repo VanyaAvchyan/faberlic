@@ -358,6 +358,12 @@
             },
             facebook: function(purl, ptitle, pimg, text) {
                 console.log(purl);
+                FB.api('https://graph.facebook.com/', 'post', {
+                    id: purl,
+                    scrape: true
+                }, function(response) {
+                    //console.log('rescrape!',response);
+                });
                 FB.ui({
                     method: 'share',
                     mobile_iframe: true,
@@ -397,7 +403,7 @@
             var share_tipe = $(this).data('share_tipe');
             switch( share_tipe )
             {
-                case 'facebook'      : Share.facebook(shared_info.url+'?scrape=true', shared_info.title, shared_info.image, shared_info.description ) ;break;
+                case 'facebook'      : Share.facebook(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'twitter'       : Share.twitter(shared_info.url, 'biznesfl', shared_info.description) ;break;
                 case 'vkontakte'     : Share.vkontakte(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;

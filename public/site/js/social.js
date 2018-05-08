@@ -3,11 +3,10 @@
  */
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '1696277890422658',
-        xfbml      : true,
-        mobile_iframe: true,
-        scrape: true,
-        version    : 'v2.12'
+        appId         : '1696277890422658',
+        xfbml         : true,
+        mobile_iframe : true,
+        version       : 'v2.12'
     });
     FB.AppEvents.logPageView();
 };
