@@ -393,7 +393,7 @@
             "url"         : '{{url()}}/'+location.pathname.substr(1),
             "title"       : '{{ $shared_info['title'] }}',
             "description" : '{{ $shared_info['description'] }}',
-            "image"       : '{{ isset($shared_info['image'][0])?$shared_info['image'][0]:"undefined" }}',
+            "image"       : '{{ isset($shared_info['image'][0])? $shared_info['image'][0]: $shared_info['url'] }}',
         };
 
         $('.social__buttons li a').on('click', function(e) {
