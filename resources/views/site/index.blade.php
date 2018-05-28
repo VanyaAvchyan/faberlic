@@ -340,24 +340,6 @@
         </div>
     </div>
 
-    <div id="ok_shareWidget"></div>
-    <script>
-    !function (d, id, did, st, title, description, image) {
-      var js = d.createElement("script");
-      js.src = "https://connect.ok.ru/connect.js";
-      js.onload = js.onreadystatechange = function () {
-      if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {
-        if (!this.executed) {
-          this.executed = true;
-          setTimeout(function () {
-            OK.CONNECT.insertShareWidget(id,did,st, title, description, image);
-          }, 0);
-        }
-      }};
-      d.documentElement.appendChild(js);
-    }(document,"ok_shareWidget",document.URL,'{"sz":30,"st":"oval","ck":1}',"","","");
-    </script>
-
 @section('js')
     <script>
         var Share = {
