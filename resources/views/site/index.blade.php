@@ -354,19 +354,14 @@
                     var url = 'https://connect.ok.ru/dk?st.cmd=WidgetSharePreview'
                             + '&st.imageUrl=' + encodeURIComponent(pimg)
                             + '&st.shareUrl=' + encodeURIComponent(purl);
+                    console.log(url);
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
                 FB.ui({
-                  method: 'share_open_graph',
-                  action_type: 'og.likes',
-                  action_properties: JSON.stringify({
-                    object:purl,
-                  })
-                }, function(response){
-                  // Debug response (optional)
-                  console.log(response);
-                });
+                  method : 'share',
+                  href   : purl
+                }, function(response){});
             },
             twitter: function(purl, via, text) {
                     var url  = 'https://twitter.com/intent/tweet?'
