@@ -360,12 +360,20 @@
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
-                FB.ui({
+                /*FB.ui({
                   method : 'share',
                   href   : purl,
                   display: 'popup',
                   mobile_iframe: true
-                }, function(response){});
+                }, function(response){});*/
+                
+                FB.ui({
+                    method: 'share_open_graph',
+                    action_type: 'og.likes',
+                    action_properties: JSON.stringify({
+                      object: purl,
+                    })
+                  }, function(response){});
             },
             twitter: function(purl, via, text) {
                     var url  = 'https://twitter.com/intent/tweet?'
