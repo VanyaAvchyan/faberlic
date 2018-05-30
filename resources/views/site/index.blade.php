@@ -363,7 +363,7 @@
                 FB.ui({
                   method : 'share',
                   href   : purl,
-                  display: 'popup',
+                  display: 'page',
                   mobile_iframe: true
                 }, function(response){});
             },
