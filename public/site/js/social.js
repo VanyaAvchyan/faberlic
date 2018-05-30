@@ -6,7 +6,9 @@ window.fbAsyncInit = function() {
         appId         : '1696277890422658',
         xfbml         : true,
         mobile_iframe : true,
-        version       : 'v2.12'
+        version       : 'v2.12',
+        status        : true,
+        cookie        : true
     });
     FB.AppEvents.logPageView();
 };

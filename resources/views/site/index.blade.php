@@ -362,7 +362,8 @@
             facebook: function(purl, ptitle, pimg, text) {
                 FB.ui({
                   method : 'share',
-                  href   : purl
+                  href   : purl,
+                  display: 'iframe'
                 }, function(response){});
             },
             twitter: function(purl, via, text) {
