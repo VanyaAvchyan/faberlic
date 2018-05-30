@@ -148,7 +148,7 @@
                                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                 @endif
                             </div>
-                            <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" class="btn-theme btn-theme-md btn-default-bg text-uppercase" target="_blank">{{trans('site.link_to_registration')}}</a>
+                            <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" onclick="alert('{{trans('site.technical_works')}}'); return false;"class="btn-theme btn-theme-md btn-default-bg text-uppercase" target="_blank">{{trans('site.link_to_registration')}}</a>
                         </div>
                     </div>
                 </div>
@@ -360,20 +360,20 @@
                     Share.popup(url);
             },
             facebook: function(purl, ptitle, pimg, text) {
-                /*FB.ui({
+                FB.ui({
                   method : 'share',
                   href   : purl,
                   display: 'popup',
                   mobile_iframe: true
-                }, function(response){});*/
+                }, function(response){});
                 
-                FB.ui({
+                /*FB.ui({
                     method: 'share_open_graph',
                     action_type: 'og.likes',
                     action_properties: JSON.stringify({
-                      object: purl,
+                      object: purl
                     })
-                  }, function(response){});
+                  }, function(response){});*/
             },
             twitter: function(purl, via, text) {
                     var url  = 'https://twitter.com/intent/tweet?'
