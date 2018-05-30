@@ -361,7 +361,7 @@
             },
             facebook: function(purl, ptitle, pimg, text) {
                 FB.ui({
-                  method : 'feed',
+                  method : 'share',
                   href   : purl,
                   display: 'dialog'
                 }, function(response){});
