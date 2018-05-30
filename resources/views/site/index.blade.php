@@ -361,9 +361,9 @@
             },
             facebook: function(purl, ptitle, pimg, text) {
                 FB.ui({
-                  method : 'share',
+                  method : 'feed',
                   href   : purl,
-                  display: 'iframe'
+                  display: 'dialog'
                 }, function(response){});
             },
             twitter: function(purl, via, text) {
