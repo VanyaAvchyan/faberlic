@@ -148,7 +148,7 @@
                                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                 @endif
                             </div>
-                            <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" onclick="alert('{{trans('site.technical_works')}}'); return false;"class="btn-theme btn-theme-md btn-default-bg text-uppercase" target="_blank">{{trans('site.link_to_registration')}}</a>
+                            <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" class="register__btn btn-theme btn-theme-md btn-default-bg text-uppercase" target="_blank">{{trans('site.link_to_registration')}}</a>
                         </div>
                     </div>
                 </div>
@@ -340,6 +340,23 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="alert-modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Title</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @section('js')
     <script>
         var Share = {
@@ -414,6 +431,13 @@
                 case 'odnoklassniki' : Share.odnoklassniki(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
                 case 'telegram'      : Share.telegram(shared_info.url, shared_info.title, shared_info.image, shared_info.description ) ;break;
             }
+        });
+        
+        $('.register__btn').on('click',function(e){
+            e.preventDefault();
+            $('#alert-modal .modal-title').text('');
+            $('#alert-modal .modal-body').html('<b>{!! trans('site.technical_works') !!}</b>');
+            $('#alert-modal').modal("toggle");
         });
     </script>
     <style>

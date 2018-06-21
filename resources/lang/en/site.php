@@ -13,5 +13,5 @@ return [
     'faq'           => 'F.A.Q',
     'link_to_registration' => 'Registration',
     'read_more'         => 'Read More',
-    'technical_works'  => 'Technical work is under way. Please contact us'
+    'technical_works'  => 'For gegistration call us by every contacts, which you choose.'
 ];
