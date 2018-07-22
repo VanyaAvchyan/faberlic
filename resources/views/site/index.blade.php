@@ -50,10 +50,11 @@
         <!-- Navbar -->
     </header>
     <!--========== END HEADER ==========-->
-
+    
     <!--========== SLIDER ==========-->
     <div class="promo-block" style="background-image:url(/uploads/site/background.jpg);">
         <div class="container">
+            @include('errors.messages')
             <div class="row">
                 <div class="col-sm-6 sm-margin-b-60">
                     <div class="margin-b-10">
@@ -340,22 +341,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="alert-modal" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Title</h4>
-                </div>
-                <div class="modal-body"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('forms.fab_registration')
 
 @section('js')
     <script>
@@ -435,8 +421,6 @@
         
         $('.register__btn').on('click',function(e){
             e.preventDefault();
-            $('#alert-modal .modal-title').text('');
-            $('#alert-modal .modal-body').html('<b>{!! trans('site.technical_works') !!}</b>');
             $('#alert-modal').modal("toggle");
         });
     </script>

@@ -6,3 +6,4 @@ Homestead.json
 /public/uploads/
 /public/.htaccess
 .env
+.idea

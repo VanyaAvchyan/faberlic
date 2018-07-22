@@ -11,16 +11,17 @@ use App\Faq;
 use App\Info;
 use App\Training;
 use App\TrainingVideo;
-use Image, File;
+use Image, File, Mail;
 
 use App\Http\Requests\PartnerRequest;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\FabRegistration;
 
 class UserController extends Controller 
 {
     public function __construct()
     {
-        $this->middleware('User', ['except' => ['getLogin', 'getLogout', 'postLogin', 'getUser']]);
+        $this->middleware('User', ['except' => ['getLogin', 'getLogout', 'postLogin', 'getUser','postFabRegistration']]);
     }
 
     public function getIndex($id = false)
@@ -352,9 +353,23 @@ class UserController extends Controller
         } else {
             $list = [null => ''];
         }
-
-        return view('user/training_videos', ['model' => $model,'videos' => $videos, 'list' => $list]);
+        return view('user/training_videos', ['model' => $model, 'videos' => $videos, 'list' => $list]);
     }
-    
-    
+
+    public function postFabRegistration(FabRegistration $request)
+    {
+        try {
+            Mail::send('emails.fab_registration', ['fab_data' => $request->all()], function ($message) use ($request) {
+                $message->from($request->get('fab_email'), 'Faberlic Registration');
+                $message->to($request->get('user_email'));
+                $message->subject('Biznesfl.com');
+            });
+        } catch (\Exception $e){
+            return redirect('/')->withErrors($e->getMessage());
+        }
+        if( count(Mail::failures())) {
+            return redirect('/')->withErrors('Error: E-Mail not sended !');
+        }
+        return redirect('/')->withSuccess('Success: Reg-Mail sent successfully !');
+    }
 }

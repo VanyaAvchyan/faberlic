@@ -1,0 +1,48 @@
+login - 299227
+pass  - 563721
+
+# Доступ к MySQL
+Логин: u0456733_default
+Пароль: dJ5_DZx_
+Имя базы: u0456733_default
+Host: localhost
+REG.RU( biznesfl.com )
+Login: armelzh@rambler.ru
+Pass: azC!OQ2C
+
+# Личные данные Армана.
+AK0357492
+почтавой индех: 0005
+выдан: 05.08.2009
+addr: tigran mec 52
+tel: +37498632277
+
+admin: biznesfl
+
+####################
+http://biznesfl.com/
+
+# ЛОГИНЫ И ПАРОЛИ ХОСТИНГОМ
+https://server199.hosting.reg.ru:1500/
+Логин: u0456733
+Пароль: dJ5_DZx_
+
+# Доступ к FTP
+IP-адрес сервера: 31.31.196.187
+Логин: u0456733
+Пароль: dJ5_DZx_
+
+# Доступ к MySQL
+Логин: u0456733_default
+Пароль: dJ5_DZx_
+Имя базы: u0456733_default
+Host: localhost
+
+ssh u0456733@31.31.196.187 dJ5_DZx_
+site_dir: /var/www/u0456733/data/www/biznesfl.com
+git clone https://github.com/VanyaAvchyan/faberlic.git
+
+cat ~/.ssh/id_rsa.pub
+ssh-copy-id -i ~/.ssh/id_rsa.pub u0456733@31.31.196.187
+
+php-7.1-> /opt/php/7.1/bin/php-cgi artisan view:clear

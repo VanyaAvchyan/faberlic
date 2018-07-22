@@ -64,7 +64,7 @@ class SiteController extends Controller
         $undecided   = Info::where('type', 'undecided')->first();
 
         return view('site/index', [
-                                    'user'         => $admin,
+                                    'user'          => $admin,
                                     'videos'        => $videos,
                                     'code'          => $admin->username,
                                     'partner'       => $partner,
