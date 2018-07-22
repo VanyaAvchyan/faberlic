@@ -402,7 +402,7 @@
         var shared_info = {
             "url"         : '{{url()}}/'+location.pathname.substr(1),
             "title"       : '{{ $shared_info['title'] }}',
-            "description" : '{{ $shared_info['description'] }}',
+            "description" : '{{ trim($shared_info['description']) }}',
             "image"       : '{{ isset($shared_info['image'][0])? $shared_info['image'][0]: $shared_info['url'] }}',
         };
 
