@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="fab_email" class="control-label col-sm-3">Email*</label>
+                    <label for="fab_email" class="control-label col-sm-3">Email</label>
                     <div class="col-sm-9">
                         <input type="email" name="fab_email" class="form-control" id="fab_email" placeholder="Email">
                     </div>

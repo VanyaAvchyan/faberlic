@@ -21,7 +21,7 @@ class FabRegistration extends Request {
         return [
             'fab_first_name'   => 'required',
             'fab_last_name'    => 'required',
-            'fab_email'        => 'required | email',
+            'fab_email'        => 'email',
             'fab_phone'        => 'required',
             'fab_address'      => 'required',
             'fab_birth_date'   => 'required',

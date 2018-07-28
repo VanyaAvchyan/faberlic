@@ -38,6 +38,10 @@ IP-адрес сервера: 31.31.196.187
 Имя базы: u0456733_default
 Host: localhost
 
+Gmail
+biznesfl2018@gmail.com
+biznesfl84
+
 ssh u0456733@31.31.196.187 dJ5_DZx_
 site_dir: /var/www/u0456733/data/www/biznesfl.com
 git clone https://github.com/VanyaAvchyan/faberlic.git
