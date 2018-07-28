@@ -39,6 +39,7 @@
                 </div>
 
                 <div class="form-group">
+				
                     <label for="fab_phone" class="control-label col-sm-3">{!! trans('site.phone') !!}*</label>
                     <div class="col-sm-9">
                         <input type="text" name="fab_phone" class="form-control" id="fab_phone" placeholder="{!! trans('site.phone') !!}">
