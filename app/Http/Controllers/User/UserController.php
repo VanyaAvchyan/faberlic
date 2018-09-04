@@ -360,8 +360,8 @@ class UserController extends Controller
     {
         try {
             Mail::send('emails.fab_registration', ['fab_data' => $request->all()], function ($message) use ($request) {
-                dd($request->all());
-                $message->from($request->get('fab_email'), 'Faberlic Registration');
+                $from = $request->get('fab_email')? $request->get('fab_email'): env('MAIL_USERNAME','biznesfl2018@gmail.com');
+                $message->from($from, 'Faberlic Registration');
                 $message->to($request->get('user_email'));
                 $message->subject('Biznesfl.com');
             });

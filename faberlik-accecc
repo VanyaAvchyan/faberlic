@@ -56,10 +56,18 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub u0456733@31.31.196.187
 
 php-7.1-> /opt/php/7.1/bin/php-cgi artisan view:clear
 php-7.1-> /opt/php/7.1/bin/php-cgi artisan cache:clear
+php-7.1-> /opt/php/7.1/bin/php-cgi artisan config:cache
 
 MAIL_DRIVER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
 MAIL_USERNAME=biznesfl2018@gmail.com
 MAIL_PASSWORD=biznesfl84
+MAIL_ENCRYPTION=tls
+
+MAIL_DRIVER=smtp
+MAIL_HOST=mail.mail.biznesfl.com
+MAIL_PORT=465
+MAIL_USERNAME=info@mail.biznesfl.com
+MAIL_PASSWORD=dJ5_DZx_
 MAIL_ENCRYPTION=tls
