@@ -41,6 +41,11 @@ Host: localhost
 Gmail
 biznesfl2018@gmail.com
 biznesfl84
++374 95 689099
+
+Mail
+info@mail.biznesfl.com
+dJ5_DZx_
 
 ssh u0456733@31.31.196.187 dJ5_DZx_
 site_dir: /var/www/u0456733/data/www/biznesfl.com
@@ -50,3 +55,11 @@ cat ~/.ssh/id_rsa.pub
 ssh-copy-id -i ~/.ssh/id_rsa.pub u0456733@31.31.196.187
 
 php-7.1-> /opt/php/7.1/bin/php-cgi artisan view:clear
+php-7.1-> /opt/php/7.1/bin/php-cgi artisan cache:clear
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=biznesfl2018@gmail.com
+MAIL_PASSWORD=biznesfl84
+MAIL_ENCRYPTION=tls

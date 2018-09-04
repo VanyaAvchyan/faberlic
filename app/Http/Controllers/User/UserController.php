@@ -17,7 +17,7 @@ use App\Http\Requests\PartnerRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\FabRegistration;
 
-class UserController extends Controller 
+class UserController extends Controller
 {
     public function __construct()
     {
@@ -89,7 +89,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Error !');
         return redirect()->back()->with('success', 'Success !');
     }
-    
+
     public function deleteUsers($id)
     {
         if(auth()->user()->role === 1)
@@ -97,13 +97,13 @@ class UserController extends Controller
             User::where('id', '!=' , auth()->user()->id)
                     ->where('id', $id)
                     ->delete();
-            
+
             return redirect()->back()->with('success', 'Success !');
         }
         return redirect()->back()->with('error', 'Have\'t permissions !!!');
     }
 
-    
+
     public function getLogin()
     {
         if(auth()->check())
@@ -215,7 +215,7 @@ class UserController extends Controller
         if($id == 'first' or $id == 'second')
             return redirect()->back()->with('success', 'Success !');
         return redirect('user/video')->with('success', 'Success !');
-        
+
     }
 
     public function deleteVideo($id)
@@ -284,7 +284,7 @@ class UserController extends Controller
         Contact::where([ 'id' => $id, 'user_id' => auth()->user()->id ])->delete();
         return redirect()->back()->with('success', 'Success !');
     }
-    
+
     /**
      * F.A.Q
      */
@@ -360,16 +360,17 @@ class UserController extends Controller
     {
         try {
             Mail::send('emails.fab_registration', ['fab_data' => $request->all()], function ($message) use ($request) {
+                dd($request->all());
                 $message->from($request->get('fab_email'), 'Faberlic Registration');
                 $message->to($request->get('user_email'));
                 $message->subject('Biznesfl.com');
             });
         } catch (\Exception $e){
-            return redirect('/')->withErrors($e->getMessage());
+            return redirect()->back()->withErrors($e->getMessage());
         }
         if( count(Mail::failures())) {
-            return redirect('/')->withErrors('Error: E-Mail not sended !');
+            return redirect()->back()->withErrors('Error: E-Mail not sended !');
         }
-        return redirect('/')->withSuccess('Success: Reg-Mail sent successfully !');
+        return redirect()->back()->withSuccess('Success: Reg-Mail sent successfully !');
     }
 }
