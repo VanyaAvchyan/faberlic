@@ -89,9 +89,9 @@ class SiteController extends Controller
         if(!$user )
             return redirect('/');
         App::setLocale($locale);
-        $partner = Partner::where('user_id', $admin->id)->first();
+        $partner = Partner::where('user_id', $user->id)->first();
         if(!$partner)
-            $partner = Partner::where('user_id', $user->id)->first();
+            $partner = Partner::where('user_id', $admin->id)->first();
         $videos  = Video::whereNotIn('order', ['first', 'second'])->where('user_id', $user->id)->get();
         if($videos->isEmpty())
             $videos = Video::whereNotIn('order', ['first', 'second'])->where('user_id', $admin->id)->get();
