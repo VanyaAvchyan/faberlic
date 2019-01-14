@@ -425,6 +425,10 @@
         });
     </script>
     <style>
+        #body,.promo-block {
+            background: #fff !important;
+            /*background-image: url("/uploads/site/background2.jpg")*/
+        }
         h1 {
             color: red;
         }
