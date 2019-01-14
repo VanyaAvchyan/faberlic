@@ -1,7 +1,7 @@
 @extends('site/layout')
 @section('content')
     <!--========== HEADER ==========-->
-    <header class="header navbar-fixed-top" style="background-image:url(/uploads/site/background.jpg);">
+    <header class="header navbar-fixed-top" >
         <!-- Navbar -->
         <nav class="" role="navigation">
             <div class="container">
@@ -52,7 +52,7 @@
     <!--========== END HEADER ==========-->
     
     <!--========== SLIDER ==========-->
-    <div class="promo-block" style="background-image:url(/uploads/site/background.jpg);">
+    <div class="promo-block" >
         <div class="container">
             @include('errors.messages')
             <div class="row">
@@ -75,30 +75,15 @@
                     </ul>
                 </div>
                 <div class="col-sm-6">
-                    @if(isset($main_videos[0]))
-                    <?php
-                        $match = [];
-                        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $main_videos[0]->{('url_').App::getLocale()}, $match);
-                        $youtube_id = isset($match[1])? $match[1]: 'undefined';
-                    ?>
-                    <div
-                        class="promo-block-img-wrap"
-                        data-toggle="modal"
-                        data-target="#myModal"
-                        data-youtube_id="{{ $youtube_id }}"
-                        data-title="{{ $main_videos[0]->{('title_').App::getLocale()} }}"
-                        >
-                        <div class="" style="text-align: center;">
-                            <img class="img-responsive img-rounded youtube-icon1" src="{{url()}}/site/youtube_icone.png" />
-                            <b style="font-size:20px">{{$main_videos[0]->{('title_').App::getLocale()} }}</b>
-                            <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" />
-                        </div>
-                    </div>
+                    @if($partner)
+                        <h2>{{$partner->{('title_').App::getLocale()} }}</h2>
+                        {!! $partner->{('description_').App::getLocale()} !!}
                     @else
-                        <div class="promo-block-img-wrap">
-                            <img class="promo-block-img img-responsive" src="{{url()}}/uploads/site/img/mockup/avatar-01.png" align="Avatar">
-                        </div>
+                        <h2>Դառնալով մեր գործընկերը</h2>
+                        <p>I'm Alisa Portman, orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     @endif
+                    <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" class="register__btn btn-theme btn-theme-md btn-default-bg text-uppercase" target="_blank">{{trans('site.link_to_registration')}}</a>
                 </div>
             </div>
             <!--// end row -->
@@ -108,7 +93,7 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- About -->
-    <div id="about" style="background-image:url(/uploads/site/background.jpg);">
+    <div id="about" >
         <div class="container content-lg">
             <div class="row">
                 <div class="col-sm-5 sm-margin-b-60 video2">
@@ -139,17 +124,32 @@
                 <div class="col-sm-7">
                     <div class="section-seperator margin-b-50">
                         <div class="margin-b-50">
-                            <div class="margin-b-30">
-                                @if($partner)
-                                    <h2>{{$partner->{('title_').App::getLocale()} }}</h2>
-                                    {!! $partner->{('description_').App::getLocale()} !!}
+                            <div class="margin-b-30" style="margin-left: 100px;">
+                                @if(isset($main_videos[0]))
+                                <?php
+                                    $match = [];
+                                    preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $main_videos[0]->{('url_').App::getLocale()}, $match);
+                                    $youtube_id = isset($match[1])? $match[1]: 'undefined';
+                                ?>
+                                <div
+                                    class="promo-block-img-wrap"
+                                    data-toggle="modal"
+                                    data-target="#myModal"
+                                    data-youtube_id="{{ $youtube_id }}"
+                                    data-title="{{ $main_videos[0]->{('title_').App::getLocale()} }}"
+                                    >
+                                    <div class="" style="text-align: center;">
+                                        <img class="img-responsive img-rounded youtube-icon1" src="{{url()}}/site/youtube_icone.png" />
+                                        <b style="font-size:20px">{{$main_videos[0]->{('title_').App::getLocale()} }}</b>
+                                        <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" />
+                                    </div>
+                                </div>
                                 @else
-                                    <h2>Դառնալով մեր գործընկերը</h2>
-                                    <p>I'm Alisa Portman, orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <div class="promo-block-img-wrap">
+                                        <img class="promo-block-img img-responsive" src="{{url()}}/uploads/site/img/mockup/avatar-01.png" align="Avatar">
+                                    </div>
                                 @endif
                             </div>
-                            <a href="https://faberlic.com/register?sponsor={{$code}}&lang=ru" class="register__btn btn-theme btn-theme-md btn-default-bg text-uppercase" target="_blank">{{trans('site.link_to_registration')}}</a>
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
     <!-- End About -->
 
     <!-- Experience -->
-    <div id="experience" style="background-image:url(/uploads/site/background.jpg);">
+    <div id="experience" >
         <div class="" data-auto-height="true">
             <div class="container content-lg">
                 <div class="row row-space-2 margin-b-4">
@@ -255,7 +255,7 @@
     <!-- End Experience -->
 
 <!-- Work -->
-<div id="work" style="background-image:url(/uploads/site/background.jpg);">
+<div id="work" >
     <div class="">
         <div class="container content-lg">
             <div class="row margin-b-40">
@@ -295,7 +295,7 @@
     <!-- End Work -->
 
     <!-- Contact -->
-    <div id="contact" style="background-image:url(/uploads/site/background.jpg);">
+    <div id="contact" >
         <div class="">
             <div class="container content-lg">
                 <div class="row margin-b-40">
@@ -429,7 +429,7 @@
             color: red;
         }
         .header_navigation_block , .footer_block {
-            background: #c5e4ff87;
+            /*background: #c5e4ff87;*/
             border-color: transparent;
         }
         
@@ -462,6 +462,16 @@
             z-index: 1;
             left:55%;
             top:50%;
+        }
+        header nav {
+            background: red;
+        }
+        .btn-default-bg {
+            background: red;
+        }
+        .btn-default-bg:hover{
+            background: #ff0000a6;
+            color: #fff;
         }
     </style>
 @endsection
