@@ -97,6 +97,7 @@
         <div class="container content-lg">
             <div class="row">
                 <div class="col-sm-5 sm-margin-b-60 video2">
+                        <h4>{{$main_videos[1]->{('title_').App::getLocale()} }}</h4>
                     @if(isset($main_videos[1]))
                         <?php
                             $match = [];
@@ -115,7 +116,6 @@
                             src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg"
                             align=""
                         >
-                        <h4>{{$main_videos[1]->{('title_').App::getLocale()} }}</h4>
                     </div>
                     @else
                         <img class="full-width img-responsive" src="{{url()}}/uploads/site/img/500x700/01.jpg" alt="Image">
@@ -140,7 +140,7 @@
                                     >
                                     <div class="" style="text-align: center;">
                                         <img class="img-responsive img-rounded youtube-icon1" src="{{url()}}/site/youtube_icone.png" />
-                                        <b style="font-size:20px">{{$main_videos[0]->{('title_').App::getLocale()} }}</b>
+                                        <h4>{{$main_videos[0]->{('title_').App::getLocale()} }}</h4>
                                         <img class="promo-block-img img-responsive" src="https://img.youtube.com/vi/{{$youtube_id}}/0.jpg" />
                                     </div>
                                 </div>
@@ -460,18 +460,23 @@
             cursor: pointer;
             position:absolute;
             z-index: 1;
-            left:55%;
-            top:50%;
+            left:49%;
+            top:38%;
         }
         header nav {
-            background: red;
+            background: #ff0000bf;
         }
         .btn-default-bg {
-            background: red;
+            background: #ff0000bf;
+            color:#fff;
         }
         .btn-default-bg:hover{
-            background: #ff0000a6;
-            color: #fff;
+            background: red;
+            color: #000;
+        }
+        ul.navbar-nav li a {
+            color:#fff !important;
+            font-size: 15px  !important;
         }
     </style>
 @endsection

@@ -3,11 +3,11 @@
 return [
     'menus' => [
         'home'          => 'Գլխավոր',
-        'offer'         => 'Բիզնես առաջարկ',
+        'offer'         => 'Առաջարկ',
         'partner'       => 'Դառնալ գործընկեր',
         'experience'    => 'Experience',
         'contact'       => 'Կապ մեզ հետ',
-        'about_us'      => 'Մեր մասին',
+        'about_us'      => 'Ակցիաներ',
         'videos'        => 'Վիդեո',
     ],
     'faq' => 'ՀՏՀ',

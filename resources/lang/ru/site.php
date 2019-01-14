@@ -7,7 +7,7 @@ return [
         'partner'       => 'Стать партнером',
         'contact'       => 'Контакты',
         'experience'    => 'Experience',
-        'about_us'      => 'О нас',
+        'about_us'      => 'Акции',
         'videos'        => 'Видео',
     ],
     'faq' => 'ЧАВО',

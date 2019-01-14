@@ -69,9 +69,9 @@
                         <li><a href="{{url('user/video/first')}}">Video 1</a></li>
                         <li><a href="{{url('user/video/second')}}">Video 2</a></li>
                         <li><a href="{{url('user/partners')}}">2. Դառնալով մեր գործընկերը, Դուք</a></li>
-                        <li><a href="{{url('user/info/about_us')}}">Մեր մասին</a></li>
-                        <li><a href="{{url('user/info/our_product')}}">Մեր ապրանքատեսականին</a></li>
-                        <li><a href="{{url('user/info/undecided')}}">Չեմ կողմնորոշվում</a></li>
+                        <li><a href="{{url('user/info/about_us')}}">Ակցիաներ</a></li>
+                        <li><a href="{{url('user/info/our_product')}}">Սկսնակների Ակցիաներ</a></li>
+                        <li><a href="{{url('user/info/undecided')}}">Նորույթներ</a></li>
                         <li><a href="{{url('user/contact')}}">Contacts</a></li>
                         @if(auth()->user()->role === 1)
                             <li><a href="{{url('user/faq')}}">F.A.Q</a></li>

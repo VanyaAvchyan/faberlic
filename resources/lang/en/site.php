@@ -3,11 +3,11 @@
 return [
     'menus' => [
         'home'          => 'Home',
-        'offer'         => 'Business offer',
+        'offer'         => 'Offer',
         'partner'       => 'Become a partner',
         'experience'    => 'Experience',
         'contact'       => 'Contacts',
-        'about_us'      => 'About us',
+        'about_us'      => 'Promotions',
         'videos'        => 'Videos',
     ],
     'faq' => 'F.A.Q',
