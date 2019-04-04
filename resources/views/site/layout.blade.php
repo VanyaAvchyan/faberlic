@@ -53,6 +53,15 @@
     <!-- BODY -->
     <body id="body" data-spy="scroll" data-target=".header">
         @yield('content')
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-137497723-1');
+        </script>
         
         <!-- Back To Top -->
         <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
